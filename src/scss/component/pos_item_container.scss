@@ -1,0 +1,43 @@
+.text_field {
+  &:hover {
+    & > div > fieldset {
+      border: 1.2em;
+    }
+  }
+  &_vender {
+    width: 100% !important;
+    & > div > fieldset {
+      border-color: $inverspot-blue !important;
+    }
+    & > div {
+      height: 3em !important;
+    }
+    & > div > div {
+      color: $inverspot-blue !important;
+    }
+    & > div > div > svg {
+      fill: $inverspot-blue !important;
+    }
+    & > div > div > div {
+      text-align: center !important;
+    }
+  }
+  &_historico {
+    width: 100% !important;
+    & > div > fieldset {
+      border-color: $inverspot-purple !important;
+    }
+    & > div {
+      height: 3em !important;
+    }
+    & > div > div {
+      color: $inverspot-purple !important;
+    }
+    & > div > div > svg {
+      fill: $inverspot-purple !important;
+    }
+    & > div > div > div {
+      text-align: center !important;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+main {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0 !important;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+ul,
+ol {
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+a {
+  color: $color-blue;
+  transition: all 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-blue-hover;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pac-container {
+  z-index: 2000 !important;
+}
+
+@media (min-width: 1200px) {
+  body {
+    overflow-y: hidden !important;
+  }
+}

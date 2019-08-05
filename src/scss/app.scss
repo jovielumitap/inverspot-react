@@ -1,0 +1,72 @@
+@import 'settings/variable';  //themes' colors
+@import 'mixin/font-composer.scss';
+
+//vendor...
+@import './vendor';
+
+//base...
+@import 'generic/normalize.scss';
+@include fontFace('Roboto', 'Roboto-Regular');
+@include fontFace('Roboto Light', 'Roboto-Light');
+@include fontFace('Roboto Medium', 'Roboto-Medium');
+@include fontFace('Roboto Bold', 'Roboto-Bold');
+@include fontFace('Roboto Black', 'Roboto-Black');
+@include fontFace('Segoe-UI', 'Segoe-UI');
+
+
+@import './global/_global-dir';
+
+@import 'generic/box-sizing.scss';
+@import "base/_base-dir";
+@import './ui/index';
+@import "component/_index";
+//components...
+/* @import 'component/alert'; */                   // components/Alert.js ('reactstrap')
+//@import 'component/btn';                      // Button from 'reactstrap'
+/* @import './component/calendar'; */              // components/Calendar.js  ('react-big-calendar')
+/* @import './component/card';  */                 // Card, CardBody from 'reactstrap'
+/* @import './component/carousel';               // components/carousel/* ('react-slick') */
+
+@import './component/modal';                  // components/Modal.js ('reactstrap')
+@import './component/pagination';             // components/Pagination.js ('reactstrap')
+@import './component/load';
+@import './component/customizer';
+
+@import './component/pos';                      // Pos
+@import './component/pos_product';              // components/Product
+@import './component/pos_category';             // components/Category
+@import './component/pos_customer';             // components/Customer
+@import './component/pos_offer';                // components/Discount
+@import './component/pos_payment';              // components/Payment
+@import './component/pos_cart';                 // components/Cart
+@import './component/pos_sell';                 // components/sell
+@import './component/pos_item_container';       // components/PosItemContainerAction
+@import './component/alert-box';                // components/alertBox
+@import './component/checkOut';                 // components/checkOut
+@import './component/MobileActionsBar.scss';    // components/MobileActionsBar
+@import './component/pos_balance.scss';
+@import './component/search-bar.scss';
+@import './component/topbar';                 // components/topbar/*
+
+// Animations
+@import './component/animations';               // Pos/components/Cart
+
+//pages...
+@import 'containers/account';              // pages/account/* (except profile)
+@import 'containers/profile';              // pages/account/profile/*
+@import 'containers/clients';              // pages/clients*
+/* @import 'containers/cart';              // pages/e-commerce/cart/* */
+/* @import 'containers/dashboard';         // pages/dashboards/* */
+/* @import 'containers/invoice';           // pages/default_page/invoice_template */
+/* @import 'containers/not-found';         // pages/default_page/404/* */
+/* @import 'containers/payment';           // pages/e-commerce/payment/* */
+/* @import 'containers/product-card';      // pages/e-commerce/product-page/components/ProductCard.js */
+/* @import 'containers/product-edit';      // pages/e-commerce/product_edit/* */
+/* @import 'containers/products-list';     // pages/e-commerce/product_list/* */
+/* @import 'containers/project-summary';      // pages/default_pages/project_summary/* */
+/* @import 'containers/documentation'; */
+/* @import 'containers/landing'; */
+
+//objects...
+@import 'objects/layout.scss';        // layout settings
+

@@ -1,0 +1,99 @@
+.sell {
+  &-tab {
+    &__tab {
+      width: 50%;
+      padding: 0px;
+      margin: 0px;
+      margin-right: 0px;
+      border-radius: 0px;
+    }
+
+    &__container {
+      width: 100%;
+    }
+  }
+
+  &-card__text {
+    text-align: center;
+    width: 100%;
+  }
+
+  &-card__input {
+    width: 100%;
+  }
+
+  &-modal {
+    .nav-item {
+      width: 50%;
+    }
+
+    &__total {
+      text-align: center;
+      font-size: 25px;
+    }
+
+    &__actions {
+      text-align: right;
+    }
+  }
+}
+
+.edopedido {
+  margin-bottom: 5px;
+}
+
+.totPedidoxP {
+  font-size: 25px;
+  color: $color-danger;
+}
+.totEfectivo,
+.totCubrir {
+  font-size: 25px;
+  width: 100%;
+  text-align: left;
+}
+.totEfectivo span,
+.totCubrir span {
+  float: left;
+  width: 50%;
+}
+.totEfectivo button {
+  margin-top: 10px;
+  float: right;
+}
+.totEfectivo input {
+  text-align: right;
+  float: right;
+  font-size: 25px;
+  width: 50%;
+}
+.totCubrir input {
+  text-align: right;
+  float: right;
+  font-size: 25px;
+  width: 50%;
+}
+.totCubrir button {
+  margin-top: 10px;
+  float: right;
+}
+.totPedidoxP span {
+  color: $color-black;
+  float: left;
+}
+.totPedidoCambio {
+  font-size: 25px;
+  color: $color-green;
+}
+.totPedidoCambio span {
+  color: $color-black;
+  float: left;
+}
+
+.actions_order_product {
+  @include transitionAll();
+}
+
+.salesOffer {
+  @include transitionAll();
+}

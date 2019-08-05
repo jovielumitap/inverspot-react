@@ -1,0 +1,18 @@
+.settings {
+  font-size: 20px;
+  &__card {
+    width: 450px !important;
+    margin: 1em;
+  }
+  &__cardMobile {
+    width: 100% !important;
+    margin: 1em;
+  }
+  &__body {
+    font-size: 0.8em;
+    min-height: 10vh;
+    &__configuration {
+      font-size: 0.8em;
+    }
+  }
+}

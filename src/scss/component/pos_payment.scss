@@ -1,0 +1,54 @@
+.payment {
+  @include transitionAll();
+  & > div {
+    @include transitionAll();
+  }
+  background-color: #fff;
+  padding: 10px;
+  margin: 1px 0px;
+  max-width: 100% !important;
+}
+
+.payment__purchase {
+  a {
+    width: 100%;
+    margin: 5px;
+  }
+}
+
+.payment__sub-total {
+  font-weight: bolder;
+}
+
+.payment__total {
+  margin: 0px;
+}
+
+.payment__discount-delete {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff1535;
+}
+
+.payment__discount-text {
+  text-align: center;
+}
+
+.payment__total-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.payment__total {
+  font-weight: bold !important;
+  font-size: 18px !important;
+}
+
+.payment__mount {
+  padding: 0px 15px;
+  text-align: right;
+}

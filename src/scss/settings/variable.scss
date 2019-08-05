@@ -1,0 +1,120 @@
+$themes: (
+  light: (
+    colorBackground: white,
+    colorBackgroundBody: #f2f4f7,
+    colorText: #646777,
+    colorTextAdditional: #646777,
+    colorHover: #fafbfe,
+    colorBorder: #eff1f5,
+    colorIcon: #dddddd,
+    imgInvert: invert(0%),
+    colorFieldsBorder: #f2f4f7,
+    colorBubble: rgba(242, 244, 247, 0.65),
+    colorBubbleActive: rgba(234, 238, 255, 0.6),
+    colorScrollbar: #b4bfd0,
+    colorFitness: #646777
+  ),
+  dark: (
+    colorBackground: #232329,
+    colorBackgroundBody: #2a2a31,
+    colorText: #dddddd,
+    colorTextAdditional: #999999,
+    colorHover: #38373f,
+    colorBorder: #333246,
+    colorIcon: #605f7b,
+    imgInvert: invert(100%),
+    colorFieldsBorder: #33333a,
+    colorBubble: rgba(68, 79, 97, 0.65),
+    colorBubbleActive: rgba(92, 104, 156, 0.6),
+    colorScrollbar: #606071,
+    colorFitness: #ffffff
+  )
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+$color-blue: #70bbfd;
+$color-blue-hover: darken($color-blue, 10%);
+$color-violet: #8152a0;
+$color-gray: #787985;
+
+$color-white-hover: rgba(#fff, 0.2);
+$color-grey: #b7bfc6;
+$color-grey-heavy: #646f79;
+$color-black: #313c52;
+
+$inverspot-gradient: linear-gradient(to top right, #572191 0%, #a14063 35%, #BD494D 100%);
+$inverspot-blue: #23a1db;
+$inverspot-purple: #662D91;
+
+$color-green: #96d1b1;
+$color-green-hover: #6ec499;
+
+$color-red: #f2a692;
+$color-red-hover: #eb715f;
+
+$color-accent: #4ce1b6;
+$color-accent-hover: darken($color-accent, 10%);
+$color-additional: #999999;
+$color-additional-hover: darken($color-additional, 10%);
+
+$color-yellow: #f7c379;
+$color-yellow-hover: #f1a11f;
+
+$color-information: #009cff;
+$color-success: #4caf50;
+$color-warning: #ff8900;
+$color-danger: #f44336;
+
+@mixin transitionAll() {
+  transition: all 300ms 100ms !important;
+}
+
+
+/* pos_offer */
+@mixin img-max-width-2vw {
+  & > img {
+    max-width: 20vw;
+  }
+}
+
+@mixin not_selection() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+$font_sixe_flip_card: 12px;
+
+$card_bg_hover: #f5f5f596;
+$card-rotated: #2980b9;
+$card-rotated-click: #46abea;
+
+$flip-card-min-width: 200px;
+$flip-card-heigth: 20em;
+$flip-card-perspective: 1000px;
+$flip-card-margin: 0.5em;

@@ -1,0 +1,9 @@
+.Toastify__toast{
+    font-family: "Segoe-UI";
+    font-weight: 500;
+    font-size: 1.4em !important;
+    &--info { background-color: #4b95ad  !important;  };
+    &--success {background-color: #6ec499 !important;  };
+    &--error {background-color: #eb715f !important;   };
+    &--warning {background-color: #efa94a  !important;  };
+}
