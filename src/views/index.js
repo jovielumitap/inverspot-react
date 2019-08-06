@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Layout from '../components/Layout';
 import MainWrapper from '../components/MainWrapper';
 import Investment from "./InvestmentPage";
+import InvestmentDetail from "./InvestmentPage/InvestmentDetail";
 
 class MainApp extends React.Component {
     render() {
@@ -13,7 +14,8 @@ class MainApp extends React.Component {
                 <Layout/>
                 <MainWrapper>
                     <Switch>
-                        <Route path={`${match.url}/investment`} component={Investment}/>
+                        <Route exact path={`${match.url}/investment`} component={Investment}/>
+                        <Route exact path={`${match.url}/investment/detail`} component={InvestmentDetail}/>
                     </Switch>
                 </MainWrapper>
             </>

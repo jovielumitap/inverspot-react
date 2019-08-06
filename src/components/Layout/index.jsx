@@ -13,9 +13,10 @@ import { showElement, hideElement } from '../../redux/actions/displayActions';
 import LayoutBar from './components/LayoutBar';
 import LayoutMenu from './components/LayoutMenu';
 import styles from './styles';
+import classNames from "classnames";
 
 const Layout = ({ displays, classes, theme, dispatchOpenDashboard, dispatchCloseDashboard, history }) => (
-  <div className={classes.root}>
+  <div className={`${classNames(classes.root)} sticky-top`}>
     <CssBaseline />
     <LayoutBar
       classes={classes}

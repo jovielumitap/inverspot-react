@@ -1,91 +1,128 @@
 .size-120 {
-    @extend %size-120;
-  }
-  
-  .size-100 {
-    @extend %size-100;
-  }
-  
-  .size-90 {
-    @extend %size-90;
-  }
-  
-  .size-80 {
-    @extend %size-80;
-  }
-  
-  .size-70 {
-    @extend %size-70;
-  }
-  
-  .size-60 {
-    @extend %size-60;
-  }
-  
-  .size-50 {
-    @extend %size-50;
-  }
-  
-  .size-40 {
-    @extend %size-40;
-  }
-  
-  .size-30 {
-    @extend %size-30;
-  }
-  
-  .size-30 {
-    @extend %size-30;
-  }
-  
-  .size-20 {
-    @extend %size-20;
-  }
-  
-  .size-10 {
-    @extend %size-10;
-  }
-  
-  .size-8 {
-    @extend %size-8;
-  }
-
-
-  .font-size-8 {
-    font-size: 8px !important;
-  }
-  .font-size-10 {
-    font-size: 10px !important;
-  }
-  .font-size-12 {
-    font-size: 12px !important;
-  }
-  .font-size-14 {
-    font-size: 14px !important;
-  }
-  .font-size-16 {
-    font-size: 16px !important;
-  }
-  .font-size-18 {
-    font-size: 18px !important;
-  }
-  .font-size-20 {
-    font-size: 20px !important;
-  }
-  .font-size-22 {
-    font-size: 22px !important;
-  }
-  .font-size-24 {
-    font-size: 24px !important;
-  }
-  .font-weight-bold {
-    font-weight: 700 !important;
+  @extend %size-120;
 }
+
+.size-100 {
+  @extend %size-100;
+}
+
+.size-90 {
+  @extend %size-90;
+}
+
+.size-80 {
+  @extend %size-80;
+}
+
+.size-70 {
+  @extend %size-70;
+}
+
+.size-60 {
+  @extend %size-60;
+}
+
+.size-50 {
+  @extend %size-50;
+}
+
+.size-40 {
+  @extend %size-40;
+}
+
+.size-30 {
+  @extend %size-30;
+}
+
+.size-20 {
+  @extend %size-20;
+}
+
+.size-10 {
+  @extend %size-10;
+}
+
+.size-8 {
+  @extend %size-8;
+}
+
+
+.font-size-8 {
+  font-size: 8px !important;
+}
+
+.font-size-10 {
+  font-size: 10px !important;
+}
+
+.font-size-12 {
+  font-size: 12px !important;
+}
+
+.font-size-14 {
+  font-size: 14px !important;
+}
+
+.font-size-16 {
+  font-size: 16px !important;
+}
+
+.font-size-18 {
+  font-size: 18px !important;
+}
+
+.font-size-20 {
+  font-size: 20px !important;
+}
+
+.font-size-22 {
+  font-size: 22px !important;
+}
+
+.font-size-24 {
+  font-size: 24px !important;
+}
+
+.font-size-26 {
+  font-size: 26px !important;
+}
+
+.font-size-28 {
+  font-size: 28px !important;
+}
+
+.font-size-30 {
+  font-size: 30px !important;
+}
+.font-size-40 {
+  font-size: 40px !important;
+}
+.font-size-60 {
+  font-size: 60px !important;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
 .font-white {
   color: white !important;
 }
+
+.font-gray {
+  color: $color-gray !important;
+}
+.font-purple {
+  color: $inverspot-purple !important;
+}
+.font-red {
+  color: $inverspot-red !important;
+}
+
 .font-weight-500 {
   font-weight: 500 !important;
+}
+.font-weight-600 {
+  font-weight: 600 !important;
 }
 .font-weight-700 {
   font-weight: 700 !important;
@@ -101,9 +138,11 @@
 .f-1 {
   flex: 1
 }
+
 .f-2 {
   flex: 2
 }
+
 .f-3 {
   flex: 3
 }
