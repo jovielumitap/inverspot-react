@@ -4,7 +4,7 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import Avatar from "@material-ui/core/Avatar";
 
-const InvestmentItem = ({ item, onClick }) => {
+const OpportunityInvestmentItem = ({ item, onClick }) => {
     return (
         <ListItem button onClick={onClick}>
             <div className="flex-row d-flex w-100">
@@ -31,12 +31,7 @@ const InvestmentItem = ({ item, onClick }) => {
                         </div>
                     </div>
                     <div className="position-relative">
-                        <div
-                            style={{ borderRadius: "50%"}}
-                            className="align-center position-relative font-size-22 font-weight-500 size-40 bg-dark font-white text-center"
-                        >
-                            {item.percent}
-                        </div>
+                        <div className="align-center position-relative font-size-24 font-weight-700">{item.percent}</div>
                     </div>
                 </div>
             </div>
@@ -44,4 +39,4 @@ const InvestmentItem = ({ item, onClick }) => {
         </ListItem>
     )
 }
-export default InvestmentItem;
+export default OpportunityInvestmentItem;

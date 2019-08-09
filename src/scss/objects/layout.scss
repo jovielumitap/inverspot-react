@@ -65,6 +65,14 @@
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
 }
+.align-center-y {
+  top: 50% !important;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
 
 #main-container-desktop {
   padding: 0 !important;

@@ -32,7 +32,7 @@ const LayoutMenu = ({
     </div>
     <List>
       <NavLink
-        to="/"
+        to="/app/opportunity-investment"
         onClick={() => {
           closeDashboardMenu();
         }}
@@ -43,7 +43,7 @@ const LayoutMenu = ({
         </ListItem>
       </NavLink>
       <NavLink
-          to="/"
+          to="/app/participation"
           onClick={() => {
             closeDashboardMenu();
           }}
@@ -55,7 +55,7 @@ const LayoutMenu = ({
       </NavLink>
 
       <NavLink
-          to="/"
+          to="/app/investment"
           onClick={() => {
             closeDashboardMenu();
           }}
@@ -67,7 +67,7 @@ const LayoutMenu = ({
       </NavLink>
 
       <NavLink
-          to="/"
+          to="/app/referrals"
           onClick={() => {
             closeDashboardMenu();
           }}
@@ -79,7 +79,7 @@ const LayoutMenu = ({
       </NavLink>
 
       <NavLink
-          to="/"
+          to="/app/downloads"
           onClick={() => {
             closeDashboardMenu();
           }}
@@ -91,7 +91,7 @@ const LayoutMenu = ({
       </NavLink>
 
       <NavLink
-          to="/"
+          to="/app/profile"
           onClick={() => {
             closeDashboardMenu();
           }}

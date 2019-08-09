@@ -3,13 +3,19 @@ import SubHeader from "../components/SubHeader";
 import {Swipeable} from "react-swipeable";
 import Tabs from "@material-ui/core/Tabs";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {
+    faBuilding,
+    faClock,
+    faInfoCircle,
+    faShoppingCart
+} from "@fortawesome/free-solid-svg-icons";
 import Tab from "@material-ui/core/Tab";
 import HeaderOverView from "../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
 
-class InvestmentDetail extends Component {
+class OpportunityInvestmentDetail extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
         const {value} = this.state;
@@ -84,4 +90,4 @@ class InvestmentDetail extends Component {
     }
 }
 
-export default InvestmentDetail;
+export default OpportunityInvestmentDetail;

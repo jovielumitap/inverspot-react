@@ -52,9 +52,7 @@
 @import './component/animations';               // Pos/components/Cart
 
 //pages...
-@import 'containers/account';              // pages/account/* (except profile)
-@import 'containers/profile';              // pages/account/profile/*
-@import 'containers/clients';              // pages/clients*
+@import "./containers/_index";
 /* @import 'containers/cart';              // pages/e-commerce/cart/* */
 /* @import 'containers/dashboard';         // pages/dashboards/* */
 /* @import 'containers/invoice';           // pages/default_page/invoice_template */

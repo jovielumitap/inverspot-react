@@ -1,0 +1,58 @@
+.social-item {
+  width: 60px;
+  height: 60px;
+  background-color: $inverspot-purple;
+  border-radius: 30px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.copy-item {
+  width: 50px;
+  height: 50px;
+  background-color: $inverspot-purple;
+  border-radius: 15px;
+  position: relative;
+}
+.following-link {
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 15px;
+  position: relative;
+}
+
+.following-link-text {
+  vertical-align: middle;
+  color: $inverspot-red;
+  font-size: 20px;
+}
+.referral-item {
+  height: 60px;
+  width: 100%;
+  display: flex;
+}
+.referral-item-number-bg {
+  height: 60px;
+  width: 60px;
+  display: table;
+  text-align: center;
+  background-color: #dee2e6;
+}
+.referral-item-number {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 24px;
+  font-weight: 700;
+  color: #212529;
+}
+
+.commission-icon-bg {
+  height: 60px;
+  width: 60px;
+  display: table;
+  text-align: center;
+  background-color: #6c757d;
+}
+.commission-icon {
+  display: table-cell;
+  vertical-align: middle;
+}

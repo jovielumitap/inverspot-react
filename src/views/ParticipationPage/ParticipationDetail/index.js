@@ -8,19 +8,20 @@ import HeaderOverView from "../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
+import {Tab4} from "../components/Tab4";
 
-class InvestmentDetail extends Component {
+class ParticipationDetail extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
         const {value} = this.state;
         if (deltaX < 100) return false;
         switch (e.dir) {
             case 'Left':
-                const v1 = value === 2 ? 0 : value + 1;
+                const v1 = value === 3 ? 0 : value + 1;
                 this.setState({value: v1});
                 return;
             case 'Right':
-                const v = value === 0 ? 2 : value - 1;
+                const v = value === 0 ? 3 : value - 1;
                 this.setState({value: v});
                 return;
             default:
@@ -66,6 +67,8 @@ class InvestmentDetail extends Component {
                                      icon={<FontAwesomeIcon className="font-size-18" icon="chart-line"/>}/>
                                 <Tab className="tab tab-left-border"
                                      icon={<FontAwesomeIcon className="font-size-18" icon="hard-hat"/>}/>
+                                <Tab className="tab tab-left-border"
+                                     icon={<FontAwesomeIcon className="font-size-18" icon="file-signature"/>}/>
                             </Tabs>
                         </div>
                         {value === 0 &&
@@ -77,6 +80,9 @@ class InvestmentDetail extends Component {
                         {value === 2 &&
                             <Tab3/>
                         }
+                        {value === 3 &&
+                            <Tab4/>
+                        }
                     </Swipeable>
                 </div>
             </div>
@@ -84,4 +90,4 @@ class InvestmentDetail extends Component {
     }
 }
 
-export default InvestmentDetail;
+export default ParticipationDetail;

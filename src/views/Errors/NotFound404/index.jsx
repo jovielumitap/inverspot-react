@@ -5,7 +5,7 @@ const buttonStyle = {
   border: 'none',
   borderRadius: '0px',
   width: '100%',
-  'background-color': '#929292',
+  backgroundColor: '#929292',
 };
 
 const Image404 = `${process.env.PUBLIC_URL}/img/404.png`;

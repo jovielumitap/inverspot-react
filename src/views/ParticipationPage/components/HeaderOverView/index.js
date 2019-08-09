@@ -22,20 +22,32 @@ class HeaderOverView extends Component {
                     </IconButton>
                 </div>
                 <div className="opportunity-investment-detail-header-gradient">
-                    <div className="opportunity-investment-detail-header-overview px-2">
+                    <div className="participation-detail-header-overview px-2">
                         <div className="detail-name">Contadero 403</div>
-                        <div className="w-100 d-flex">
-                            <div className="f-1">
-                                <div className="text-white">Inresión</div>
-                                <div className="detail-info">$100,000</div>
+                        <div className="row d-flex mx-0">
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Avance de la obra</div>
+                                <div className="detail-info">Obra gris</div>
                             </div>
-                            <div className="f-1">
-                                <div className="text-white">Rendimiento</div>
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Rendimiento</div>
                                 <div className="detail-info">33-45%</div>
                             </div>
-                            <div className="f-1">
-                                <div className="text-white">Plazo</div>
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Plazo</div>
                                 <div className="detail-info">11-14</div>
+                            </div>
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Inicio</div>
+                                <div className="detail-info">15/06/2019</div>
+                            </div>
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Participaciones</div>
+                                <div className="detail-info">2</div>
+                            </div>
+                            <div className="col-3 px-0">
+                                <div className="text-white font-size-12">Por invertir</div>
+                                <div className="detail-info">$100,000</div>
                             </div>
                         </div>
                     </div>

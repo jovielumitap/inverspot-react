@@ -3,24 +3,8 @@ import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 import {ToastContainer} from 'react-toastify';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {
-    faTrashAlt,
-    faThList,
-    faThLarge,
-    faStore,
-    faShoppingCart,
-    faSearch,
-    faInfo,
-    faCoins,
-    faCreditCard,
-    faCaretDown,
-    faFilter,
-    faCartArrowDown,
-    faHandHoldingUsd,
-    faCashRegister,
-    faFileInvoice,
-    faFileInvoiceDollar,
-} from '@fortawesome/free-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import '../scss/app.scss';
 import ScrollToTop from '../components/ScrollToTop';
 import LoadComponent from '../components/Load/LoadComponent';
@@ -33,23 +17,8 @@ import Register from "./Register";
 import NotFound404 from "../views/Errors/NotFound404";
 import { setInitUrl } from "../redux/actions/authUserActions";
 library.add(
-    faTrashAlt,
-    faThList,
-    faThLarge,
-    faStore,
-    faShoppingCart,
-    faSearch,
-    faInfo,
-    faCoins,
-    faCreditCard,
-    faCaretDown,
-    faFilter,
-    faFileInvoice,
-    faCartArrowDown,
-    faHandHoldingUsd,
-    faCashRegister,
-    faFileInvoice,
-    faFileInvoiceDollar,
+    fab,
+    fas
 );
 
 
@@ -108,7 +77,7 @@ class App extends Component {
             if (!authUser.username) {
                 return ( <Redirect to={'/sign-in'}/> );
             } else if (initURL === '' || initURL === '/' || initURL === '/sign-in') {
-                return ( <Redirect to={'/app/investment'}/> );
+                return ( <Redirect to={'/app/opportunity-investment'}/> );
             } else {
                 return (<Redirect to={initURL} />);
             }
