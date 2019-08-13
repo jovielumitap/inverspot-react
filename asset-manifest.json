@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/inverspot-react/static/css/main.7fef307a.chunk.css",
+    "main.js": "/inverspot-react/static/js/main.b1fb4568.chunk.js",
+    "main.js.map": "/inverspot-react/static/js/main.b1fb4568.chunk.js.map",
+    "runtime~main.js": "/inverspot-react/static/js/runtime~main.9425e7e9.js",
+    "runtime~main.js.map": "/inverspot-react/static/js/runtime~main.9425e7e9.js.map",
+    "static/css/2.52787fb6.chunk.css": "/inverspot-react/static/css/2.52787fb6.chunk.css",
+    "static/js/2.499088a1.chunk.js": "/inverspot-react/static/js/2.499088a1.chunk.js",
+    "static/js/2.499088a1.chunk.js.map": "/inverspot-react/static/js/2.499088a1.chunk.js.map",
+    "index.html": "/inverspot-react/index.html",
+    "precache-manifest.9db00f4389c9c694fe3e7c27eba3f2d6.js": "/inverspot-react/precache-manifest.9db00f4389c9c694fe3e7c27eba3f2d6.js",
+    "service-worker.js": "/inverspot-react/service-worker.js",
+    "static/css/2.52787fb6.chunk.css.map": "/inverspot-react/static/css/2.52787fb6.chunk.css.map",
+    "static/css/main.7fef307a.chunk.css.map": "/inverspot-react/static/css/main.7fef307a.chunk.css.map"
+  }
+}
