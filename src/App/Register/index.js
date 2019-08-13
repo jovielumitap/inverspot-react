@@ -13,8 +13,6 @@ class Register extends Component {
         advisor: false,
         accept: false
     };
-    componentWillMount() {
-    }
     handleChangeCheck = name => (event, checked) => {
         this.setState({[name]: checked});
     };

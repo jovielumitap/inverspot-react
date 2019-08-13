@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ReferralItem = ({}) => {
+export const ReferralItem = () => {
     return (
         <div className="referral-item flex-row w-100 border-bottom">
             <div className="referral-item-number-bg">

@@ -39,7 +39,6 @@ class ReferralPage extends Component {
     }
     render() {
         const {value} = this.state;
-        const {history} = this.props;
         return (
             <div className="vw-100">
                 <Header title={'Mis documentos'}/>

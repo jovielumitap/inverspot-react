@@ -10,6 +10,7 @@ import ReferralPage from "./ReferralPage";
 import ParticipationPage from "./ParticipationPage";
 import ParticipationDetail from "./ParticipationPage/ParticipationDetail";
 import InvestmentPage from "./InvestmentPage"
+import InvestmentDetail from "./InvestmentPage/InvestmentDetail";
 class MainApp extends React.Component {
     render() {
         const {match} = this.props;
@@ -25,6 +26,7 @@ class MainApp extends React.Component {
                         <Route exact path={`${match.url}/participation`} component={ParticipationPage}/>
                         <Route exact path={`${match.url}/participation/detail`} component={ParticipationDetail}/>
                         <Route exact path={`${match.url}/investment`} component={InvestmentPage}/>
+                        <Route exact path={`${match.url}/investment/detail`} component={InvestmentDetail}/>
                     </Switch>
                 </MainWrapper>
             </>

@@ -8,6 +8,10 @@ import HeaderOverView from "../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
+import {Tab4} from "../components/Tab4";
+import {Tab5} from "../components/Tab5";
+import {Tab6} from "../components/Tab6";
+import {Tab7} from "../components/Tab7";
 
 class InvestmentDetail extends Component {
     onSwipeAction = (e) => {
@@ -16,11 +20,11 @@ class InvestmentDetail extends Component {
         if (deltaX < 100) return false;
         switch (e.dir) {
             case 'Left':
-                const v1 = value === 2 ? 0 : value + 1;
+                const v1 = value === 6 ? 0 : value + 1;
                 this.setState({value: v1});
                 return;
             case 'Right':
-                const v = value === 0 ? 2 : value - 1;
+                const v = value === 0 ? 6 : value - 1;
                 this.setState({value: v});
                 return;
             default:
@@ -66,6 +70,14 @@ class InvestmentDetail extends Component {
                                      icon={<FontAwesomeIcon className="font-size-18" icon="chart-line"/>}/>
                                 <Tab className="tab tab-left-border"
                                      icon={<FontAwesomeIcon className="font-size-18" icon="hard-hat"/>}/>
+                                <Tab className="tab tab-left-border"
+                                     icon={<FontAwesomeIcon className="font-size-18" icon="file-signature"/>}/>
+                                <Tab className="tab tab-left-border"
+                                     icon={<FontAwesomeIcon className="font-size-18" icon="receipt"/>}/>
+                                <Tab className="tab tab-left-border"
+                                     icon={<FontAwesomeIcon className="font-size-18" icon="piggy-bank"/>}/>
+                                <Tab className="tab tab-left-border"
+                                     icon={<FontAwesomeIcon className="font-size-18" icon="hand-holding-usd"/>}/>
                             </Tabs>
                         </div>
                         {value === 0 &&
@@ -76,6 +88,18 @@ class InvestmentDetail extends Component {
                         }
                         {value === 2 &&
                             <Tab3/>
+                        }
+                        {value === 3 &&
+                            <Tab4/>
+                        }
+                        {value === 4 &&
+                            <Tab5/>
+                        }
+                        {value === 5 &&
+                            <Tab6/>
+                        }
+                        {value === 6 &&
+                            <Tab7/>
                         }
                     </Swipeable>
                 </div>

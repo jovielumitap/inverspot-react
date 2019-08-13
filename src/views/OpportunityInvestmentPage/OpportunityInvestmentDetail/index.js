@@ -3,12 +3,6 @@ import SubHeader from "../components/SubHeader";
 import {Swipeable} from "react-swipeable";
 import Tabs from "@material-ui/core/Tabs";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faBuilding,
-    faClock,
-    faInfoCircle,
-    faShoppingCart
-} from "@fortawesome/free-solid-svg-icons";
 import Tab from "@material-ui/core/Tab";
 import HeaderOverView from "../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";

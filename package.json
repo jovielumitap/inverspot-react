@@ -2,6 +2,7 @@
   "name": "inverspot",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ligwang.github.io/inverspot-react",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-brands-svg-icons": "^5.10.1",
@@ -21,6 +22,7 @@
     "cross-fetch": "^3.0.1",
     "dotenv": "^8.0.0",
     "form-serialize": "^0.7.2",
+    "gh-pages": "^2.1.1",
     "i18next": "^15.0.6",
     "jquery": "1.9.1",
     "lodash": "^4.17.11",
@@ -51,7 +53,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,7 +66,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
