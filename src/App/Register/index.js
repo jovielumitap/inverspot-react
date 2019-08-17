@@ -20,6 +20,9 @@ class Register extends Component {
     handleChange = name => (event) => {
         this.setState({[name]: event.target.value});
     };
+    handleSubmit = () => {
+        this.props.history.push('sign-up-step')
+    };
     render() {
         const { username, password, confirmPassword, preferredAdvisor,  advisor, accept } = this.state;
         return (
@@ -95,7 +98,7 @@ class Register extends Component {
                         </div>
                         <div className="form-group d-flex justify-content-between align-items-center">
                             <div>
-                                <Button onClick={() => alert("AAAA")}
+                                <Button onClick={() => this.handleSubmit()}
                                         variant="contained"
                                         color="primary">
                                     SignUp

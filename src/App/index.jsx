@@ -14,6 +14,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import LogIn from "./LogIn";
 import LogOut from "./LogOut";
 import Register from "./Register";
+import RegisterStep from "./Register/RegisterStep";
 import NotFound404 from "../views/Errors/NotFound404";
 import { setInitUrl } from "../redux/actions/authUserActions";
 library.add(
@@ -39,7 +40,6 @@ const RestrictedRoute = ({ component: Component, authUser, ...rest }) => {
     )
 };
 
-
 const inverspotTheme = createMuiTheme({
     palette: {
         primary: {
@@ -49,6 +49,20 @@ const inverspotTheme = createMuiTheme({
     typography: {
         useNextVariants: true,
     },
+    overrides: {
+        MuiStepIcon: {
+            root: {
+                '&$completed': {
+                    color: 'pink',
+                },
+                '&$active': {
+                    color: 'red',
+                },
+            },
+            active: {},
+            completed: {},
+        },
+    }
 });
 
 class App extends Component {
@@ -95,6 +109,7 @@ class App extends Component {
                             <Route path='/sign-in' component={LogIn} />
                             <Route path='/sign-out' component={LogOut} />
                             <Route path='/sign-up' component={Register} />
+                            <Route path='/sign-up-step' component={RegisterStep} />
                             <Route component={NotFound404} />
                         </Switch>
                         <ToastContainer
