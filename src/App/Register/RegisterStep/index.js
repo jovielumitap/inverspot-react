@@ -4,8 +4,27 @@ import Step from "@material-ui/core/Step";
 import StepConnector from '@material-ui/core/StepConnector';
 import {withStyles} from '@material-ui/core/styles';
 import StepLabel from "@material-ui/core/StepLabel";
-import NationalPhysic from "./component/NationalPhysic";
 import SelectUserType from "./component/SelectUserType";
+import NationalPhysic1 from "./component/NationalPhysic/NationalPhysic1";
+import NationalPhysic2 from "./component/NationalPhysic/NationalPhysic2";
+import NationalPhysic3 from "./component/NationalPhysic/NationalPhysic3";
+import NationalPhysic4 from "./component/NationalPhysic/NationalPhysic4";
+import NationalPhysic5 from "./component/NationalPhysic/NationalPhysic5";
+import PhysicalForeigner1 from "./component/PhysicalForeigner/PhysicalForeigner1";
+import NationalMoral1 from "./component/NationalMoral/NationalMoral1";
+import MoralForeigner1 from "./component/MoralForeigner/MoralForeigner1";
+import PhysicalForeigner2 from "./component/PhysicalForeigner/PhysicalForeigner2";
+import NationalMoral2 from "./component/NationalMoral/NationalMoral2";
+import MoralForeigner2 from "./component/MoralForeigner/MoralForeigner2";
+import PhysicalForeigner3 from "./component/PhysicalForeigner/PhysicalForeigner3";
+import NationalMoral3 from "./component/NationalMoral/NationalMoral3";
+import MoralForeigner3 from "./component/MoralForeigner/MoralForeigner3";
+import PhysicalForeigner4 from "./component/PhysicalForeigner/PhysicalForeigner4";
+import NationalMoral4 from "./component/NationalMoral/NationalMoral4";
+import MoralForeigner4 from "./component/MoralForeigner/MoralForeigner4";
+import PhysicalForeigner5 from "./component/PhysicalForeigner/PhysicalForeigner5";
+import NationalMoral5 from "./component/NationalMoral/NationalMoral5";
+import MoralForeigner5 from "./component/MoralForeigner/MoralForeigner5";
 
 
 const getSteps = () => {
@@ -16,38 +35,180 @@ const userTypes = ["nationPhysic", "physicalForeigner", "nationalMoral", "moralF
 class RegisterStep extends Component {
     renderStepContent = () => {
         const {userType, activeStep} = this.state;
-        switch (activeStep) {
-            case 1:
+        if (activeStep === 1) {
+            return (
+                <SelectUserType
+                    title={"Tipo de persona"}
+                    onClick={this.onClickUserType}
+                />
+            );
+        } else if (activeStep === 2) {
+            if (userType === 0) {
                 return (
-                    <SelectUserType
-                        title={"Tipo de persona"}
-                        onClick={this.onClickUserType}
+                    <NationalPhysic1
+                        title={"Datos personales"}
+                        skipStep={this.skipStep}
                     />
-                );
-            case 2:
-                if (userType === 0) {
-                    return (
-                        <NationalPhysic
-                            title={"Datos personales"}
-                            skipStep={this.skipStep}
-                        />
-                    )
-                }
-                if (userType === 1) {
-                    return (
-                        <NationalPhysic/>
-                    )
-                }
-                if (userType === 2) {
-                    return (
-                        <NationalPhysic/>
-                    )
-                }
-                if (userType === 3) {
-                    return (
-                        <NationalPhysic/>
-                    )
-                }
+                )
+            }
+            if (userType === 1) {
+                return (
+                    <PhysicalForeigner1
+                        title={"Datos personales"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 2) {
+                return (
+                    <NationalMoral1
+                        title={"Datos personales"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 3) {
+                return (
+                    <MoralForeigner1
+                        title={"Datos personales"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+        } else if (activeStep === 3) {
+            if (userType === 0) {
+                return (
+                    <NationalPhysic2
+                        title={"Documentos y datos"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 1) {
+                return (
+                    <PhysicalForeigner2
+                        title={"Documentos y datos"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 2) {
+                return (
+                    <NationalMoral2
+                        title={"Documentos y datos"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 3) {
+                return (
+                    <MoralForeigner2
+                        title={"Documentos y datos"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+        } else if (activeStep === 4) {
+            if (userType === 0) {
+                return (
+                    <NationalPhysic3
+                        title={"Dirección"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 1) {
+                return (
+                    <PhysicalForeigner3
+                        title={"Dirección"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 2) {
+                return (
+                    <NationalMoral3
+                        title={"Dirección"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 3) {
+                return (
+                    <MoralForeigner3
+                        title={"Dirección"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+        } else if (activeStep === 5) {
+            if (userType === 0) {
+                return (
+                    <NationalPhysic4
+                        title={"Cuenta bancaria"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 1) {
+                return (
+                    <PhysicalForeigner4
+                        title={"Cuenta bancaria"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 2) {
+                return (
+                    <NationalMoral4
+                        title={"Cuenta bancaria"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+            if (userType === 3) {
+                return (
+                    <MoralForeigner4
+                        title={"Cuenta bancaria"}
+                        skipStep={this.skipStep}
+                    />
+                )
+            }
+        } else if (activeStep === 6) {
+            if (userType === 0) {
+                return (
+                    <NationalPhysic5
+                        title={"Beneficiarios"}
+                        finishStep={this.finishStep}
+                    />
+                )
+            }
+            if (userType === 1) {
+                return (
+                    <PhysicalForeigner5
+                        title={"Beneficiarios"}
+                        finishStep={this.finishStep}
+                    />
+                )
+            }
+            if (userType === 2) {
+                return (
+                    <NationalMoral5
+                        title={"Beneficiarios"}
+                        finishStep={this.finishStep}
+                    />
+                )
+            }
+            if (userType === 3) {
+                return (
+                    <MoralForeigner5
+                        title={"Beneficiarios"}
+                        finishStep={this.finishStep}
+                    />
+                )
+            }
+        } else {
+            return null;
         }
     };
     onClickUserType = (type) => {
@@ -60,6 +221,9 @@ class RegisterStep extends Component {
       const { activeStep } = this.state;
       if (activeStep === 6) return;
       this.setState({ activeStep: activeStep + 1 })
+    };
+    finishStep = () => {
+        this.props.history.push('sign-in');
     };
     constructor(props) {
         super(props);

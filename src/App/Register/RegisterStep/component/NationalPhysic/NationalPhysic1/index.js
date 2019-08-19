@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import BootstrapInput from "../../../../../components/BootstrapInput";
+import BootstrapInput from "../../../../../../components/BootstrapInput";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
-class NationalPhysic extends Component{
+class NationalPhysic1 extends Component{
 
     render() {
         const { title, skipStep } = this.props;
@@ -160,4 +160,4 @@ class NationalPhysic extends Component{
 
 
 
-export default NationalPhysic;
+export default NationalPhysic1;
