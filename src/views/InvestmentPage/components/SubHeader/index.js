@@ -18,7 +18,7 @@ const onTapItem = (name, history) => {
 };
 const SubHeader = ({history}) => {
     return (
-        <div className="row sub-header border-bottom pt-2 pb-2">
+        <div className="row sub-header border-bottom pt-2 pb-2 m-0">
             <div className="col-4 text-center">
                 <Button onClick={() => onTapItem('phone', history)}>
                     <FontAwesomeIcon className="font-size-18 text-white" icon="phone"/>
