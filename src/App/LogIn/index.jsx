@@ -7,7 +7,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import {Link} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
-import {authenticate} from "../../redux/actions/authUserActions";
+import { authenticate } from "../../redux/actions";
 
 class LogIn extends Component {
     constructor(props) {

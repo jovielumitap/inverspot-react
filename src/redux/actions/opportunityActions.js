@@ -2,22 +2,22 @@
 import { toast } from 'react-toastify';
 import { loading, loaded } from './loadActions';
 import {
-  GET_DOWNLOAD_SUCCESS,
+  GET_OPPORTUNITY_SUCCESS,
 } from "../actionTypes";
-import DownloadAPI from "../../api/DownloadAPI";
+import OpportunityAPI from "../../api/OpportunityAPI";
 import {unauthenticate} from "./authUserActions";
 
-export function fetchDownloadList() {
+export function fetchOpportunityList() {
   return async (dispatch) => {
-    const downloadAPI = new DownloadAPI();
+    const opportunityAPI = new OpportunityAPI();
     dispatch(loading(''));
     try {
-      const response = await downloadAPI.getDownloads();
+      const response = await opportunityAPI.getOpportunities();
       console.log({ response });
       const { success, message, result } = response.data;
       if (success) {
         dispatch({
-          type: GET_DOWNLOAD_SUCCESS,
+          type: GET_OPPORTUNITY_SUCCESS,
           payload: result
         });
       }
@@ -27,7 +27,7 @@ export function fetchDownloadList() {
     }
 
     catch(e) {
-      console.log({getDownloadListError: e});
+      console.log({fetchOpportunityListError: e});
       if (e.response && e.response.status === 401) {
         toast.error('You need to sign in again.');
         dispatch(unauthenticate());

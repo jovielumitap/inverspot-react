@@ -3,7 +3,7 @@ import List from "@material-ui/core/List";
 import DownloadItem from "./components/DownloadItem";
 import {connect} from "react-redux";
 import {Header} from "../../components/Header";
-import {fetchDownloadList} from "../../redux/actions/downloadActions";
+import { fetchDownloadList } from "../../redux/actions";
 class DownloadPage extends Component {
     componentDidMount() {
         this.props.dispatch(fetchDownloadList())

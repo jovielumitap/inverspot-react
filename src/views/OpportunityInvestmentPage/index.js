@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import List from "@material-ui/core/List";
 import OpportunityInvestmentItem from "./components/OpportunityInvestmentItem";
 import {connect} from "react-redux";
+import {fetchOpportunityList} from "../../redux/actions";
 const investments = [
     {name: "Contadero 403", date: "11-17", amount: "100k", percent: "30-33%"},
     {name: "Not found 404", date: "11-17", amount: "100k", percent: "35-40%"},
@@ -10,6 +11,10 @@ const investments = [
     {name: "Contadero 407", date: "11-17", amount: "100k", percent: "18-20%"},
 ];
 class OpportunityInvestmentPage extends Component {
+    componentDidMount() {
+        this.props.dispatch(fetchOpportunityList())
+    }
+
     onClickItem = () => {
         this.props.history.push("opportunity-investment/detail")
     };
@@ -25,5 +30,10 @@ class OpportunityInvestmentPage extends Component {
         )
     }
 }
-
-export default connect()(OpportunityInvestmentPage);
+const mapStateToProps = ({ opportunity }) => {
+    const { opportunities } = opportunity;
+    return {
+        opportunities
+    }
+};
+export default connect(mapStateToProps)(OpportunityInvestmentPage);

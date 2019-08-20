@@ -20,3 +20,6 @@ export const TOGGLE_ELEMENT = 'TOGGLE_ELEMENT';
 
 //Download
 export const GET_DOWNLOAD_SUCCESS = 'GET_DOWNLOAD_SUCCESS';
+
+//Opportunity
+export const GET_OPPORTUNITY_SUCCESS = 'GET_OPPORTUNITY_SUCCESS';
