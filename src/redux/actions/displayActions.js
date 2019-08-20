@@ -1,6 +1,5 @@
-export const SHOW_ELEMENT = 'SHOW_ELEMENT';
-export const HIDE_ELEMENT = 'HIDE_ELEMENT';
-export const TOGGLE_ELEMENT = 'TOGGLE_ELEMENT';
+import {HIDE_ELEMENT, SHOW_ELEMENT, TOGGLE_ELEMENT} from "../actionTypes";
+
 
 export function showElement(scope) {
   return {

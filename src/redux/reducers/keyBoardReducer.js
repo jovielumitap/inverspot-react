@@ -1,7 +1,4 @@
-import {
-  ADD_KEY_BOARD_ITEM,
-  EMPTY_KEY_BOARD_ITEMS,
-} from '../actions/keyBoardActions';
+import {ADD_KEY_BOARD_ITEM, EMPTY_KEY_BOARD_ITEMS} from "../actionTypes";
 
 const initialState = {};
 

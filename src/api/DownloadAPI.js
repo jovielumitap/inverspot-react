@@ -4,12 +4,10 @@
 import axios from 'axios';
 import ConfigurationAPI from './ConfigurationAPI';
 
-class UserAPI extends ConfigurationAPI {
-  logIn = (token) => {
-    console.log({token});
-    this.headers.headers.Authorization = `Basic ${token}`;
+class DownloadAPI extends ConfigurationAPI {
+  getDownloads = () => {
     return new Promise((resolve, reject) => {
-      return axios.get(`${this.url}/login`,  this.headers)
+      return axios.get(`${this.url}/list/downloads`,  this.headers)
       .then((response) => {
         resolve(response);
       }).catch((error) => {
@@ -19,4 +17,4 @@ class UserAPI extends ConfigurationAPI {
   };
 }
 
-export default UserAPI;
+export default DownloadAPI;

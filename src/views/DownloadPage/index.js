@@ -3,16 +3,17 @@ import List from "@material-ui/core/List";
 import DownloadItem from "./components/DownloadItem";
 import {connect} from "react-redux";
 import {Header} from "../../components/Header";
-const downloads = [
-    {type: "img", name: "IFE Julian.jpg"},
-    {type: "pdf", name: "contrato F2550.pdf"},
-    {type: "pdf", name: "contrato F2550.pdf"},
-];
+import {fetchDownloadList} from "../../redux/actions/downloadActions";
 class DownloadPage extends Component {
+    componentDidMount() {
+        this.props.dispatch(fetchDownloadList())
+    }
+
     onClickItem = () => {
         console.log("click item")
     };
     render() {
+        const { downloads } = this.props;
         return (
             <div className="vw-100">
                 <Header title={'Mis documentos'}/>
@@ -25,5 +26,10 @@ class DownloadPage extends Component {
         )
     }
 }
-
-export default connect()(DownloadPage);
+const mapStateToProps = ({ download }) => {
+  const { downloads } = download;
+  return {
+      downloads
+  }
+};
+export default connect(mapStateToProps)(DownloadPage);

@@ -1,8 +1,4 @@
-import {
-  SHOW_ELEMENT,
-  HIDE_ELEMENT,
-  TOGGLE_ELEMENT,
-} from '../actions/displayActions';
+import {HIDE_ELEMENT, SHOW_ELEMENT, TOGGLE_ELEMENT} from "../actionTypes";
 
 export default function (state = {}, action) {
   const { type, scope } = action;

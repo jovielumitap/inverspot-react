@@ -4,23 +4,16 @@ class ConfigurationAPI {
   constructor() {
     const authUser = userHelper.getStorage();
 
-    this.store = authUser.isAuth ? authUser.user.config.store : '';
     this.token = authUser.isAuth ? authUser.token : '';
-    this.domain = authUser.isAuth ? authUser.domain : '';
+    this.domain = 'crm.treebes2.com/api';
 
     this.protocol = 'https';
-    this.module = 'comercia_ws';
-    this.credentials = {
-      method: 'GET',
-      credentials: 'include',
-      mode: 'cors',
+    this.headers = {
       headers: {
-        Authorization: `Basic ${this.token}`,
-        almacen: this.store.crmid,
-      },
+        Authorization: `Bearer ${this.token}`
+      }
     };
-    this.url = `${this.protocol}://${this.domain}/${this.module}`;
-    this.mainUrl = `${this.protocol}://${this.domain}`;
+    this.url = `${this.protocol}://${this.domain}`;
   }
 }
 

@@ -1,6 +1,5 @@
-export const LOADING = 'LOADING';
-export const LOADED = 'LOADED';
-export const TOGGLE_LOAD = 'TOGGLE_LOAD';
+import {LOADED, LOADING, TOGGLE_LOAD} from "../actionTypes";
+
 
 export function loading(scope) {
   return {

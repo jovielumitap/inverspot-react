@@ -3,7 +3,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import BootstrapInput from "../../../../../../components/BootstrapInput";
 import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
 
 class PhysicalForeigner1 extends Component{
 

@@ -1,5 +1,5 @@
-export const ADD_KEY_BOARD_ITEM = 'ADD_KEY_BOARD_ITEM';
-export const EMPTY_KEY_BOARD_ITEMS = 'EMPTY_KEY_BOARD_ITEMS';
+import {ADD_KEY_BOARD_ITEM, EMPTY_KEY_BOARD_ITEMS} from "../actionTypes";
+
 
 export function addKeyboardItem(item) {
   return {

@@ -7,7 +7,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import {Link} from 'react-router-dom'
 import Button from "@material-ui/core/Button";
-import {testLogin} from "../../redux/actions/authUserActions";
+import {authenticate} from "../../redux/actions/authUserActions";
 
 class LogIn extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class LogIn extends Component {
 
     }
     componentDidUpdate() {
-        if (this.props.authUser.username !== null && this.props.authUser.username !== undefined) {
+        if (this.props.authUser.token !== null && this.props.authUser.token !== undefined) {
             this.props.history.push('/');
         }
     }
@@ -44,7 +44,8 @@ class LogIn extends Component {
             this.setState({password_error: password === ""});
             return;
         }
-        this.props.dispatch(testLogin({username, password, isRemember}));
+        const token = btoa(`${username}:${password}`);
+        this.props.dispatch(authenticate(token, isRemember));
     };
     render() {
         const {username, password, isRemember, username_error, password_error} = this.state;

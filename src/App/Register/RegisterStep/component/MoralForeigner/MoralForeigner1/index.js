@@ -1,10 +1,4 @@
 import React, {Component} from "react";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import BootstrapInput from "../../../../../../components/BootstrapInput";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 class MoralForeigner1 extends Component {
     state = {

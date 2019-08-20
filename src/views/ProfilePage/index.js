@@ -43,7 +43,6 @@ class ProfilePage extends Component {
 
     render() {
         const { value, userType } = this.state;
-        const {history} = this.props;
 
         return (
             <div className="vw-100 d-flex flex-column">

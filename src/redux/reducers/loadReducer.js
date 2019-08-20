@@ -1,16 +1,12 @@
-import {
-  LOADING,
-  LOADED,
-  TOGGLE_LOAD,
-} from '../actions/loadActions';
+import {LOADED, LOADING, TOGGLE_LOAD} from "../actionTypes";
 
-export default function (state = {}, action) {
+export default function (state = { loading: false}, action) {
   const { type, scope } = action;
   switch (type) {
     case LOADING:
-      return { ...state, [`${scope}IsLoading`]: true };
+      return { ...state, loading: true };
     case LOADED:
-      return { ...state, [`${scope}IsLoading`]: false };
+      return { ...state, loading: false };
     case TOGGLE_LOAD:
       return { ...state, [`${scope}IsLoading`]: !(state[`${scope}IsLoading`]) };
     default:

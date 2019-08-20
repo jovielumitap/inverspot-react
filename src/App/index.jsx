@@ -28,7 +28,7 @@ const RestrictedRoute = ({ component: Component, authUser, ...rest }) => {
         <Route
             {...rest}
             render={props =>
-                authUser.username
+                authUser.token
                     ? <Component {...props} />
                     : <Redirect
                         to={{
@@ -66,13 +66,11 @@ const inverspotTheme = createMuiTheme({
 });
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             loaded: false,
         };
-    }
-    componentWillMount() {
         window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
         if (this.props.initURL === '') {
             this.props.setInitUrl(this.props.history.location.pathname);
@@ -86,9 +84,9 @@ class App extends Component {
 
     render() {
         const {loaded} = this.state;
-        const { match, location, authUser, initURL } = this.props;
+        const { match, location, authUser, initURL, loading } = this.props;
         if (location.pathname === '/') {
-            if (!authUser.username) {
+            if (!authUser.token) {
                 return ( <Redirect to={'/sign-in'}/> );
             } else if (initURL === '' || initURL === '/' || initURL === '/sign-in') {
                 return ( <Redirect to={'/app/opportunity-investment'}/> );
@@ -100,7 +98,7 @@ class App extends Component {
             <ThemeProvider theme={inverspotTheme}>
                 <ScrollToTop>
                     <>
-                        {!loaded && <LoadComponent/>}
+                        {(loading || !loaded) && <LoadComponent/>}
                         <Switch>
                             <RestrictedRoute path={`${match.url}app`}
                                              authUser={authUser}
@@ -129,8 +127,9 @@ class App extends Component {
         );
     }
 }
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, loads }) => {
     const { authUser, initURL } = auth;
-    return { authUser, initURL }
+    const { loading } = loads;
+    return { authUser, initURL, loading }
 };
 export default connect(mapStateToProps, { setInitUrl })(App);

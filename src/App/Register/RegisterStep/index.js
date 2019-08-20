@@ -30,7 +30,6 @@ import MoralForeigner5 from "./component/MoralForeigner/MoralForeigner5";
 const getSteps = () => {
     return [1, 2, 3, 4, 5, 6, 7];
 };
-const userTypes = ["nationPhysic", "physicalForeigner", "nationalMoral", "moralForeigner"];
 
 class RegisterStep extends Component {
     renderStepContent = () => {
