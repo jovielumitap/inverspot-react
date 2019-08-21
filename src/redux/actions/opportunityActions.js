@@ -2,6 +2,7 @@
 import { toast } from 'react-toastify';
 import { loading, loaded } from './loadActions';
 import {
+  GET_OPPORTUNITY_DETAIL_SUCCESS,
   GET_OPPORTUNITY_SUCCESS,
 } from "../actionTypes";
 import OpportunityAPI from "../../api/OpportunityAPI";
@@ -42,3 +43,37 @@ export function fetchOpportunityList() {
   };
 }
 
+export function fetchOpportunityDetail(id) {
+  return async (dispatch) => {
+    const opportunityAPI = new OpportunityAPI();
+    dispatch(loading(''));
+    try {
+      const response = await opportunityAPI.opportunityDetail(id);
+      console.log({ response });
+      const { success, message, result } = response.data;
+      if (success) {
+        dispatch({
+          type: GET_OPPORTUNITY_DETAIL_SUCCESS,
+          payload: result
+        });
+      }
+      else {
+        toast.error(message);
+      }
+    }
+
+    catch(e) {
+      console.log({fetchOpportunityDetail: e});
+      if (e.response && e.response.status === 401) {
+        toast.error('You need to sign in again.');
+        dispatch(unauthenticate());
+        return;
+      }
+      toast.error('Error en la API');
+    }
+
+    finally {
+      dispatch(loaded('authUser'));
+    }
+  };
+}

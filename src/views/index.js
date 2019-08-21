@@ -21,7 +21,7 @@ class MainApp extends React.Component {
                 <MainWrapper>
                     <Switch>
                         <Route exact path={`${match.url}/opportunity-investment`} component={OpportunityInvestmentPage}/>
-                        <Route exact path={`${match.url}/opportunity-investment/detail`} component={OpportunityInvestmentDetail}/>
+                        <Route exact path={`${match.url}/opportunity-investment/:id`} component={OpportunityInvestmentDetail}/>
                         <Route exact path={`${match.url}/downloads`} component={DownloadPage}/>
                         <Route exact path={`${match.url}/referrals`} component={ReferralPage}/>
                         <Route exact path={`${match.url}/participation`} component={ParticipationPage}/>

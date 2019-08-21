@@ -8,8 +8,14 @@ import HeaderOverView from "../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
+import {connect} from "react-redux";
+import {fetchOpportunityDetail} from "../../../redux/actions";
 
 class OpportunityInvestmentDetail extends Component {
+    componentDidMount() {
+        this.props.dispatch(fetchOpportunityDetail(this.props.match.params.id))
+    }
+
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
         const {value} = this.state;
@@ -40,11 +46,11 @@ class OpportunityInvestmentDetail extends Component {
 
     render() {
         const {value} = this.state;
-        const {history} = this.props;
+        const { history, opportunityDetail } = this.props;
 
         return (
             <div className="vw-100 d-flex flex-column">
-                <HeaderOverView history={history}/>
+                <HeaderOverView history={history} opportunityDetail={opportunityDetail}/>
                 <div className="d-flex flex-column p-0 m-0">
                     <SubHeader history={history}/>
 
@@ -84,4 +90,10 @@ class OpportunityInvestmentDetail extends Component {
     }
 }
 
-export default OpportunityInvestmentDetail;
+const mapStateToProps = ({ opportunity }) => {
+    const { opportunityDetail } = opportunity;
+    return {
+        opportunityDetail
+    }
+};
+export default connect(mapStateToProps)(OpportunityInvestmentDetail);

@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 import {
+  GET_OPPORTUNITY_DETAIL_SUCCESS,
   GET_OPPORTUNITY_SUCCESS
 } from "../actionTypes";
 
 const defaultState = () => ({
-  opportunities: []
+  opportunities: [],
+  opportunityDetail: {}
 });
 
 const initialState = { ...defaultState()};
@@ -16,6 +18,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         opportunities: action.payload
+      };
+    case GET_OPPORTUNITY_DETAIL_SUCCESS:
+      return {
+        ...state,
+        opportunityDetail: action.payload
       };
     default:
       return state;

@@ -5,13 +5,14 @@ import IconButton from "@material-ui/core/IconButton";
 
 class HeaderOverView extends Component {
     render() {
+        const { opportunityDetail } = this.props;
         return (
-            <div className="position-relative w-100 h-25">
+            <div className="position-relative w-100" style={{height: '25vh'}}>
                 <img
                     className="w-100 opportunity-investment-detail-img-bg"
                     alt={""}
                     style={{height: '25vh'}}
-                    src={"https://rismedia.com/wp-content/uploads/2018/12/stock_market_509614932-1080x627.jpg"}
+                    src={opportunityDetail.images && opportunityDetail.images[0]?opportunityDetail.images[0]: ""}
                 />
                 <div className="opportunity-investment-detail-header-back">
                     <IconButton
@@ -23,19 +24,19 @@ class HeaderOverView extends Component {
                 </div>
                 <div className="opportunity-investment-detail-header-gradient">
                     <div className="opportunity-investment-detail-header-overview px-2">
-                        <div className="detail-name">Contadero 403</div>
+                        <div className="detail-name">{opportunityDetail.productname}</div>
                         <div className="w-100 d-flex">
                             <div className="f-1">
                                 <div className="text-white">Inresión</div>
-                                <div className="detail-info">$100,000</div>
+                                <div className="detail-info">{opportunityDetail.unit_price_in_ks}</div>
                             </div>
                             <div className="f-1">
                                 <div className="text-white">Rendimiento</div>
-                                <div className="detail-info">33-45%</div>
+                                <div className="detail-info">{opportunityDetail.cf_1402}%</div>
                             </div>
                             <div className="f-1">
                                 <div className="text-white">Plazo</div>
-                                <div className="detail-info">11-14</div>
+                                <div className="detail-info">{opportunityDetail.cf_1400}</div>
                             </div>
                         </div>
                     </div>

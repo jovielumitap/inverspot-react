@@ -15,6 +15,16 @@ class OpportunityAPI extends ConfigurationAPI {
       })
     })
   };
+  opportunityDetail = (id) => {
+    return new Promise((resolve, reject) => {
+      return axios.get(`${this.url}/proyectos/${id}`,  this.headers)
+          .then((response) => {
+            resolve(response);
+          }).catch((error) => {
+            reject(error);
+          })
+    })
+  };
 }
 
 export default OpportunityAPI;
