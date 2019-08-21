@@ -40,8 +40,8 @@ export const transformCartProductsToArrayAndGetTotals = ({ ...cartProductsById }
   return { ...totals, cartProductsByArray, products: cartProductsByArray };
 };
 
-export const canIncreaseProductInCart = (authUser, product) => (
-  authUser.user.config.pos_sininv || product.quantity < product.qtyinstock
+export const canIncreaseProductInCart = (user, product) => (
+    user.user.config.pos_sininv || product.quantity < product.qtyinstock
 );
 
 export const canDecreaseProductInCart = product => (

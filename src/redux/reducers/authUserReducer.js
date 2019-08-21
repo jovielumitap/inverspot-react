@@ -4,11 +4,11 @@ import {AUTHENTICATE_USER, INIT_URL, UNAUTHENTICATE_USER} from "../actionTypes";
 
 const defaultState = () => ({
   initURL: "",
-  authUser: userHelper.getStorage('authUser'),
+  user: userHelper.getStorage('user'),
 });
 
 const authenticate = (state, user) => {
-  const authUser = { ...state, authUser: user };
+  const authUser = { ...state, user: user };
   userHelper.setStorage(user);
   return authUser;
 };

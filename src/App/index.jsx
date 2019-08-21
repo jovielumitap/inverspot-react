@@ -84,9 +84,9 @@ class App extends Component {
 
     render() {
         const {loaded} = this.state;
-        const { match, location, authUser, initURL, loading } = this.props;
+        const { match, location, user, initURL, loading } = this.props;
         if (location.pathname === '/') {
-            if (!authUser.token) {
+            if (!user.token) {
                 return ( <Redirect to={'/sign-in'}/> );
             } else if (initURL === '' || initURL === '/' || initURL === '/sign-in') {
                 return ( <Redirect to={'/app/opportunity-investment'}/> );
@@ -101,7 +101,7 @@ class App extends Component {
                         {(loading || !loaded) && <LoadComponent/>}
                         <Switch>
                             <RestrictedRoute path={`${match.url}app`}
-                                             authUser={authUser}
+                                             authUser={user}
                                              component={MainApp}
                             />
                             <Route path='/sign-in' component={LogIn} />
@@ -128,8 +128,8 @@ class App extends Component {
     }
 }
 const mapStateToProps = ({ auth, loads }) => {
-    const { authUser, initURL } = auth;
+    const { user, initURL } = auth;
     const { loading } = loads;
-    return { authUser, initURL, loading }
+    return { user, initURL, loading }
 };
 export default connect(mapStateToProps, { setInitUrl })(App);

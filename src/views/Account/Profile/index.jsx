@@ -47,7 +47,7 @@ class Profile extends Component {
     };
   }
   static propTypes = {
-    authUser: authUserProps.isRequired,
+    user: authUserProps.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 
@@ -57,14 +57,14 @@ class Profile extends Component {
   };
 
   render() {
-    const { authUser, dispatch } = this.props;
+    const { user, dispatch } = this.props;
     const { ordenC, ventaC, entregarC } = this.state;
     return (
       <div className="settings d-flex flex-wrap justify-content-center">
         <Card className={isMobile ? 'settings__cardMobile px-4 py-2' : 'settings__card px-4 py-2'}>
           <div className="settings__title">Perfil</div>
           <div className="settings__body">
-            <LayoutUserInfo authUser={authUser} />
+            <LayoutUserInfo authUser={user} />
             <Divider />
             <List>
               <ListItem>
@@ -72,7 +72,7 @@ class Profile extends Component {
                   <Storage />
                 </Avatar>
                 <ListItemText
-                  primary={authUser.domain}
+                  primary={user.domain}
                   secondary="Dominio actual"
                 />
               </ListItem>
@@ -82,7 +82,7 @@ class Profile extends Component {
                 </Avatar>
                 <ListItemText
                   primary={`${authUser.user.account_default.firstname} ${
-                    authUser.user.account_default.lastname
+                      user.user.account_default.lastname
                     }`}
                   secondary="Cliente por defecto"
                 />
@@ -108,7 +108,7 @@ class Profile extends Component {
               </ListItem>
               <Collapse in={ordenC} timeout="auto" unmountOnExit>
                 <List disablePadding>
-                  {authUser.user.sostatus.map(status => (
+                  {user.user.sostatus.map(status => (
                     <ListItem
                       className="pl-4"
                       // @ts-ignore
@@ -118,12 +118,12 @@ class Profile extends Component {
                       <ListItemSecondaryAction>
                         <Switch
                           onClick={
-                            status.id === authUser.user.config.sostatus
+                            status.id === user.user.config.sostatus
                               ? () => { }
                               : () => { dispatch(changeSellOrderStatusAuthUser(status.id)); }
                           }
                           checked={
-                            status.id === authUser.user.config.sostatus
+                            status.id === user.user.config.sostatus
                           }
                         />
                       </ListItemSecondaryAction>
@@ -146,14 +146,14 @@ class Profile extends Component {
               </ListItem>
               <Collapse in={ventaC} timeout="auto" unmountOnExit>
                 <List disablePadding>
-                  {authUser.user.config.pos_sininv
+                  {user.user.config.pos_sininv
                     ? (
                       <ListItem className="pl-4">
                         <ListItemText primary="Si" />
                         <ListItemSecondaryAction>
                           <Switch
                             disabled
-                            checked={authUser.user.config.pos_sininv}
+                            checked={user.user.config.pos_sininv}
                           />
                         </ListItemSecondaryAction>
                       </ListItem>
@@ -164,7 +164,7 @@ class Profile extends Component {
                         <ListItemSecondaryAction>
                           <Switch
                             disabled
-                            checked={authUser.user.config.pos_sininv === false}
+                            checked={user.user.config.pos_sininv === false}
                           />
                         </ListItemSecondaryAction>
                       </ListItem>
@@ -187,7 +187,7 @@ class Profile extends Component {
               </ListItem>
               <Collapse in={entregarC} timeout="auto" unmountOnExit>
                 <List disablePadding>
-                  {authUser.user.pos_auto_alm.map(alm => (
+                  {user.user.pos_auto_alm.map(alm => (
                     <ListItem
                       className="pl-4"
                       key={`${constructor.name}-${alm.id}`}
@@ -196,12 +196,12 @@ class Profile extends Component {
                       <ListItemSecondaryAction>
                         <Switch
                           onClick={
-                            authUser.user.config.pos_auto_alm === alm.id
+                            user.user.config.pos_auto_alm === alm.id
                               ? () => { }
                               : () => { dispatch(changeAlmAuthUser(alm.id)); }
                           }
                           checked={
-                            authUser.user.config.pos_auto_alm === alm.id
+                            user.user.config.pos_auto_alm === alm.id
                           }
                         />
                       </ListItemSecondaryAction>
@@ -218,7 +218,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => ({
-  authUser: state.authUser,
+  user: state.auth.user,
   loads: state.loads,
 });
 

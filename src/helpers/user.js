@@ -5,10 +5,10 @@ import {
   removeAllItems,
 } from './storage';
 
-const storageId = 'authUser';
-export const setStorage = (authUser) => {
-  const { isRemember } = authUser;
-  setItem(storageId, authUser, isRemember);
+const storageId = 'user';
+export const setStorage = (user) => {
+  const { isRemember } = user;
+  setItem(storageId, user, isRemember);
   removeItem(storageId, !isRemember);
 };
 

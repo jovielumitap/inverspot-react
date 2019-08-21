@@ -8,20 +8,20 @@ import {
   ListItemText,
 } from '@material-ui/core';
 
-const LayoutUserInfo = ({ authUser }) => (
+const LayoutUserInfo = ({ user }) => (
   <List>
     <ListItem button component="a" href="/account/profile">
-      <Avatar className="General__UserAvatarStyle">{authUser.user.last_name.charAt(0)}</Avatar>
+      <Avatar className="General__UserAvatarStyle">{user.user.last_name.charAt(0)}</Avatar>
       <ListItemText
-        primary={`${authUser.user.first_name} ${authUser.user.last_name} `}
-        secondary={`${authUser.user.currencies[0].currency_symbol} - ${authUser.user.currencies[0].currency_code}`}
+        primary={`${user.user.first_name} ${user.user.last_name} `}
+        secondary={`${user.user.currencies[0].currency_symbol} - ${user.user.currencies[0].currency_code}`}
       />
     </ListItem>
   </List>
 );
 
 LayoutUserInfo.propTypes = {
-  authUser: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default LayoutUserInfo;

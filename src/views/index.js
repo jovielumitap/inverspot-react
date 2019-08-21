@@ -38,7 +38,7 @@ class MainApp extends React.Component {
 
 
 const mapStateToProps = ({auth}) => {
-    const {authUser} = auth;
-    return {authUser}
+    const {user} = auth;
+    return {user}
 };
 export default withRouter(connect(mapStateToProps)(MainApp));

@@ -41,6 +41,6 @@ export default shape({
   isAuth: bool,
   token: string,
   domain: string,
-  authUser: userProps,
+  user: userProps,
   remember: bool,
 });

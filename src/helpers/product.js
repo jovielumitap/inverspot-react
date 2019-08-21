@@ -79,9 +79,9 @@ export const makeProductsArray = productsById => (
     })
 );
 
-export const haveStock = (product, authUser) => {
+export const haveStock = (product, user) => {
   const { qtyinstock, sin_existencia } = product;
-  return (authUser.user.config.pos_sininv || sin_existencia) || qtyinstock > 0;
+  return (user.user.config.pos_sininv || sin_existencia) || qtyinstock > 0;
 };
 
 export const findProducts = (products, word) => {

@@ -69,7 +69,7 @@ class LayoutBarMenu extends PureComponent {
         onKeyDown={() => { this.toggleDrwawer(); }}
       >
         <div className="w-100">
-          <LayoutUserInfo authUser={auth} />
+          <LayoutUserInfo user={auth.user} />
           <Divider />
         </div>
         <div className="w-100">
@@ -95,8 +95,8 @@ class LayoutBarMenu extends PureComponent {
     const storeMenuIsDisplayed = Boolean(anchorStoreMenu);
     const userMenuIsDisplayed = Boolean(anchorUserMenu);
     const currentStore = auth.isAuth ? auth.authUser.config.store : {};
-    const { authUser } = auth;
-    const last = authUser.username? authUser.username.charAt(0): "L";
+    const { user } = auth;
+    const last = user.username? user.username.charAt(0): "L";
 
     return (
       <div>

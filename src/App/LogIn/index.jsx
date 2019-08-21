@@ -22,7 +22,7 @@ class LogIn extends Component {
 
     }
     componentDidUpdate() {
-        if (this.props.authUser.token !== null && this.props.authUser.token !== undefined) {
+        if (this.props.user.token !== null && this.props.user.token !== undefined) {
             this.props.history.push('/');
         }
     }
@@ -116,7 +116,7 @@ class LogIn extends Component {
 
 const mapStateToProps = state => ({
     loads: state.loads,
-    authUser: state.auth.authUser
+    user: state.auth.user
 });
 
 
