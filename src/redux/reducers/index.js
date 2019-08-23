@@ -7,6 +7,8 @@ import displayReducer from './displayReducer';
 import keyBoardReducer from './keyBoardReducer';
 import downloadReducer from './downloadReducer';
 import opportunityReducer from './opportunityReducer';
+import participationReducer from './participationReducer';
+import investmentReducer from './investmentReducer';
 
 export default (history) => combineReducers({
   router: connectRouter(history),
@@ -15,5 +17,7 @@ export default (history) => combineReducers({
   displays: displayReducer,
   keyBoard: keyBoardReducer,
   download: downloadReducer,
-  opportunity: opportunityReducer
+  opportunity: opportunityReducer,
+  participation: participationReducer,
+  investment: investmentReducer
 });

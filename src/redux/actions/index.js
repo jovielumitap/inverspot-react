@@ -4,3 +4,5 @@ export * from './downloadActions';
 export * from './keyBoardActions';
 export * from './loadActions';
 export * from './opportunityActions';
+export * from './participationActions';
+export * from './investmentActions';

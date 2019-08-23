@@ -47,7 +47,6 @@ class OpportunityInvestmentDetail extends Component {
     render() {
         const {value} = this.state;
         const { history, opportunityDetail } = this.props;
-
         return (
             <div className="vw-100 d-flex flex-column">
                 <HeaderOverView history={history} opportunityDetail={opportunityDetail}/>
@@ -75,13 +74,13 @@ class OpportunityInvestmentDetail extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                            <Tab1/>
+                            <Tab1 opportunityDetail={opportunityDetail}/>
                         }
                         {value === 1 &&
-                            <Tab2/>
+                            <Tab2 opportunityDetail={opportunityDetail}/>
                         }
                         {value === 2 &&
-                            <Tab3/>
+                            <Tab3 opportunityDetail={opportunityDetail}/>
                         }
                     </Swipeable>
                 </div>

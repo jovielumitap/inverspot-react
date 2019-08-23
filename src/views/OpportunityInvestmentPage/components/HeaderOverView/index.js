@@ -28,7 +28,7 @@ class HeaderOverView extends Component {
                         <div className="w-100 d-flex">
                             <div className="f-1">
                                 <div className="text-white">Inresión</div>
-                                <div className="detail-info">{opportunityDetail.unit_price_in_ks}</div>
+                                <div className="detail-info">${parseFloat(opportunityDetail.unit_price)}</div>
                             </div>
                             <div className="f-1">
                                 <div className="text-white">Rendimiento</div>

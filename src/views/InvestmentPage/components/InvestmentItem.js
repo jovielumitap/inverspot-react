@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 
 const InvestmentItem = ({ item, onClick }) => {
     return (
-        <ListItem button onClick={onClick}>
+        <ListItem button onClick={() => onClick("9090")}>
             <div className="flex-row d-flex w-100">
                 <Avatar
                     className="size-70"
