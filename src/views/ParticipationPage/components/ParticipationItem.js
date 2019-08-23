@@ -6,12 +6,12 @@ import Avatar from "@material-ui/core/Avatar";
 
 const ParticipationItem = ({ item, onClick }) => {
     return (
-        <ListItem button onClick={() => onClick(item.crmid)}>
+        <ListItem button onClick={() => onClick(item.productid)}>
             <div className="flex-row d-flex w-100">
                 <Avatar
                     className="size-70"
                     style={{backgroundColor: '#d0d0ca'}}
-                    src={item.images && item.images[0]?item.images[0]:""}
+                    src={item.proyecto.images && item.proyecto.images[0]?item.proyecto.images[0]:""}
                 />
                 <div className="d-flex justify-content-between f-1">
                     <div className="ml-2 position-relative">
@@ -20,18 +20,18 @@ const ParticipationItem = ({ item, onClick }) => {
                             <div className="d-flex justify-content-between">
                                 <div className="font-gray">
                                     <FontAwesomeIcon icon={faCalendarMinus} fixedWidth/>
-                                    <span>{item.cf_1400}</span>
+                                    <span>{item.proyecto.cf_1400}</span>
                                 </div>
                                 <div className="inverspot-vertical-divider"/>
                                 <div className="font-gray">
                                     <FontAwesomeIcon icon={faDollarSign} fixedWidth/>
-                                    <span>{item.unit_price_in_ks}</span>
+                                    <span>{item.proyecto.unit_price_in_ks}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="position-relative">
-                        <div className="align-center position-relative font-size-24 font-weight-700">{item.cf_1402}%</div>
+                        <div className="align-center position-relative font-size-24 font-weight-700">{item.proyecto.cf_1402}%</div>
                     </div>
                 </div>
             </div>

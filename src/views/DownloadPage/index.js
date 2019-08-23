@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import List from "@material-ui/core/List";
 import DownloadItem from "./components/DownloadItem";
 import {connect} from "react-redux";
+import FileSaver from 'file-saver';
 import {Header} from "../../components/Header";
 import { fetchDownloadList } from "../../redux/actions";
 class DownloadPage extends Component {
@@ -9,8 +10,8 @@ class DownloadPage extends Component {
         this.props.dispatch(fetchDownloadList())
     }
 
-    onClickItem = () => {
-        console.log("click item")
+    onClickItem = (url, name) => {
+        FileSaver.saveAs(url, name);
     };
     render() {
         const { downloads } = this.props;
@@ -18,8 +19,8 @@ class DownloadPage extends Component {
             <div className="vw-100">
                 <Header title={'Mis documentos'}/>
                 <List>
-                    {downloads.map((download, index) =>
-                        <DownloadItem key={"download" + index} item={download} onClick={this.onClickItem}/>
+                    {downloads.map((d, index) =>
+                        <DownloadItem key={"download" + index} item={d} onClick={this.onClickItem}/>
                     )}
                 </List>
             </div>

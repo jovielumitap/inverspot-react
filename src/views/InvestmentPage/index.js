@@ -3,13 +3,6 @@ import List from "@material-ui/core/List";
 import InvestmentItem from "./components/InvestmentItem";
 import {connect} from "react-redux";
 import { fetchInvestmentList } from "../../redux/actions";
-const investments = [
-    {name: "Contadero 403", date: "11-17", amount: "100k", percent: "3"},
-    {name: "Not found 404", date: "11-17", amount: "100k", percent: "2"},
-    {name: "Contadero 405", date: "11-17", amount: "100k", percent: "5"},
-    {name: "Contadero 406", date: "11-17", amount: "100k", percent: "7"},
-    {name: "Contadero 407", date: "11-17", amount: "100k", percent: "4"},
-];
 class InvestmentPage extends Component {componentDidMount() {
     this.props.dispatch(fetchInvestmentList())
 }
@@ -18,7 +11,7 @@ class InvestmentPage extends Component {componentDidMount() {
         this.props.history.push(`investment/${id}`)
     };
     render() {
-        //const { investments } = this.props;
+        const { investments } = this.props;
         return (
             <div className="container">
                 <List>

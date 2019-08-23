@@ -4,8 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 
 const DownloadItem = ({ item, onClick }) => {
     return (
-        <ListItem button onClick={onClick}>
-            <a className="text-black-50" href={item.url} download>
+        <ListItem button onClick={() => onClick(item.url, item.title + "." + item.type.split('/')[1])}>
             <div className="flex-row d-flex w-100">
                 <div className="font-size-24">
                     <FontAwesomeIcon icon={item.type.startsWith('image')?"file-image":"file-pdf"}/>
@@ -16,7 +15,6 @@ const DownloadItem = ({ item, onClick }) => {
                     </div>
                 </div>
             </div>
-            </a>
         </ListItem>
     )
 }
