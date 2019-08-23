@@ -61,7 +61,7 @@ class LogIn extends Component {
                                 className='form-control form-control-lg'
                                 value={username}
                                 type={"text"}
-                                placeholder={"username"}
+                                placeholder={"Usuario"}
                                 onChange={this.handleChange('username')}
                             />
                             <div className={`invalid-text ${username_error? '': 'invalid-text-invisible'}`}>{"* Username is required"}</div>
@@ -71,7 +71,7 @@ class LogIn extends Component {
                                 className='form-control  form-control-lg'
                                 value={password}
                                 type={"password"}
-                                placeholder={"password"}
+                                placeholder={"Contraseña"}
                                 onChange={this.handleChange('password')}
                             />
                             <div className={`invalid-text ${password_error? '': 'invalid-text-invisible'}`}>{"* Password is required"}</div>
@@ -87,7 +87,7 @@ class LogIn extends Component {
                                         onChange={this.handleChangeCheck('isRemember')}
                                     />
                                 }
-                                label={<span className="text-white">Remember me</span>}
+                                label={<span className="text-white">Recuerdame</span>}
                             />
                         </div>
 
@@ -95,14 +95,17 @@ class LogIn extends Component {
                             <div>
                                 <Button onClick={() => this.onSubmit()}
                                         variant="contained"
-                                        color="primary">
-                                    SignIn
+                                        style={{
+                                            backgroundColor: "#F15A24",
+                                            color: "white"
+                                        }}>
+                                    Ingresar
                                 </Button>
                             </div>
                             <div>
                                 <Link to="/sign-up"
                                       title="Register"><span
-                                    className="login-register-text">Not member yet?</span></Link>
+                                    className="login-register-text">¿No tienes cuenta?</span></Link>
                             </div>
                         </div>
                     </form>
