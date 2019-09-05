@@ -1,10 +1,11 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import BottomFloatButton from "../BottomFloatButton";
 
 export const Tab1 = (props) => {
     const { cf_1025, cf_1027, cf_1029, cf_1043, cf_989, cf_985 } = props.opportunityDetail;
     return (
-        <div className="p-2">
+        <div className="p-4">
             <div className="">
                 <div className="font-size-24 font-weight-600 font-purple">
                     <FontAwesomeIcon icon="building"/> <span className="font-size-18">Adquisicion</span>
@@ -38,14 +39,17 @@ export const Tab1 = (props) => {
             </div>
             <div className="d-flex mx-2 top-border mt-4 pt-3">
                 <div className="f-1 text-center">
-                    <div className="font-size-20 font-weight-600 font-red">{parseFloat(cf_989)}M</div>
+                    <div className="font-size-20 font-weight-600 font-red">{parseFloat(cf_989? cf_989: 0)}M</div>
                     <div className="font-size-16 font-weight-600 font-purple">Tamano</div>
                 </div>
                 <div className="f-1 text-center">
-                    <div className="font-size-20 font-weight-600 font-red">{parseFloat(cf_985)}%</div>
+                    <div className="font-size-20 font-weight-600 font-red">{parseFloat(cf_985? cf_985: 0)}%</div>
                     <div className="font-size-16 font-weight-600 font-purple">Rendimiento</div>
                 </div>
             </div>
+            <BottomFloatButton
+                onHandleModal={props.onHandleModal}
+            />
         </div>
     )
 };

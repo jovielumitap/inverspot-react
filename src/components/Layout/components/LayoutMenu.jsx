@@ -43,7 +43,7 @@ const LayoutMenu = ({
         </ListItem>
       </NavLink>
       <NavLink
-          to="/app/participation"
+          to="/app/apartadas"
           onClick={() => {
             closeDashboardMenu();
           }}

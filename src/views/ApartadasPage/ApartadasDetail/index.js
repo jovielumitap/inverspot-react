@@ -1,16 +1,19 @@
 import React, {Component} from "react";
-import SubHeader from "../components/SubHeader";
 import {Swipeable} from "react-swipeable";
 import Tabs from "@material-ui/core/Tabs";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Tab from "@material-ui/core/Tab";
-import HeaderOverView from "../components/HeaderOverView";
+import HeaderOverView from "../../../components/HeaderOverView";
 import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
 import {Tab4} from "../components/Tab4";
+import HeaderTop from "../../../components/HeaderTop";
+import {connect} from "react-redux";
+import {withStyles} from "@material-ui/core";
+import SubmitInvestmentDialog from "../../../components/SubmitInvestmentDialog";
 
-class ParticipationDetail extends Component {
+class ApartadasDetail extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
         const {value} = this.state;
@@ -32,23 +35,44 @@ class ParticipationDetail extends Component {
         this.setState({value});
     };
 
+    onHandleModal = () => {
+        this.setState((state) => {
+            return {
+                open: !state.open
+            }
+        })
+    };
+    onSubmitForm = () => {
+        this.setState({open: false});
+    };
     constructor(props) {
         super(props);
         this.state = {
-            value: 0
+            value: 0,
+            open: false
         };
     }
 
     render() {
-        const {value} = this.state;
-        const {history} = this.props;
+        const {value, open } = this.state;
+        const {history, opportunityDetail, classes} = this.props;
 
         return (
             <div className="vw-100 d-flex flex-column">
-                <HeaderOverView history={history}/>
+                <HeaderTop history={history} title={"AAAAAAA"}/>
+                <HeaderOverView
+                    image={opportunityDetail.images && opportunityDetail.images[0]?opportunityDetail.images[0]: "https://crm.treebes2.com/cache/storage/2019/August/week2/199399_universidad-300x300.png"}
+                    row1={parseFloat(opportunityDetail.unit_price? opportunityDetail.unit_price: 0)}
+                    row2={opportunityDetail.cf_1402? opportunityDetail.cf_1402: "0"}
+                    row3={opportunityDetail.cf_1400? opportunityDetail.cf_1400: ""}
+                    row4={"0"}
+                    row5={"0"}
+                    row6={"0"}
+                    imageFloatButton={true}
+                    imageFloatButtonIcon={"pen-alt"}
+                    onHandleModal={this.onHandleModal}
+                />
                 <div className="d-flex flex-column p-0 m-0">
-                    <SubHeader history={history}/>
-
                     <Swipeable className="d-flex flex-column"
                                onSwipedLeft={(eventData) => this.onSwipeAction(eventData)}
                                onSwipedRight={(eventData) => this.onSwipeAction(eventData)}>
@@ -57,17 +81,18 @@ class ParticipationDetail extends Component {
                                 value={value}
                                 onChange={this.handleChange}
                                 variant="fullWidth"
-                                indicatorColor="primary"
-                                textColor="primary"
+                                classes={{
+                                    indicator: classes.indicator
+                                }}
                                 scrollButtons="on"
                             >
-                                <Tab className="tab"
+                                <Tab className="tab" style={{color: value === 0 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="info-circle"/>}/>
-                                <Tab className="tab tab-left-border"
+                                <Tab className="tab tab-left-border" style={{color: value === 1 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="chart-line"/>}/>
-                                <Tab className="tab tab-left-border"
+                                <Tab className="tab tab-left-border" style={{color: value === 2 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="hard-hat"/>}/>
-                                <Tab className="tab tab-left-border"
+                                <Tab className="tab tab-left-border" style={{color: value === 3 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="file-signature"/>}/>
                             </Tabs>
                         </div>
@@ -85,9 +110,26 @@ class ParticipationDetail extends Component {
                         }
                     </Swipeable>
                 </div>
+                {open && (
+                    <SubmitInvestmentDialog
+                        open={open}
+                        onHandleModal={this.onHandleModal}
+                        onSubmitForm={this.onSubmitForm}
+                    />
+                )}
             </div>
         );
     }
 }
-
-export default ParticipationDetail;
+const styles = theme => ({
+    indicator: {
+        backgroundColor: '#662D91',
+    },
+});
+const mapStateToProps = ({opportunity}) => {
+    const {opportunityDetail} = opportunity;
+    return {
+        opportunityDetail
+    }
+};
+export default connect(mapStateToProps)(withStyles(styles)(ApartadasDetail));

@@ -3,6 +3,8 @@ import List from "@material-ui/core/List";
 import OpportunityInvestmentItem from "./components/OpportunityInvestmentItem";
 import {connect} from "react-redux";
 import {fetchOpportunityList} from "../../redux/actions";
+import {Header} from "../../components/Header";
+
 class OpportunityInvestmentPage extends Component {
     componentDidMount() {
         this.props.dispatch(fetchOpportunityList())
@@ -11,21 +13,27 @@ class OpportunityInvestmentPage extends Component {
     onClickItem = (id) => {
         this.props.history.push(`opportunity-investment/${id}`)
     };
+
     render() {
-        const { opportunities } = this.props;
+        const {opportunities} = this.props;
         return (
-            <div className="container">
-                <List>
-                    {opportunities.map((item, index) =>
-                        <OpportunityInvestmentItem key={"investment" + index} item={item} onClick={this.onClickItem}/>
-                    )}
-                </List>
-            </div>
+            <>
+                <Header title={"Oportunidades"}/>
+                <div className="container">
+                    <List>
+                        {opportunities.map((item, index) =>
+                            <OpportunityInvestmentItem key={"investment" + index} item={item}
+                                                       onClick={this.onClickItem}/>
+                        )}
+                    </List>
+                </div>
+            </>
         )
     }
 }
-const mapStateToProps = ({ opportunity }) => {
-    const { opportunities } = opportunity;
+
+const mapStateToProps = ({opportunity}) => {
+    const {opportunities} = opportunity;
     return {
         opportunities
     }

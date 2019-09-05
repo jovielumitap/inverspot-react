@@ -4,7 +4,7 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import Avatar from "@material-ui/core/Avatar";
 
-const ParticipationItem = ({ item, onClick }) => {
+const ApartadasItem = ({ item, onClick }) => {
     return (
         <ListItem button onClick={() => onClick(item.productid)}>
             <div className="flex-row d-flex w-100">
@@ -38,5 +38,5 @@ const ParticipationItem = ({ item, onClick }) => {
 
         </ListItem>
     )
-}
-export default ParticipationItem;
+};
+export default ApartadasItem;
