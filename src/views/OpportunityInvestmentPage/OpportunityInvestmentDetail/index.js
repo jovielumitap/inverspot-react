@@ -101,15 +101,15 @@ class OpportunityInvestmentDetail extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                        <Tab1 opportunityDetail={opportunityDetail}
+                        <Tab1 data={opportunityDetail}
                               onHandleModal={this.onHandleModal}
                         />
                         }
                         {value === 1 &&
-                        <Tab2 opportunityDetail={opportunityDetail}/>
+                        <Tab2 data={opportunityDetail}/>
                         }
                         {value === 2 &&
-                        <Tab3 opportunityDetail={opportunityDetail}/>
+                        <Tab3 data={opportunityDetail}/>
                         }
                     </Swipeable>
                 </div>

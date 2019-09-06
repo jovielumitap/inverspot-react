@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BottomFloatButton from "../BottomFloatButton";
 
 export const Tab1 = (props) => {
-    const { cf_1025, cf_1027, cf_1029, cf_1043, cf_989, cf_985 } = props.opportunityDetail;
+    const { cf_1025, cf_1027, cf_1029, cf_1043, cf_989, cf_985 } = props.data;
     return (
         <div className="p-4">
             <div className="">

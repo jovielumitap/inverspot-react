@@ -12,8 +12,13 @@ import HeaderTop from "../../../components/HeaderTop";
 import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import SubmitInvestmentDialog from "../../../components/SubmitInvestmentDialog";
+import {fetchParticipationDetail, requestDownloadPDFInvoice} from "../../../redux/actions";
+import FileSaver from "file-saver";
 
 class ApartadasDetail extends Component {
+    componentDidMount() {
+        this.props.dispatch(fetchParticipationDetail(this.props.match.params.id))
+    }
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
         const {value} = this.state;
@@ -45,6 +50,9 @@ class ApartadasDetail extends Component {
     onSubmitForm = () => {
         this.setState({open: false});
     };
+    requestDownloadPDF = (id) => {
+        this.props.dispatch(requestDownloadPDFInvoice(id));
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -55,19 +63,32 @@ class ApartadasDetail extends Component {
 
     render() {
         const {value, open } = this.state;
-        const {history, opportunityDetail, classes} = this.props;
-
+        const { history, classes, participationDetail } = this.props;
+        console.log({participationDetail});
+        if (!participationDetail) {
+            return (
+                <div className="h-100 d-flex align-items-center justify-content-center">
+                    {"No found data"}
+                </div>
+            );
+        }
+        const proyecto = participationDetail.proyecto;
+        const orders = participationDetail.orders;
+        const listprice = participationDetail.listprice;
+        const estatus = participationDetail.estatus;
+        const rendest = participationDetail.rendest;
+        const qtyinstock = participationDetail.qtyinstock;
         return (
             <div className="vw-100 d-flex flex-column">
-                <HeaderTop history={history} title={"AAAAAAA"}/>
+                <HeaderTop history={history} title={proyecto.productname}/>
                 <HeaderOverView
-                    image={opportunityDetail.images && opportunityDetail.images[0]?opportunityDetail.images[0]: "https://crm.treebes2.com/cache/storage/2019/August/week2/199399_universidad-300x300.png"}
-                    row1={parseFloat(opportunityDetail.unit_price? opportunityDetail.unit_price: 0)}
-                    row2={opportunityDetail.cf_1402? opportunityDetail.cf_1402: "0"}
-                    row3={opportunityDetail.cf_1400? opportunityDetail.cf_1400: ""}
-                    row4={"0"}
-                    row5={"0"}
-                    row6={"0"}
+                    image={proyecto.images && proyecto.images[0]?proyecto.images[0]: ""}
+                    row1={parseFloat(listprice? listprice: 0)}
+                    row2={rendest? rendest: "0"}
+                    row3={proyecto.cf_1402? proyecto.cf_1402: "0"}
+                    row4={estatus? estatus: "0"}
+                    row5={qtyinstock? qtyinstock: "0"}
+                    row6={proyecto.sales_start_date? proyecto.sales_start_date: "00/00/0000"}
                     imageFloatButton={true}
                     imageFloatButtonIcon={"pen-alt"}
                     onHandleModal={this.onHandleModal}
@@ -97,16 +118,16 @@ class ApartadasDetail extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                            <Tab1/>
+                            <Tab1 data={proyecto} rendest={rendest}/>
                         }
                         {value === 1 &&
-                            <Tab2/>
+                            <Tab2 data={proyecto} listprice={listprice} rendest={rendest}/>
                         }
                         {value === 2 &&
-                            <Tab3/>
+                            <Tab3 data={proyecto}/>
                         }
                         {value === 3 &&
-                            <Tab4/>
+                            <Tab4 data={orders} requestDownloadPDF={this.requestDownloadPDF}/>
                         }
                     </Swipeable>
                 </div>
@@ -126,10 +147,10 @@ const styles = theme => ({
         backgroundColor: '#662D91',
     },
 });
-const mapStateToProps = ({opportunity}) => {
-    const {opportunityDetail} = opportunity;
+const mapStateToProps = ({participation}) => {
+    const { participationDetail } = participation;
     return {
-        opportunityDetail
+        participationDetail
     }
 };
 export default connect(mapStateToProps)(withStyles(styles)(ApartadasDetail));

@@ -6,7 +6,7 @@ import {
 
 const defaultState = () => ({
   participations: [],
-  participationDetail: {}
+  participationDetail: null
 });
 
 const initialState = { ...defaultState()};

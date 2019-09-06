@@ -17,7 +17,7 @@ export const Tab3 = (props) => {
             cf_1398,
             cf_1552
         }
-        = props.opportunityDetail;
+        = props.data;
     const timelineData = [
         { title: "Adquisicion", description: cf_1666},
         { title: "Lisencia de demolición", description: cf_1668},

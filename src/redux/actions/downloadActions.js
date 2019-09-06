@@ -6,6 +6,7 @@ import {
 } from "../actionTypes";
 import DownloadAPI from "../../api/DownloadAPI";
 import {unauthenticate} from "./authUserActions";
+import FileSaver from 'file-saver';
 
 export function fetchDownloadList() {
   return async (dispatch) => {
@@ -28,6 +29,38 @@ export function fetchDownloadList() {
 
     catch(e) {
       console.log({getDownloadListError: e});
+      if (e.response && e.response.status === 401) {
+        toast.error('You need to sign in again.');
+        dispatch(unauthenticate());
+        return;
+      }
+      toast.error('Error en la API');
+    }
+
+    finally {
+      dispatch(loaded('authUser'));
+    }
+  };
+}
+
+export function requestDownloadPDFInvoice(id) {
+  return async (dispatch) => {
+    const downloadAPI = new DownloadAPI();
+    dispatch(loading(''));
+    try {
+      const response = await downloadAPI.downloadPDF(id);
+      console.log({ response });
+      const { status, data } = response;
+      if (status === 200) {
+        FileSaver.saveAs(data, id + ".pdf");
+      }
+      else {
+        toast.error("Fail to download. Try please later");
+      }
+    }
+
+    catch(e) {
+      console.log({getDownloadPdfError: e});
       if (e.response && e.response.status === 401) {
         toast.error('You need to sign in again.');
         dispatch(unauthenticate());

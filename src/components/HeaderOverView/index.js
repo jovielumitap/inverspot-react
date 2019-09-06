@@ -52,7 +52,7 @@ class HeaderOverView extends Component {
                             </div>
                             {row4 && (
                                 <div className="col-4 px-0">
-                                    <div className="detail-info pl-4">${row4}</div>
+                                    <div className="detail-info pl-4">{row4}</div>
                                     <div className="text-black-50 pl-4">Avance de la obra</div>
                                 </div>
                             )}
