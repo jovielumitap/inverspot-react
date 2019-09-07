@@ -1,5 +1,6 @@
 import React from "react";
 import {Tab4InvestmentItem} from "./Tab4InvestmentItem";
+import {ConfirmInvestmentItem} from "../../../ApartadasPage/components/Tab4/ConfirmInvestmentItem";
 
 const data = [
     { icon: "circle", bgColorItem: ""},
@@ -7,10 +8,10 @@ const data = [
     { icon: "check", bgColorItem: "#662D91"},
 ];
 
-export const Tab4 = () => {
+export const Tab4 = (props) => {
     return (
         <div className="">
-            {data.map(item => <Tab4InvestmentItem key={item.icon} item={item}/>)}
+            {props.data.map(item => <Tab4InvestmentItem key={item.invoiceid} item={item} requestDownloadPDF={props.requestDownloadPDF}/>)}
         </div>
     )
 };

@@ -32,7 +32,7 @@ export default theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#662D91"
+    backgroundColor: "#FFF"
   },
   divider: {
     backgroundColor: "#926ab1",
@@ -40,7 +40,7 @@ export default theme => ({
     margin: "auto"
   },
   menuItem: {
-    color: "white",
+    color: "black",
     fontSize: "20px"
   },
   drawerHeader: {

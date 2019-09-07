@@ -1,6 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import BottomFloatButton from "../BottomFloatButton";
+import BottomFloatButton from "../../../../components/BottomFloatButton";
 
 export const Tab1 = (props) => {
     const { cf_1025, cf_1027, cf_1029, cf_1043, cf_989, cf_985 } = props.data;
@@ -48,6 +48,8 @@ export const Tab1 = (props) => {
                 </div>
             </div>
             <BottomFloatButton
+                label="Aparta tu participación"
+                icon="piggy-bank"
                 onHandleModal={props.onHandleModal}
             />
         </div>

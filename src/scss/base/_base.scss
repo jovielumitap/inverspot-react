@@ -100,6 +100,9 @@
 .font-size-60 {
   font-size: 60px !important;
 }
+.font-size-70 {
+  font-size: 70px !important;
+}
 .font-weight-bold {
   font-weight: 700 !important;
 }
@@ -110,6 +113,9 @@
 
 .font-gray {
   color: $color-gray !important;
+}
+.font-light-gray {
+  color: $inverspot-light-gray;
 }
 .font-purple {
   color: $inverspot-purple !important;
@@ -152,6 +158,9 @@
   flex: 3
 }
 
+.bg-gray {
+  background: $inverspot-light-gray;
+}
 .vertical-align-center {
   vertical-align: middle !important;
 }

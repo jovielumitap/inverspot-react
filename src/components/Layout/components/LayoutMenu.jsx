@@ -37,10 +37,10 @@ const LayoutMenu = ({
           closeDashboardMenu();
         }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Oportunidades</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
       <NavLink
           to="/app/apartadas"
@@ -48,10 +48,10 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Mis Apartadas</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
 
       <NavLink
@@ -60,10 +60,10 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Mis Inversiones</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
 
       <NavLink
@@ -72,10 +72,10 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Mis Referidos</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
 
       <NavLink
@@ -84,10 +84,10 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Mis Descargas</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
 
       <NavLink
@@ -96,10 +96,22 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Mi perfil</div>
         </ListItem>
+        <Divider className={classes.divider}/>
+      </NavLink>
+
+      <NavLink
+          to="#"
+          onClick={() => {
+            closeDashboardMenu();
+          }}
+      >
+        <ListItem button>
+          <div className={classes.menuItem}>¿Cómo invertir?</div>
+        </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
 
       <NavLink
@@ -108,10 +120,10 @@ const LayoutMenu = ({
             closeDashboardMenu();
           }}
       >
-        <Divider className={classes.divider}/>
         <ListItem button>
           <div className={classes.menuItem}>Cerrar sesión</div>
         </ListItem>
+        <Divider className={classes.divider}/>
       </NavLink>
     </List>
   </Drawer>

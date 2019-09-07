@@ -1,5 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import BottomFloatButton from "../../../../components/BottomFloatButton";
 
 export const Tab1 = (props) => {
     const { cf_1025, cf_1027, cf_1029, cf_1043, cf_989 } = props.data;
@@ -46,6 +47,11 @@ export const Tab1 = (props) => {
                     <div className="font-size-16 font-weight-600 font-purple">Rendimiento</div>
                 </div>
             </div>
+            <BottomFloatButton
+                label="Confirma tu inversión"
+                icon="pen-alt"
+                onHandleModal={props.onHandleModal}
+            />
         </div>
     )
 };

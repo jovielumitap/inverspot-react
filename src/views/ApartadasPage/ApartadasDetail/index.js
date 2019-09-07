@@ -13,7 +13,7 @@ import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import SubmitInvestmentDialog from "../../../components/SubmitInvestmentDialog";
 import {fetchParticipationDetail, requestDownloadPDFInvoice} from "../../../redux/actions";
-import FileSaver from "file-saver";
+import DownloadConfirmDialog from "../../../components/DownloadConfirmDialog";
 
 class ApartadasDetail extends Component {
     componentDidMount() {
@@ -50,21 +50,34 @@ class ApartadasDetail extends Component {
     onSubmitForm = () => {
         this.setState({open: false});
     };
+    onHandleDownloadModal = () => {
+        this.setState((state) => {
+            return {
+                open_download: !state.open_download
+            }
+        })
+    };
+    confirmDownload = () => {
+        this.setState({open_download: false});
+        if (!this.state.pdfId) return;
+        this.props.dispatch(requestDownloadPDFInvoice(this.state.pdfId));
+    };
     requestDownloadPDF = (id) => {
-        this.props.dispatch(requestDownloadPDFInvoice(id));
+        this.setState({open_download: true, pdfId: id});
     };
     constructor(props) {
         super(props);
         this.state = {
             value: 0,
-            open: false
+            open: false,
+            open_download: false,
+            pdfId: null
         };
     }
 
     render() {
-        const {value, open } = this.state;
+        const {value, open, open_download } = this.state;
         const { history, classes, participationDetail } = this.props;
-        console.log({participationDetail});
         if (!participationDetail) {
             return (
                 <div className="h-100 d-flex align-items-center justify-content-center">
@@ -118,7 +131,7 @@ class ApartadasDetail extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                            <Tab1 data={proyecto} rendest={rendest}/>
+                            <Tab1 data={proyecto} rendest={rendest} onHandleModal={this.onHandleModal}/>
                         }
                         {value === 1 &&
                             <Tab2 data={proyecto} listprice={listprice} rendest={rendest}/>
@@ -136,6 +149,13 @@ class ApartadasDetail extends Component {
                         open={open}
                         onHandleModal={this.onHandleModal}
                         onSubmitForm={this.onSubmitForm}
+                    />
+                )}
+                {open_download && (
+                    <DownloadConfirmDialog
+                        open={open_download}
+                        onHandleModal={this.onHandleDownloadModal}
+                        confirmDownload={this.confirmDownload}
                     />
                 )}
             </div>

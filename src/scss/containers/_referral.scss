@@ -14,16 +14,19 @@
   position: relative;
 }
 .following-link {
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 15px;
+  height: 40px;
+  border: 1px solid #DADEE2;
+  background: #F1F2F2;
+  border-radius: 10px;
   position: relative;
 }
 
 .following-link-text {
-  vertical-align: middle;
-  color: $inverspot-red;
-  font-size: 20px;
+  color: black;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .referral-item {
   height: 60px;

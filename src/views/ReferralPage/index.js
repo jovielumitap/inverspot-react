@@ -7,6 +7,7 @@ import {Tab1} from "./components/Tab1";
 import {Tab2} from "./components/Tab2";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import {withStyles} from "@material-ui/core";
 class ReferralPage extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
@@ -38,7 +39,8 @@ class ReferralPage extends Component {
         };
     }
     render() {
-        const {value} = this.state;
+        const { value } = this.state;
+        const { classes } = this.props;
         return (
             <div className="vw-100">
                 <Header title={'Mis documentos'}/>
@@ -81,15 +83,16 @@ class ReferralPage extends Component {
                     </div>
 
                     <div className="w-100 d-flex justify-content-center my-3">
-                        <div className="following-link mx-2 d-table">
-                            <div className="d-table-cell following-link-text px-4">
-                                https://goo.gl
+                        <div className="w-100 following-link mx-2 d-flex  px-2">
+                            <div className="f-1 position-relative">
+                                <div className="following-link-text overflow-hidden text-nowrap" style={{ width: "90%"}}>
+                                    https://goo.gl
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="copy-item mx-2">
-                            <div className="align-center position-absolute font-white">
-                                <FontAwesomeIcon className="font-size-20" icon={'copy'} />
+                            <div className="h-100 position-relative mr-2">
+                                <div className="align-center position-absolute">
+                                    <FontAwesomeIcon className="font-size-20 font-gray" icon="copy" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,14 +106,15 @@ class ReferralPage extends Component {
                                 value={value}
                                 onChange={this.handleChange}
                                 variant="fullWidth"
-                                indicatorColor="primary"
-                                textColor="primary"
+                                classes={{
+                                    indicator: classes.indicator
+                                }}
                             >
-                                <Tab className="tab f-1"
+                                <Tab className="tab f-1" style={{color: value === 0 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon={'user-friends'}/>}
                                      label="Mis referidos"
                                 />
-                                <Tab className="tab f-1 tab-left-border"
+                                <Tab className="tab f-1 tab-left-border" style={{color: value === 1 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon={'hand-holding-usd'}/>}
                                      label="Mis comisiones"
                                 />
@@ -128,5 +132,16 @@ class ReferralPage extends Component {
         )
     }
 }
+const mapStateToProps = ({opportunity}) => {
+    const {opportunityDetail} = opportunity;
+    return {
+        opportunityDetail
+    }
+};
+const styles = theme => ({
+    indicator: {
+        backgroundColor: '#662D91',
+    },
+});
 
-export default connect()(ReferralPage);
+export default connect(mapStateToProps)(withStyles(styles)(ReferralPage));

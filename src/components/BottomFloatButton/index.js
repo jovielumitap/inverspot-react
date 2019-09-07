@@ -5,8 +5,8 @@ const BottomFloatButton = (props) => {
         <div className="w-75 sub-header flex-column pt-2 pb-2"
              onClick={() => props.onHandleModal()}
         >
-            <span className="pr-2">Aparta tu participación</span>
-            <FontAwesomeIcon icon="piggy-bank"/>
+            <span className="pr-2">{props.label}</span>
+            <FontAwesomeIcon icon={props.icon}/>
         </div>
     )
 };
