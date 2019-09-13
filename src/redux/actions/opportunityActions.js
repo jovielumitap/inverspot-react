@@ -77,3 +77,33 @@ export function fetchOpportunityDetail(id) {
     }
   };
 }
+export function submitApartarRequest(productid, quantity) {
+  return async (dispatch) => {
+    const opportunityAPI = new OpportunityAPI();
+    dispatch(loading(''));
+    try {
+      const response = await opportunityAPI.requestApartar({ productid, quantity});
+      console.log({ submitApartarRequest: response });
+      const { success, message, result } = response.data;
+      if (success) {
+        toast.success(message.success);
+      } else {
+        toast.error(message);
+      }
+    }
+
+    catch(e) {
+      console.log({fetchOpportunityDetail: e});
+      if (e.response && e.response.status === 401) {
+        toast.error('You need to sign in again.');
+        dispatch(unauthenticate());
+        return;
+      }
+      toast.error('Error en la API');
+    }
+
+    finally {
+      dispatch(loaded('authUser'));
+    }
+  };
+}

@@ -9,7 +9,7 @@ import {Tab1} from "../components/Tab1";
 import {Tab2} from "../components/Tab2";
 import {Tab3} from "../components/Tab3";
 import {connect} from "react-redux";
-import {fetchOpportunityDetail} from "../../../redux/actions";
+import {fetchOpportunityDetail, submitApartarRequest} from "../../../redux/actions";
 import HeaderTop from "../../../components/HeaderTop";
 import PutInvestmentDialog from "../../../components/PutInvestmentDialog";
 
@@ -46,8 +46,9 @@ class OpportunityInvestmentDetail extends Component {
             }
         })
     };
-    onSubmitForm = () => {
+    onSubmitForm = (quantity) => {
         this.setState({open: false});
+        this.props.dispatch(submitApartarRequest(this.props.match.params.id, quantity))
     };
     constructor(props) {
         super(props);

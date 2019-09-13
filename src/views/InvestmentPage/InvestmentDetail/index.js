@@ -20,7 +20,7 @@ import InvestmentDetailDialog from "../../../components/InvestmentDetailDialog";
 
 class InvestmentDetail extends Component {
     componentDidMount() {
-        this.props.dispatch(fetchParticipationDetail("199398"))
+        //this.props.dispatch(fetchParticipationDetail("199398"))
     }
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
@@ -40,7 +40,7 @@ class InvestmentDetail extends Component {
         }
     };
     handleChange = (event, value) => {
-        this.setState({value});
+        this.setState({ value });
     };
     onHandleModal = () => {
         this.setState((state) => {
@@ -49,6 +49,9 @@ class InvestmentDetail extends Component {
             }
         })
     };
+    onClickInvoiceFloating = () => {
+        this.setState({value: 3});
+    };
     onHandleDownloadModal = () => {
         this.setState((state) => {
             return {
@@ -56,52 +59,57 @@ class InvestmentDetail extends Component {
             }
         })
     };
+    viewInvoiceDetail = () => {
+      this.setState({ open: true })
+    };
     confirmDownload = () => {
         this.setState({open_download: false});
-        if (!this.state.pdfId) return;
-        this.props.dispatch(requestDownloadPDFInvoice(this.state.pdfId));
+        if (!this.state.pdfId || !this.state.url) return;
+        this.props.dispatch(requestDownloadPDFInvoice(this.state.pdfId, this.state.url));
     };
-    requestDownloadPDF = (id) => {
-        this.setState({open_download: true, pdfId: id});
+    requestDownloadPDF = (id, url) => {
+        this.setState({ open_download: true, pdfId: id, url });
     };
     constructor(props) {
         super(props);
         this.state = {
             value: 0,
             open: false,
+            imageFloatButton: true,
             open_download: false,
-            pdfId: null
+            pdfId: null,
+            url: null
         };
     }
 
     render() {
         const {value, open, open_download } = this.state;
-        const { history, classes, participationDetail } = this.props;
-        if (!participationDetail) {
+        const { history, classes, investmentDetail } = this.props;
+        if (!investmentDetail) {
             return (
                 <div className="h-100 d-flex align-items-center justify-content-center">
                     {"No found data"}
                 </div>
             );
         }
-        const proyecto = participationDetail.proyecto;
-        const orders = participationDetail.orders;
-        const listprice = participationDetail.listprice;
-        const rendest = participationDetail.rendest;
+        const proyecto = investmentDetail.proyecto;
+        const orders = investmentDetail.orders;
+        const listprice = investmentDetail.listprice;
+        const rendest = investmentDetail.rendest;
         return (
             <div className="vw-100 d-flex flex-column pb-4">
                 <HeaderTop history={history} title={proyecto.productname}/>
                 <HeaderOverView
                     image={proyecto.images && proyecto.images[0]?proyecto.images[0]: ""}
-                    row1={parseFloat(listprice? listprice: 0)}
-                    row2={rendest? rendest: "0"}
-                    row3={proyecto.cf_1402? proyecto.cf_1402: "0"}
+                    row1={parseFloat(proyecto.unit_price? proyecto.unit_price: 0)}
+                    row2={proyecto.cf_1402? proyecto.cf_1402: "0"}
+                    row3={proyecto.cf_1400? proyecto.cf_1400: "0"}
                     row4={null}
                     row5={null}
                     row6={null}
-                    imageFloatButton={true}
+                    imageFloatButton={value !== 3}
                     imageFloatButtonIcon={"file-invoice-dollar"}
-                    onHandleModal={this.onHandleModal}
+                    onHandleModal={this.onClickInvoiceFloating}
                 />
                 <div className="d-flex flex-column p-0 mb-4">
 
@@ -135,7 +143,7 @@ class InvestmentDetail extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                            <Tab1 data={proyecto} rendest={rendest} onHandleModal={this.onHandleModal}/>
+                            <Tab1 data={proyecto} rendest={rendest} onHandleModal={this.onClickInvoiceFloating}/>
                         }
                         {value === 1 &&
                             <Tab2 data={proyecto} listprice={listprice} rendest={rendest}/>
@@ -144,16 +152,21 @@ class InvestmentDetail extends Component {
                             <Tab3 data={proyecto}/>
                         }
                         {value === 3 &&
-                            <Tab4 data={orders} requestDownloadPDF={this.requestDownloadPDF}/>
+                            <Tab4 data={orders}
+                                  requestDownloadPDF={this.requestDownloadPDF}
+                                  viewInvoiceDetail={this.viewInvoiceDetail}
+                            />
                         }
                         {value === 4 &&
-                            <Tab5/>
+                            <Tab5 data={orders} requestDownloadPDF={this.requestDownloadPDF}/>
                         }
                         {value === 5 &&
-                            <Tab6/>
+                            <Tab6 data={orders}
+                                  requestDownloadPDF={this.requestDownloadPDF}
+                            />
                         }
                         {value === 6 &&
-                            <Tab7/>
+                            <Tab7 data={orders} requestDownloadPDF={this.requestDownloadPDF}/>
                         }
                     </Swipeable>
                 </div>
@@ -179,10 +192,10 @@ const styles = theme => ({
         backgroundColor: '#662D91',
     },
 });
-const mapStateToProps = ({participation}) => {
-    const { participationDetail } = participation;
+const mapStateToProps = ({investment}) => {
+    const { investmentDetail } = investment;
     return {
-        participationDetail
+        investmentDetail
     }
 };
 export default connect(mapStateToProps)(withStyles(styles)(InvestmentDetail));

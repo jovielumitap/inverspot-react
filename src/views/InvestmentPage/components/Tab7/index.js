@@ -1,13 +1,13 @@
 import React from "react";
-import {Tab5InvestmentItem} from "./Tab5InvestmentItem";
+import {Tab7InvestmentItem} from "./Tab7InvestmentItem";
 
-export const Tab7 = () => {
+export const Tab7 = (props) => {
+    const data = props.data;
     return (
         <div className="">
-            <Tab5InvestmentItem/>
-            <Tab5InvestmentItem/>
-            <Tab5InvestmentItem/>
-            <Tab5InvestmentItem/>
+            {data.map(order => (
+                <Tab7InvestmentItem item={order} requestDownloadPDF={props.requestDownloadPDF}/>
+            ))}
         </div>
     )
 };

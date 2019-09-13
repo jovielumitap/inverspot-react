@@ -9,6 +9,7 @@ import downloadReducer from './downloadReducer';
 import opportunityReducer from './opportunityReducer';
 import participationReducer from './participationReducer';
 import investmentReducer from './investmentReducer';
+import referralReducer from "./referralReducer";
 
 export default (history) => combineReducers({
   router: connectRouter(history),
@@ -19,5 +20,6 @@ export default (history) => combineReducers({
   download: downloadReducer,
   opportunity: opportunityReducer,
   participation: participationReducer,
-  investment: investmentReducer
+  investment: investmentReducer,
+  referral: referralReducer
 });

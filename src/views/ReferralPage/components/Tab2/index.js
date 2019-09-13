@@ -7,7 +7,7 @@ const data = [
     { icon: "check", bgColorItem: "#662D91"},
 ];
 
-export const Tab2 = () => {
+export const Tab2 = ({ data }) => {
     return (
         <div className="">
             {data.map(item => <CommissionItem key={item.icon} item={item}/>)}

@@ -4,10 +4,10 @@
 import axios from 'axios';
 import ConfigurationAPI from './ConfigurationAPI';
 
-class DownloadAPI extends ConfigurationAPI {
-  getDownloads = () => {
+class ReferralAPI extends ConfigurationAPI {
+  getReferrals = () => {
     return new Promise((resolve, reject) => {
-      return axios.get(`${this.url}/list/downloads`,  this.headers)
+      return axios.get(`${this.url}/list/referidos`,  this.headers)
       .then((response) => {
         resolve(response);
       }).catch((error) => {
@@ -15,22 +15,16 @@ class DownloadAPI extends ConfigurationAPI {
       })
     })
   };
-  downloadPDF = (downloadUrl) => {
+  referralDetail = (id) => {
     return new Promise((resolve, reject) => {
-      return axios.get(`${downloadUrl}`, {
-        responseType: 'blob',
-        headers: {
-          Accept: 'application/pdf',
-          Authorization: `Bearer ${this.token}`
-        }
-      })
+      return axios.get(`${this.url}/referidos/${id}`,  this.headers)
           .then((response) => {
             resolve(response);
           }).catch((error) => {
             reject(error);
           })
     })
-  }
+  };
 }
 
-export default DownloadAPI;
+export default ReferralAPI;

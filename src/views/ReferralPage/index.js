@@ -8,6 +8,7 @@ import {Tab2} from "./components/Tab2";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import {withStyles} from "@material-ui/core";
+import {fetchReferralList} from "../../redux/actions";
 class ReferralPage extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
@@ -32,6 +33,10 @@ class ReferralPage extends Component {
     handleChange = (event, value) => {
         this.setState({value});
     };
+    componentDidMount() {
+        this.props.dispatch(fetchReferralList())
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -40,7 +45,7 @@ class ReferralPage extends Component {
     }
     render() {
         const { value } = this.state;
-        const { classes } = this.props;
+        const { classes, referidos, comisiones } = this.props;
         return (
             <div className="vw-100">
                 <Header title={'Mis documentos'}/>
@@ -121,10 +126,10 @@ class ReferralPage extends Component {
                             </Tabs>
                         </div>
                         {value === 0 &&
-                        <Tab1/>
+                        <Tab1 data={referidos}/>
                         }
                         {value === 1 &&
-                        <Tab2/>
+                        <Tab2 data={comisiones}/>
                         }
                     </Swipeable>
                 </div>
@@ -132,10 +137,11 @@ class ReferralPage extends Component {
         )
     }
 }
-const mapStateToProps = ({opportunity}) => {
-    const {opportunityDetail} = opportunity;
+const mapStateToProps = ({referral}) => {
+    const { referidos, comisiones } = referral;
     return {
-        opportunityDetail
+        referidos,
+        comisiones
     }
 };
 const styles = theme => ({

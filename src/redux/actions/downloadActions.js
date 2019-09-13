@@ -43,12 +43,12 @@ export function fetchDownloadList() {
   };
 }
 
-export function requestDownloadPDFInvoice(id) {
+export function requestDownloadPDFInvoice(id, downloadUrl) {
   return async (dispatch) => {
     const downloadAPI = new DownloadAPI();
     dispatch(loading(''));
     try {
-      const response = await downloadAPI.downloadPDF(id);
+      const response = await downloadAPI.downloadPDF(downloadUrl);
       console.log({ response });
       const { status, data } = response;
       if (status === 200) {

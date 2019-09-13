@@ -13,9 +13,12 @@ import { connect } from 'react-redux';
 import LayoutBarMenu from './LayoutBarMenu';
 
 const renderContent = (classes) => {
+  const logo = `${process.env.PUBLIC_URL}/img/logo-inverspot.png`;
   return (
-    <div className="position-relative w-100">
-      <div className="align-center position-absolute top-action-bar-title">Inversport</div>
+    <div className="position-relative w-100" style={{ marginRight: "50px"}}>
+      <div className="align-center position-absolute top-action-bar-logo">
+        <img src={logo} alt={""}/>
+      </div>
     </div>
   )
 
@@ -51,7 +54,7 @@ const LayoutBar = ({ classes, dashboardMenuIsDisplayed, openDashboardMenu, close
         {renderLeftIcon(classes, dashboardMenuIsDisplayed, closeDashboardMenu, openDashboardMenu, history)}
         {renderContent(classes)}
       </div>
-      {renderRightIcon(classes)}
+      {/*{renderRightIcon(classes)}*/}
     </Toolbar>
   </AppBar>
 );

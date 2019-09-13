@@ -25,6 +25,16 @@ class OpportunityAPI extends ConfigurationAPI {
           })
     })
   };
+  requestApartar = (body) => {
+    return new Promise((resolve, reject) => {
+      return axios.post(`${this.url}/apartar`, body,  this.headers)
+          .then((response) => {
+            resolve(response);
+          }).catch((error) => {
+            reject(error);
+          })
+    })
+  };
 }
 
 export default OpportunityAPI;

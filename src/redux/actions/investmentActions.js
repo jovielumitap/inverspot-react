@@ -77,3 +77,11 @@ export function fetchInvestmentDetail(id) {
     }
   };
 }
+export function dispatchInvestmentDetail(item) {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_INVESTMENT_DETAIL_SUCCESS,
+      payload: item
+    });
+  };
+}

@@ -27,7 +27,9 @@ const LayoutMenu = ({
   >
     <div className={classes.drawerHeader}>
       <div className="w-100">
-        <div className="menu-header-title py-2">Inversport</div>
+        <div className="menu-header-title py-2">
+          <img src={`${process.env.PUBLIC_URL}/img/logo-inverspot.png`} alt={""}/>
+        </div>
       </div>
     </div>
     <List>

@@ -47,7 +47,7 @@ class ApartadasDetail extends Component {
             }
         })
     };
-    onSubmitForm = () => {
+    onSubmitForm = (password) => {
         this.setState({open: false});
     };
     onHandleDownloadModal = () => {
@@ -59,11 +59,11 @@ class ApartadasDetail extends Component {
     };
     confirmDownload = () => {
         this.setState({open_download: false});
-        if (!this.state.pdfId) return;
-        this.props.dispatch(requestDownloadPDFInvoice(this.state.pdfId));
+        if (!this.state.pdfId || !this.state.url) return;
+        this.props.dispatch(requestDownloadPDFInvoice(this.state.pdfId, this.state.url));
     };
-    requestDownloadPDF = (id) => {
-        this.setState({open_download: true, pdfId: id});
+    requestDownloadPDF = (id, url) => {
+        this.setState({open_download: true, pdfId: id, url });
     };
     constructor(props) {
         super(props);
@@ -71,7 +71,8 @@ class ApartadasDetail extends Component {
             value: 0,
             open: false,
             open_download: false,
-            pdfId: null
+            pdfId: null,
+            url: null
         };
     }
 

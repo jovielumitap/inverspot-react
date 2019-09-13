@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import List from "@material-ui/core/List";
 import InvestmentItem from "./components/InvestmentItem";
 import {connect} from "react-redux";
-import {fetchInvestmentList} from "../../redux/actions";
+import {dispatchInvestmentDetail, fetchInvestmentList} from "../../redux/actions";
 import {Header} from "../../components/Header";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -34,7 +34,8 @@ class InvestmentPage extends Component {
         this.props.dispatch(fetchInvestmentList())
     }
 
-    onClickItem = (id) => {
+    onClickItem = (id, item) => {
+        this.props.dispatch(dispatchInvestmentDetail(item))
         this.props.history.push(`investment/${id}`)
     };
     constructor(props) {
@@ -45,7 +46,7 @@ class InvestmentPage extends Component {
         };
     }
     render() {
-        const { investments, classes } = this.props;
+        const { abiertas, cerradas, classes } = this.props;
         const { value } = this.state;
         return (
             <>
@@ -73,15 +74,15 @@ class InvestmentPage extends Component {
                         </div>
                         {value === 0 &&
                             <List>
-                                {investments.map((investment, index) =>
-                                    <InvestmentItem key={"investment" + index} item={investment} onClick={this.onClickItem}/>
+                                {abiertas.map((item, index) =>
+                                    <InvestmentItem key={"investment" + index} item={item} onClick={this.onClickItem}/>
                                 )}
                             </List>
                         }
                         {value === 1 &&
                             <List>
-                                {investments.map((investment, index) =>
-                                    <InvestmentItem key={"investment" + index} item={investment} onClick={this.onClickItem}/>
+                                {cerradas.map((item, index) =>
+                                    <InvestmentItem key={"investment" + index} item={item} onClick={this.onClickItem}/>
                                 )}
                             </List>
                         }
@@ -93,9 +94,10 @@ class InvestmentPage extends Component {
 }
 
 const mapStateToProps = ({investment}) => {
-    const {investments} = investment;
+    const { abiertas, cerradas } = investment;
     return {
-        investments
+        abiertas,
+        cerradas
     }
 };
 const styles = theme => ({

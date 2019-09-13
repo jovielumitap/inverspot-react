@@ -7,6 +7,7 @@ import {
 } from "../actionTypes";
 import {unauthenticate} from "./authUserActions";
 import ParticipationAPI from "../../api/ParticipationAPI";
+import OpportunityAPI from "../../api/OpportunityAPI";
 
 export function fetchParticipationList() {
   return async (dispatch) => {
@@ -23,7 +24,7 @@ export function fetchParticipationList() {
         });
       }
       else {
-        toast.error(message);
+        toast.error(message.error);
       }
     }
 
@@ -58,7 +59,37 @@ export function fetchParticipationDetail(id) {
         });
       }
       else {
-        toast.error(message);
+        toast.error(message.error);
+      }
+    }
+
+    catch(e) {
+      console.log({fetchOpportunityDetail: e});
+      if (e.response && e.response.status === 401) {
+        toast.error('You need to sign in again.');
+        dispatch(unauthenticate());
+        return;
+      }
+      toast.error('Error en la API');
+    }
+
+    finally {
+      dispatch(loaded('authUser'));
+    }
+  };
+}
+export function submitConfirmInvestment(invoiceid, password) {
+  return async (dispatch) => {
+    const participationAPI = new ParticipationAPI();
+    dispatch(loading(''));
+    try {
+      const response = await participationAPI.confirmInvestment({ invoiceid, password});
+      console.log({ submitConfirmInvestment: response });
+      const { success, message, result } = response.data;
+      if (success) {
+        toast.success(message.success);
+      } else {
+        toast.error(message.error);
       }
     }
 

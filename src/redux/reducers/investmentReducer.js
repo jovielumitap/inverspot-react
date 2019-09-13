@@ -5,7 +5,8 @@ import {
 } from "../actionTypes";
 
 const defaultState = () => ({
-  investments: [],
+  abiertas: [],
+  cerradas: [],
   investmentDetail: {}
 });
 
@@ -17,7 +18,8 @@ export default function (state = initialState, action) {
     case GET_INVESTMENT_SUCCESS:
       return {
         ...state,
-        investments: action.payload
+        abiertas: action.payload.abiertas,
+        cerradas: action.payload.cerradas
       };
     case GET_INVESTMENT_DETAIL_SUCCESS:
       return {

@@ -2,11 +2,11 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const ConfirmInvestmentItem = ({ item, requestDownloadPDF }) => {
-    const { invoiceid, invoice, invoicedate, total } = item;
+    const { quantity, invoiceid, invoice, invoicedate, total, pdf } = item;
     return (
         <div className="referral-item flex-row w-100 border-bottom">
             <div className="referral-item-number-bg">
-                <div className="referral-item-number">3</div>
+                <div className="referral-item-number">{parseInt(quantity)}</div>
             </div>
             <div className="d-flex justify-content-between f-1">
                 <div className="ml-2 position-relative">
@@ -22,7 +22,7 @@ export const ConfirmInvestmentItem = ({ item, requestDownloadPDF }) => {
                 </div>
             </div>
             <div className="confirm-icon-bg border-bottom">
-                <div className="download-icon" onClick={() => requestDownloadPDF(invoiceid)}>
+                <div className="download-icon" onClick={() => requestDownloadPDF(invoiceid, pdf)}>
                     <FontAwesomeIcon className="font-size-24" icon="download"/>
                 </div>
             </div>

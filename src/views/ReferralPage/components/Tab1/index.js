@@ -1,14 +1,12 @@
 import React from "react";
 import {ReferralItem} from "./ReferralItem";
 
-export const Tab1 = () => {
+export const Tab1 = (props) => {
     return (
         <div className="">
-            <ReferralItem/>
-            <ReferralItem/>
-            <ReferralItem/>
-            <ReferralItem/>
-            <ReferralItem/>
+            {props.data.map(item => (
+                <ReferralItem item={item}/>
+            ))}
         </div>
     )
 };

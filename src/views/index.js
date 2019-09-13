@@ -12,6 +12,7 @@ import ParticipationDetail from "./ApartadasPage/ApartadasDetail";
 import InvestmentPage from "./InvestmentPage"
 import InvestmentDetail from "./InvestmentPage/InvestmentDetail";
 import ProfilePage from "./ProfilePage";
+import HomePage from "./HomePage";
 class MainApp extends React.Component {
     render() {
         const {match} = this.props;
@@ -20,6 +21,7 @@ class MainApp extends React.Component {
                 <Layout/>
                 <MainWrapper>
                     <Switch>
+                        <Route exact path={`${match.url}/home-page`} component={HomePage}/>
                         <Route exact path={`${match.url}/opportunity-investment`} component={OpportunityInvestmentPage}/>
                         <Route exact path={`${match.url}/opportunity-investment/:id`} component={OpportunityInvestmentDetail}/>
                         <Route exact path={`${match.url}/downloads`} component={DownloadPage}/>

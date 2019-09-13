@@ -25,6 +25,16 @@ class ParticipationAPI extends ConfigurationAPI {
           })
     })
   };
+  confirmInvestment = (body) => {
+    return new Promise((resolve, reject) => {
+      return axios.put(`${this.url}/apartada/firmar`, body,  this.headers)
+          .then((response) => {
+            resolve(response);
+          }).catch((error) => {
+            reject(error);
+          })
+    })
+  };
 }
 
 export default ParticipationAPI;
