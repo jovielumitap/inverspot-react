@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const Tab6InvestmentItem = ({item, requestDownloadPDF}) => {
-    const { crmid, pdf, payment_status, balance, quantity, paid, date, total } = item;
+    const { crmid, pdf, payment_status, balance, quantity, date, total } = item;
     return (
         <div className="referral-item flex-row w-100 border-bottom">
             <div className="commission-icon-bg border-bottom" style={{ backgroundColor: payment_status === "paid"? "#662D91": payment_status === "unpaid"? "": "#FBB03B"}}>

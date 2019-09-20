@@ -1,8 +1,19 @@
 import React from "react";
 
-export const Tab3 = ({ userType }) => {
+export const Tab3 = ({ userType, profile }) => {
+    const {
+        bill_street,
+        bill_num_ext,
+        bill_num_int,
+        bill_pobox,
+        bill_city,
+        bill_state,
+        bill_country,
+        bill_code,
+        comprobante_domicilio,
+    } = profile;
     switch (userType) {
-        case "foreign":
+        case "Nacional Física":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -10,7 +21,7 @@ export const Tab3 = ({ userType }) => {
                             Calle
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            José Antonio
+                            {bill_street? bill_street: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -18,7 +29,7 @@ export const Tab3 = ({ userType }) => {
                             Num. Exterior
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Galindo
+                            {bill_num_ext? bill_num_ext: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -26,7 +37,7 @@ export const Tab3 = ({ userType }) => {
                             Num. Interio
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Jiménez
+                            {bill_num_int? bill_num_int: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -34,7 +45,7 @@ export const Tab3 = ({ userType }) => {
                             Colonia
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            5575106678
+                            {bill_pobox? bill_pobox: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -42,7 +53,7 @@ export const Tab3 = ({ userType }) => {
                             Delegacion o Municipio
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            -
+                            {bill_city? bill_city: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -50,7 +61,7 @@ export const Tab3 = ({ userType }) => {
                             Estado
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            09 Feb 1983
+                            {bill_state? bill_state: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -58,7 +69,7 @@ export const Tab3 = ({ userType }) => {
                             Pais
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            México
+                            {bill_country? bill_country: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -66,7 +77,7 @@ export const Tab3 = ({ userType }) => {
                             Codigo Posta
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            CDMX
+                            {bill_code? bill_code: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -75,7 +86,7 @@ export const Tab3 = ({ userType }) => {
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3hPQEiOgWfOgiaLp_BYJ6ih7ASfbBSxbsriZCzJ3VJInKtI-E"}
+                                src={comprobante_domicilio}
                                 alt={"Id card"}
                             />
                         </div>

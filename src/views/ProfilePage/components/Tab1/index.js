@@ -1,8 +1,24 @@
 import React from "react";
 
-export const Tab1 = ({ userType }) => {
+export const Tab1 = ({ userType, profile }) => {
+    const {
+        ownership,
+        cf_1130,
+        cf_1132,
+        phone,
+        profesion,
+        fecha_nacimiento,
+        pais_nacimiento,
+        entidad_nacimiento,
+        cf_1368,
+        cf_1372,
+        cf_1370,
+        cf_1382,
+        cf_1384,
+        cf_1386
+    } = profile;
     switch (userType) {
-        case "foreign":
+        case "Nacional Física":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -10,7 +26,7 @@ export const Tab1 = ({ userType }) => {
                             Nombre
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            José Antonio
+                            {ownership? ownership: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -18,7 +34,7 @@ export const Tab1 = ({ userType }) => {
                             Apellido Paterno
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Galindo
+                            {cf_1130? cf_1130: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -26,7 +42,7 @@ export const Tab1 = ({ userType }) => {
                             Apellido Materno
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Jiménez
+                            {cf_1132? cf_1132: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -34,7 +50,7 @@ export const Tab1 = ({ userType }) => {
                             Teléfono
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            5575106678
+                            {phone? phone: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -42,7 +58,7 @@ export const Tab1 = ({ userType }) => {
                             Ocupacion o profesión
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            -
+                            {profesion? profesion: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -50,7 +66,7 @@ export const Tab1 = ({ userType }) => {
                             Fecha de nacimiento
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            09 Feb 1983
+                            {fecha_nacimiento? fecha_nacimiento: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -58,7 +74,7 @@ export const Tab1 = ({ userType }) => {
                             País de nacimiento
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            México
+                            {pais_nacimiento? pais_nacimiento: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -66,7 +82,7 @@ export const Tab1 = ({ userType }) => {
                             Entidad federativa de nacimiento
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            CDMX
+                            {entidad_nacimiento? entidad_nacimiento: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -74,7 +90,7 @@ export const Tab1 = ({ userType }) => {
                             Lugar de nacimiento
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Coyoacan, CDMX, México
+                            {cf_1368? cf_1368: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -82,7 +98,7 @@ export const Tab1 = ({ userType }) => {
                             Nacionalidad
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Mexicano
+                            {cf_1372? cf_1372: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -90,7 +106,7 @@ export const Tab1 = ({ userType }) => {
                             Genero
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Masculino
+                            {cf_1370? cf_1370: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -98,7 +114,7 @@ export const Tab1 = ({ userType }) => {
                             Estado civil
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Soltero
+                            {cf_1382? cf_1382: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -106,7 +122,7 @@ export const Tab1 = ({ userType }) => {
                             Régimen conyugal
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            -
+                            {cf_1384? cf_1384: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -114,7 +130,7 @@ export const Tab1 = ({ userType }) => {
                             Conyuge
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            -
+                            {cf_1386? cf_1386: "-"}
                         </div>
                     </div>
                 </div>

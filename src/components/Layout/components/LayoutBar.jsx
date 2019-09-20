@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import { connect } from 'react-redux';
-import LayoutBarMenu from './LayoutBarMenu';
 
 const renderContent = (classes) => {
   const logo = `${process.env.PUBLIC_URL}/img/logo-inverspot.png`;
@@ -22,11 +21,6 @@ const renderContent = (classes) => {
     </div>
   )
 
-}
-const renderRightIcon = (classes) => {
-  return (
-    <LayoutBarMenu classes={classes} />
-  )
 }
 const renderLeftIcon = (classes, dashboardMenuIsDisplayed, closeDashboardMenu, openDashboardMenu) => {
   return (
@@ -54,7 +48,6 @@ const LayoutBar = ({ classes, dashboardMenuIsDisplayed, openDashboardMenu, close
         {renderLeftIcon(classes, dashboardMenuIsDisplayed, closeDashboardMenu, openDashboardMenu, history)}
         {renderContent(classes)}
       </div>
-      {/*{renderRightIcon(classes)}*/}
     </Toolbar>
   </AppBar>
 );

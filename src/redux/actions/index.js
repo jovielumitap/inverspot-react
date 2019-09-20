@@ -1,5 +1,6 @@
 export * from './authUserActions';
 export * from './displayActions';
+export * from './handleCommoModalActions';
 export * from './downloadActions';
 export * from './keyBoardActions';
 export * from './loadActions';
@@ -7,3 +8,4 @@ export * from './opportunityActions';
 export * from './participationActions';
 export * from './investmentActions';
 export * from './referralActions';
+export * from './profileActions';

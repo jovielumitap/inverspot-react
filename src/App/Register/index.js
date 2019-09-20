@@ -75,15 +75,16 @@ class Register extends Component {
                                 label={<span className="register-check-label">Ya cuento con un asesor</span>}
                             />
                         </div>
-                        <div className="form-group w-100 mb-0">
-                            <input
-                                className='form-control  form-control-lg'
-                                value={preferredAdvisor}
-                                type={"text"}
-                                placeholder={"Asesor Preferido"}
-                                onChange={this.handleChange('preferredAdvisor')}
-                            />
-                        </div>
+                        {!advisor &&
+                            <div className="form-group w-100 mb-0">
+                                <input
+                                    className='form-control  form-control-lg'
+                                    value={preferredAdvisor}
+                                    type={"text"}
+                                    placeholder={"Asesor Preferido"}
+                                    onChange={this.handleChange('preferredAdvisor')}
+                                />
+                            </div>}
                         <div className="form-group d-flex align-items-center mb-0">
                             <FormControlLabel
                                 control={

@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Tab2 = (props) => {
-    const { cf_1015, cf_1208, cf_991, cf_1226, cf_979, cf_1230, cf_1013, cf_1236 } = props.data;
+    const { cf_1015, cf_1208, cf_1226, cf_979, cf_1230, cf_1013 } = props.data;
     return (
         <div className="p-4">
             <div className="">

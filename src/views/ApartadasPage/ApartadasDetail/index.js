@@ -12,7 +12,7 @@ import HeaderTop from "../../../components/HeaderTop";
 import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import SubmitInvestmentDialog from "../../../components/SubmitInvestmentDialog";
-import {fetchParticipationDetail, requestDownloadPDFInvoice} from "../../../redux/actions";
+import {fetchParticipationDetail, requestDownloadPDFInvoice, submitConfirmInvestment} from "../../../redux/actions";
 import DownloadConfirmDialog from "../../../components/DownloadConfirmDialog";
 
 class ApartadasDetail extends Component {
@@ -47,7 +47,9 @@ class ApartadasDetail extends Component {
             }
         })
     };
-    onSubmitForm = (password) => {
+    onSubmitForm = (data) => {
+        console.log("ligwan investment form data:", data);
+        this.props.dispatch(submitConfirmInvestment(data.checked, data.password))
         this.setState({open: false});
     };
     onHandleDownloadModal = () => {
@@ -148,6 +150,7 @@ class ApartadasDetail extends Component {
                 {open && (
                     <SubmitInvestmentDialog
                         open={open}
+                        data={orders}
                         onHandleModal={this.onHandleModal}
                         onSubmitForm={this.onSubmitForm}
                     />

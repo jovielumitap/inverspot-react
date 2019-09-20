@@ -11,7 +11,7 @@ import {Tab5} from "../components/Tab5";
 import {Tab6} from "../components/Tab6";
 import {Tab7} from "../components/Tab7";
 import HeaderTop from "../../../components/HeaderTop";
-import {fetchParticipationDetail, requestDownloadPDFInvoice} from "../../../redux/actions";
+import {requestDownloadPDFInvoice} from "../../../redux/actions";
 import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import DownloadConfirmDialog from "../../../components/DownloadConfirmDialog";
@@ -59,8 +59,8 @@ class InvestmentDetail extends Component {
             }
         })
     };
-    viewInvoiceDetail = () => {
-      this.setState({ open: true })
+    viewInvoiceDetail = (item) => {
+      this.setState({ open: true, item })
     };
     confirmDownload = () => {
         this.setState({open_download: false});
@@ -78,12 +78,13 @@ class InvestmentDetail extends Component {
             imageFloatButton: true,
             open_download: false,
             pdfId: null,
-            url: null
+            url: null,
+            item: null
         };
     }
 
     render() {
-        const {value, open, open_download } = this.state;
+        const {value, open, open_download, item } = this.state;
         const { history, classes, investmentDetail } = this.props;
         if (!investmentDetail) {
             return (
@@ -173,6 +174,7 @@ class InvestmentDetail extends Component {
                 {open && (
                     <InvestmentDetailDialog
                         open={open}
+                        data={item}
                         onHandleModal={this.onHandleModal}
                     />
                 )}

@@ -49,14 +49,15 @@ class LogIn extends Component {
     };
     render() {
         const {username, password, isRemember, username_error, password_error} = this.state;
+        const logo = `${process.env.PUBLIC_URL}/img/logo-inverspot-white.png`;
         return (
             <div className='root-container login-panel-background'>
-                <div className="account-panel-width align-center position-absolute">
+                <div className="account-panel-width align-center position-absolute w-75">
                     <form noValidate autoComplete="off">
-                        <div className="form-group w-100 text-center login-title">
-                            Inverspot
+                        <div className="form-group w-75 text-center m-auto">
+                            <img src={logo} alt=""/>
                         </div>
-                        <div className="form-group w-100">
+                        <div className="form-group w-100 mt-4">
                             <input
                                 className='form-control form-control-lg'
                                 value={username}

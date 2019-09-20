@@ -9,6 +9,9 @@ import {Tab2} from "./components/Tab2";
 import {Tab3} from "./components/Tab3";
 import {Tab5} from "./components/Tab5";
 import {Tab4} from "./components/Tab4";
+import {fetchProfileDetail} from "../../redux/actions";
+import {connect} from "react-redux";
+import {withStyles} from "@material-ui/core";
 
 const titles = ["Datos Generales", "Documentos y datos", "Direcció", "Cuenta bancaria", "Beneficiarios"];
 class ProfilePage extends Component {
@@ -32,18 +35,23 @@ class ProfilePage extends Component {
     handleChange = (event, value) => {
         this.setState({value});
     };
+    componentDidMount() {
+        this.props.dispatch(fetchProfileDetail());
+    }
 
     constructor(props) {
         super(props);
         this.state = {
-            value: 0,
-            userType: "national"
+            value: 0
         };
     }
 
     render() {
-        const { value, userType } = this.state;
-
+        const { value } = this.state;
+        const { profile, classes } = this.props;
+        const {
+            tipo_de_persona
+        } = profile;
         return (
             <div className="vw-100 d-flex flex-column">
                 <div className="d-flex flex-column p-0 m-0">
@@ -55,37 +63,43 @@ class ProfilePage extends Component {
                                 value={value}
                                 onChange={this.handleChange}
                                 variant="fullWidth"
-                                indicatorColor="primary"
-                                textColor="primary"
+                                classes={{
+                                    indicator: classes.indicator
+                                }}
                                 scrollButtons="on"
                             >
                                 <Tab className="tab"
+                                     style={{color: value === 0 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="user"/>}/>
                                 <Tab className="tab tab-left-border"
+                                     style={{color: value === 1 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="receipt"/>}/>
                                 <Tab className="tab tab-left-border"
+                                     style={{color: value === 2 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="map-marker"/>}/>
                                 <Tab className="tab tab-left-border"
+                                     style={{color: value === 3 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="piggy-bank"/>}/>
                                 <Tab className="tab tab-left-border"
+                                     style={{color: value === 4 ? "#662D91" : "#CCCCCC"}}
                                      icon={<FontAwesomeIcon className="font-size-18" icon="user-friends"/>}/>
                             </Tabs>
                         </div>
                         <Header title={titles[value]}/>
                         {value === 0 &&
-                        <Tab1 userType={userType}/>
+                        <Tab1 userType={tipo_de_persona} profile={profile}/>
                         }
                         {value === 1 &&
-                        <Tab2 userType={userType}/>
+                        <Tab2 userType={tipo_de_persona} profile={profile}/>
                         }
                         {value === 2 &&
-                        <Tab3 userType={userType}/>
+                        <Tab3 userType={tipo_de_persona} profile={profile}/>
                         }
                         {value === 3 &&
-                        <Tab4 userType={userType}/>
+                        <Tab4 userType={tipo_de_persona} profile={profile}/>
                         }
                         {value === 4 &&
-                        <Tab5 userType={userType}/>
+                        <Tab5 userType={tipo_de_persona} profile={profile}/>
                         }
                     </Swipeable>
 
@@ -94,5 +108,13 @@ class ProfilePage extends Component {
         );
     }
 }
-
-export default ProfilePage;
+const mapStateToProps = ({ profileReducer }) => {
+    const { profile } = profileReducer;
+    return { profile }
+};
+const styles = theme => ({
+    indicator: {
+        backgroundColor: '#662D91',
+    },
+});
+export default connect(mapStateToProps)(withStyles(styles)(ProfilePage));

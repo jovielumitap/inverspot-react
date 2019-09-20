@@ -1,8 +1,16 @@
 import React from "react";
 
-export const Tab2 = ({ userType }) => {
+export const Tab2 = ({ userType, profile }) => {
+    const {
+        razon_social,
+        siccode,
+        cf_1374,
+        cf_1380,
+        id_representante_legal,
+        cf_1378
+    } = profile;
     switch (userType) {
-        case "foreign":
+        case "Nacional Física":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -10,7 +18,7 @@ export const Tab2 = ({ userType }) => {
                             Razon Social
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Extranjera Moral
+                            {razon_social? razon_social: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -18,7 +26,7 @@ export const Tab2 = ({ userType }) => {
                             RFC
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            TRE1400034I5
+                            {siccode? siccode: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -26,10 +34,34 @@ export const Tab2 = ({ userType }) => {
                             Tipo de identificación
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
+                            {cf_1374? cf_1374: "-"}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Clave de elector
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {cf_1380? cf_1380: "-"}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Identificacion oficial
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3hPQEiOgWfOgiaLp_BYJ6ih7ASfbBSxbsriZCzJ3VJInKtI-E"}
+                                src={id_representante_legal}
                                 alt={"Id card"}
                             />
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            CURP
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {cf_1378? cf_1378: "-"}
                         </div>
                     </div>
                 </div>

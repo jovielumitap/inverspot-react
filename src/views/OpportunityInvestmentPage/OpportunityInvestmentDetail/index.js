@@ -48,7 +48,7 @@ class OpportunityInvestmentDetail extends Component {
     };
     onSubmitForm = (quantity) => {
         this.setState({open: false});
-        this.props.dispatch(submitApartarRequest(this.props.match.params.id, quantity))
+        this.props.dispatch(submitApartarRequest(this.props.match.params.id, quantity, this.props.history))
     };
     constructor(props) {
         super(props);

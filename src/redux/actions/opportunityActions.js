@@ -77,16 +77,17 @@ export function fetchOpportunityDetail(id) {
     }
   };
 }
-export function submitApartarRequest(productid, quantity) {
+export function submitApartarRequest(productid, quantity, history) {
   return async (dispatch) => {
     const opportunityAPI = new OpportunityAPI();
     dispatch(loading(''));
     try {
       const response = await opportunityAPI.requestApartar({ productid, quantity});
       console.log({ submitApartarRequest: response });
-      const { success, message, result } = response.data;
+      const { success, message } = response.data;
       if (success) {
         toast.success(message.success);
+        history.push("/app/investment")
       } else {
         toast.error(message);
       }

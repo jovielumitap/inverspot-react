@@ -7,7 +7,6 @@ import {
 } from "../actionTypes";
 import {unauthenticate} from "./authUserActions";
 import ParticipationAPI from "../../api/ParticipationAPI";
-import OpportunityAPI from "../../api/OpportunityAPI";
 
 export function fetchParticipationList() {
   return async (dispatch) => {
@@ -85,7 +84,7 @@ export function submitConfirmInvestment(invoiceid, password) {
     try {
       const response = await participationAPI.confirmInvestment({ invoiceid, password});
       console.log({ submitConfirmInvestment: response });
-      const { success, message, result } = response.data;
+      const { success, message } = response.data;
       if (success) {
         toast.success(message.success);
       } else {

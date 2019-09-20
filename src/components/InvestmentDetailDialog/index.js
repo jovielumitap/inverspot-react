@@ -16,16 +16,21 @@ class InvestmentDetailDialog extends React.Component {
     render() {
         const {
             open,
-            onHandleModal
+            onHandleModal,
+            data
         } = this.props;
+        const { clabe, referencia, nombre_del_titular_de_la_cuenta, banco } = data;
         const { showDetail } = this.state;
+        const logo = `${process.env.PUBLIC_URL}/img/logo-inverspot-white.png`;
         return (
             <Modal
                 toggle={onHandleModal}
                 isOpen={open}
             >
                 <ModalHeader className="modal-box-header bg-purple text-white text-center">
-                    <div className="font-size-30 font-weight-600">Inverspot</div>
+                    <div className="w-75 m-auto">
+                        <img src={logo} alt={""}/>
+                    </div>
                 </ModalHeader>
                 <div className="modal-box-content">
                     <div className="w-100">
@@ -62,19 +67,19 @@ class InvestmentDetailDialog extends React.Component {
                             </div>
                             <div className="col-12 mb-2">
                                 <div className="font-gray">CLABE:</div>
-                                <div className="font-size-16 font-weight-600">6460989289304-2393</div>
+                                <div className="font-size-16 font-weight-600">{clabe}</div>
                             </div>
                             <div className="col-12 mb-2">
                                 <div className="font-gray">Referebcia:</div>
-                                <div className="font-size-16 font-weight-600">7890</div>
+                                <div className="font-size-16 font-weight-600">{referencia}</div>
                             </div>
                             <div className="col-12 mb-2">
                                 <div className="font-gray">Banco:</div>
-                                <div className="font-size-16 font-weight-600">STP</div>
+                                <div className="font-size-16 font-weight-600">{banco}</div>
                             </div>
                             <div className="col-12 mb-2">
                                 <div className="font-gray">Nombre del titular de la cuenta:</div>
-                                <div className="font-size-16 font-weight-600">Desarrollo Colectivo Inmobiliario S.A.P.I.DE C.V</div>
+                                <div className="font-size-16 font-weight-600">{nombre_del_titular_de_la_cuenta}</div>
                             </div>
                         </div>
                     </div>

@@ -13,9 +13,11 @@ import InvestmentPage from "./InvestmentPage"
 import InvestmentDetail from "./InvestmentPage/InvestmentDetail";
 import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
+import CommoDialog from "../components/CommoDialog";
+import {toggleCommoModal} from "../redux/actions";
 class MainApp extends React.Component {
     render() {
-        const {match} = this.props;
+        const { match, open_commo } = this.props;
         return (
             <>
                 <Layout/>
@@ -33,14 +35,19 @@ class MainApp extends React.Component {
                         <Route exact path={`${match.url}/profile`} component={ProfilePage}/>
                     </Switch>
                 </MainWrapper>
+                <CommoDialog open={open_commo} toggleModal={this.props.dispatchToggleCommoModal}/>
             </>
         );
     }
 }
 
 
-const mapStateToProps = ({auth}) => {
-    const {user} = auth;
-    return {user}
+const mapStateToProps = ({ auth, handleModal }) => {
+    const { user } = auth;
+    const { open_commo } = handleModal;
+    return { user, open_commo }
 };
-export default withRouter(connect(mapStateToProps)(MainApp));
+const mapDispatchToProps = dispatch => ({
+    dispatchToggleCommoModal: () => dispatch(toggleCommoModal())
+});
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainApp));

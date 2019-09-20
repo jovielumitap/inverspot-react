@@ -4,7 +4,7 @@ import DownloadItem from "./components/DownloadItem";
 import {connect} from "react-redux";
 import FileSaver from 'file-saver';
 import {Header} from "../../components/Header";
-import {fetchDownloadList, requestDownloadPDFInvoice} from "../../redux/actions";
+import {fetchDownloadList} from "../../redux/actions";
 import DownloadConfirmDialog from "../../components/DownloadConfirmDialog";
 class DownloadPage extends Component {
     componentDidMount() {

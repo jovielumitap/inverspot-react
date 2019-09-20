@@ -2,16 +2,16 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const CommissionItem = ({item}) => {
-    const { accountname, fecha, total, tfde_balance } = item;
+    const { accountname, fecha, total, tfde_balance, payment_status, quantity } = item;
     return (
         <div className="referral-item flex-row w-100 border-bottom">
-            <div className="commission-icon-bg border-bottom" style={{ backgroundColor: item.bgColorItem}}>
+            <div className="commission-icon-bg border-bottom" style={{ backgroundColor: payment_status === "paid"? "#662D91": payment_status === "unpaid"? "": "#FBB03B"}}>
                 <div className="referral-item-number">
-                    <FontAwesomeIcon className="font-white font-size-24" icon={item.icon}/>
+                    <FontAwesomeIcon className="font-white font-size-24" icon={payment_status === "paid"? "check": payment_status === "unpaid"? "circle": "clock"}/>
                 </div>
             </div>
             <div className="referral-item-number-bg">
-                <div className="referral-item-number">3</div>
+                <div className="referral-item-number">{quantity}</div>
             </div>
             <div className="d-flex f-1">
                 <div className="ml-2 position-relative f-1">

@@ -28,7 +28,7 @@ export const Tab4InvestmentItem = ({item, requestDownloadPDF, viewInvoiceDetail}
                 </div>
             </div>
             <div className="confirm-icon-bg border-bottom">
-                <div className="download-icon" onClick={() => payment_status === "paid"? requestDownloadPDF(crmid, pdf): viewInvoiceDetail()}>
+                <div className="download-icon" onClick={() => payment_status === "paid"? requestDownloadPDF(crmid, pdf): viewInvoiceDetail(item)}>
                     <FontAwesomeIcon className="font-size-24" icon={payment_status === "paid"? "download": "file-invoice-dollar"}/>
                 </div>
             </div>

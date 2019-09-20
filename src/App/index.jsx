@@ -88,7 +88,7 @@ class App extends Component {
         if (location.pathname === '/') {
             if (!user.token) {
                 return ( <Redirect to={'/sign-in'}/> );
-            } else if (initURL === '' || initURL === '/' || initURL === '/sign-in') {
+            } else if (initURL === '' || initURL === '/' || initURL === '/sign-in' || initURL === '/sign-up') {
                 return ( <Redirect to={'/app/opportunity-investment'}/> );
             } else {
                 return (<Redirect to={initURL} />);
