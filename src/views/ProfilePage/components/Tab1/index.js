@@ -15,10 +15,13 @@ export const Tab1 = ({ userType, profile }) => {
         cf_1370,
         cf_1382,
         cf_1384,
-        cf_1386
+        cf_1386,
+        accountname,
+        id_representante_legal
     } = profile;
     switch (userType) {
         case "Nacional Física":
+        case "Extranjera Física":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -135,7 +138,7 @@ export const Tab1 = ({ userType, profile }) => {
                     </div>
                 </div>
             );
-        case "national":
+        case "Nacional Moral":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -143,7 +146,7 @@ export const Tab1 = ({ userType, profile }) => {
                             Nombre del representante
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            José Antonio
+                            {accountname? accountname: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -151,7 +154,7 @@ export const Tab1 = ({ userType, profile }) => {
                             Apellido Paterno
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Galindo
+                            {cf_1130? cf_1130: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -159,7 +162,7 @@ export const Tab1 = ({ userType, profile }) => {
                             Apellido Materno
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Jiménez
+                            {cf_1132? cf_1132: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -168,7 +171,7 @@ export const Tab1 = ({ userType, profile }) => {
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3hPQEiOgWfOgiaLp_BYJ6ih7ASfbBSxbsriZCzJ3VJInKtI-E"}
+                                src={id_representante_legal}
                                 alt={"Id card"}
                             />
                         </div>

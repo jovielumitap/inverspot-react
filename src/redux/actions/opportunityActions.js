@@ -87,7 +87,7 @@ export function submitApartarRequest(productid, quantity, history) {
       const { success, message } = response.data;
       if (success) {
         toast.success(message.success);
-        history.push("/app/investment")
+        history.push("/app/apartadas")
       } else {
         toast.error(message);
       }

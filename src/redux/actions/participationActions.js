@@ -77,7 +77,7 @@ export function fetchParticipationDetail(id) {
     }
   };
 }
-export function submitConfirmInvestment(invoiceid, password) {
+export function submitConfirmInvestment(invoiceid, password, history) {
   return async (dispatch) => {
     const participationAPI = new ParticipationAPI();
     dispatch(loading(''));
@@ -87,6 +87,7 @@ export function submitConfirmInvestment(invoiceid, password) {
       const { success, message } = response.data;
       if (success) {
         toast.success(message.success);
+        history.push("/app/investment")
       } else {
         toast.error(message.error);
       }

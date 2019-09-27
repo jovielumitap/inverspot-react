@@ -38,7 +38,7 @@ class LogIn extends Component {
     };
 
     onSubmit = () => {
-        const {username, password, isRemember} = this.state;
+        const { username, password, isRemember } = this.state;
         if (username === "" || password === "") {
             this.setState({username_error: username === ""});
             this.setState({password_error: password === ""});

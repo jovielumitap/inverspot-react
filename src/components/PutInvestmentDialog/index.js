@@ -38,7 +38,8 @@ class PutInvestmentDialog extends React.Component {
                             />
                             <div className="d-table ml-2" style={{height: "50px"}}>
                                 <div
-                                    className="d-table-cell vertical-align-center font-size-22 font-weight-600">{title}</div>
+                                    className="d-table-cell vertical-align-center font-size-22 font-weight-600">{title}
+                                </div>
                             </div>
                         </div>
                         <div className="row mb-2">

@@ -7,7 +7,22 @@ export const Tab2 = ({ userType, profile }) => {
         cf_1374,
         cf_1380,
         id_representante_legal,
-        cf_1378
+        cf_1378,
+        profesion,
+        ns_fiel,
+        moral_telefono,
+        email1,
+        acta_constitutiva,
+        cedula_fiscal,
+        poder_representante,
+        fecha_nacimiento,
+        pais_nacimiento,
+        cf_1368,
+        cf_1372,
+        nombre_director,
+        jerarquia_inferior,
+        moral_consejo,
+        ownership,
     } = profile;
     switch (userType) {
         case "Nacional Física":
@@ -65,8 +80,8 @@ export const Tab2 = ({ userType, profile }) => {
                         </div>
                     </div>
                 </div>
-            )
-        case "national":
+            );
+        case "Extranjera Física":
             return (
                 <div className="p-2">
                     <div className="border-bottom pb-1">
@@ -74,7 +89,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Razon Social
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Extranjera Moral
+                            {razon_social? razon_social: "-"}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -82,7 +97,55 @@ export const Tab2 = ({ userType, profile }) => {
                             RFC
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            TRE1400034I5
+                            {siccode? siccode: "-"}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Tipo de identificación
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {cf_1374? cf_1374: "-"}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Clave de elector
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {cf_1380? cf_1380: "-"}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Identificacion oficial
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            <img
+                                src={id_representante_legal}
+                                alt={"Id card"}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        case "Nacional Moral":
+            return (
+                <div className="p-2">
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            Razon Social
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {razon_social}
+                        </div>
+                    </div>
+                    <div className="border-bottom pb-1">
+                        <div className="font-gray font-size-12">
+                            RFC
+                        </div>
+                        <div className="font-size-16 font-weight-600 pl-1">
+                            {siccode}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -90,7 +153,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Giro mercantil, actividad u objeto social
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Jiménez
+                            {profesion}
                         </div>
                     </div>
                     <div className="border-bottom pb-1">
@@ -98,7 +161,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Número de serie de la Firma Electrónica Avanzada
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            8766015755
+                            {ns_fiel}
                         </div>
                     </div>
 
@@ -107,7 +170,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Número telefónico del domicilio
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            5575106678
+                            {moral_telefono}
                         </div>
                     </div>
 
@@ -116,7 +179,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Correo
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            ja.galindo@gmail.com
+                            {email1}
                         </div>
                     </div>
 
@@ -126,8 +189,9 @@ export const Tab2 = ({ userType, profile }) => {
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwZAGHkX0MkEwne5SOCkbb9RbWmCsSxLROou1bgL86JbtFZsZAA"}
+                                src={acta_constitutiva}
                                 alt={"Id card"}
+                                className="w-50 border border-dark"
                             />
                         </div>
                     </div>
@@ -138,8 +202,9 @@ export const Tab2 = ({ userType, profile }) => {
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwZAGHkX0MkEwne5SOCkbb9RbWmCsSxLROou1bgL86JbtFZsZAA"}
+                                src={cedula_fiscal}
                                 alt={"Id card"}
+                                className="w-50 border border-dark"
                             />
                         </div>
                     </div>
@@ -150,8 +215,9 @@ export const Tab2 = ({ userType, profile }) => {
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
                             <img
-                                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwZAGHkX0MkEwne5SOCkbb9RbWmCsSxLROou1bgL86JbtFZsZAA"}
+                                src={poder_representante}
                                 alt={"Id card"}
+                                className="w-50 border border-dark"
                             />
                         </div>
                     </div>
@@ -161,7 +227,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Fecha de constitución
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            09 Feb 2010
+                            {fecha_nacimiento}
                         </div>
                     </div>
 
@@ -170,7 +236,7 @@ export const Tab2 = ({ userType, profile }) => {
                             País de constitución
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            México
+                            {pais_nacimiento}
                         </div>
                     </div>
 
@@ -179,7 +245,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Lugar de constitución
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            CDMX, México
+                            {cf_1368}
                         </div>
                     </div>
 
@@ -188,7 +254,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Nacionalidad
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Mexicana
+                            {cf_1372}
                         </div>
                     </div>
 
@@ -197,7 +263,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Nombre del director general
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            José Antonio Galindo Jiménez
+                            {nombre_director}
                         </div>
                     </div>
 
@@ -206,7 +272,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Jerarquía inmediata inferior
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Andres Galindo Jiménez
+                            {jerarquia_inferior}
                         </div>
                     </div>
 
@@ -215,7 +281,7 @@ export const Tab2 = ({ userType, profile }) => {
                             Nombres del consejo de Admin.
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            Sandra Jimenez
+                            {moral_consejo}
                         </div>
                     </div>
 
@@ -224,11 +290,11 @@ export const Tab2 = ({ userType, profile }) => {
                             Nombre del propietario
                         </div>
                         <div className="font-size-16 font-weight-600 pl-1">
-                            José Antonio Galindo Jiménez
+                            {ownership}
                         </div>
                     </div>
                 </div>
-            )
+            );
         default: return null
     }
 };
