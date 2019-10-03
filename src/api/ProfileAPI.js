@@ -5,16 +5,12 @@ import axios from 'axios';
 import ConfigurationAPI from './ConfigurationAPI';
 
 class ProfileAPI extends ConfigurationAPI {
-  getProfile = () => {
-    return new Promise((resolve, reject) => {
-      return axios.get(`${this.url}/profile`, this.headers)
-      .then((response) => {
-        resolve(response);
-      }).catch((error) => {
-        reject(error);
-      })
-    })
-  };
+  getProfile = () => new Promise((resolve, reject) => axios.get(`${this.url}/profile`, this.headers)
+    .then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    }));
 }
 
 export default ProfileAPI;

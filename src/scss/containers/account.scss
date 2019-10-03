@@ -6,7 +6,7 @@
   overflow-y: auto;
 
   @include themify($themes) {
-    background: themed('colorBackgroundBody');
+    background: themed("colorBackgroundBody");
   }
 
   &.account--photo {
@@ -19,15 +19,18 @@
       position: relative;
     }
 
-    .form__form-group-icon, .form__form-group-button {
+    .form__form-group-icon,
+    .form__form-group-button {
       background: transparent;
     }
 
-    .form__form-group-icon, input:not(:last-child) {
+    .form__form-group-icon,
+    input:not(:last-child) {
       border-right: none;
     }
 
-    .form__form-group-button, input {
+    .form__form-group-button,
+    input {
       border-left: none;
     }
 
@@ -63,9 +66,8 @@
 }
 
 .account__card {
-
   @include themify($themes) {
-    background-color: themed('colorBackground');
+    background-color: themed("colorBackground");
   }
 
   background-color: #ffffff;
@@ -145,7 +147,8 @@
   margin-bottom: 20px;
   position: relative;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: "";
     height: 1px;
     width: calc(50% - 90px);
@@ -233,27 +236,81 @@
 }
 
 .account_panel_step {
-  width: 95% !important;
   display: grid !important;
-  grid-template-rows: 30% 60% 10%;
+  grid-template-rows: 88% 12%;
+  width: 100% !important;
+  height: 100vh !important;
+  & > div {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    overflow: auto;
+  }
+  &_title {
+    padding: 1em;
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    color: #323d53;
+    text-align: center;
+    line-height: 1.2em;
+    align-items: center;
+    justify-content: center;
+  }
+  &_submit {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+    & > button {
+      border: none;
+      display: flex;
+      font-size: 17px;
+      color: #ffffff;
+      text-align: center;
+      align-items: center;
+      border-radius: 2em;
+      margin-bottom: 0.6em;
+      padding: 0.6em 0.9em;
+      justify-content: center;
+      background-color: #ff5600;
+    }
+  }
+}
+
+.select_user_type {
+  &_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 16vw;
+    & > button {
+      border: none;
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+      padding: 0.6em 0.9em;
+      border-radius: 2em;
+      background-color: #60239A;
+      margin-bottom: 0.6em;
+    }
+  }
 }
 
 @media screen and (max-width: 520px) {
-
   .account__card {
     padding: 35px 30px;
   }
 }
 
 @media screen and (max-width: 425px) {
-
   .account__btns {
     flex-wrap: wrap;
   }
 }
 
 @media screen and (max-width: 575px) {
-
   .account-panel-width {
     width: 85%;
     margin: auto;
@@ -263,7 +320,6 @@
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-
   .account-panel-width {
     width: 75%;
     margin: auto;
@@ -273,7 +329,6 @@
   }
 }
 @media (min-width: 768px) {
-
   .account-panel-width {
     width: 500px;
     margin: auto;
@@ -286,16 +341,14 @@
   width: 100vw;
   height: 100vh;
   overflow: auto;
-
 }
 .login-panel-background {
-  background: #5C2E88 !important;
+  background: #5c2e88 !important;
 }
 .login-title {
-
 }
 .register-title {
-  color: #5B2954;
+  color: #5b2954;
   font-size: 20px;
   font-weight: 600;
 }
@@ -304,11 +357,11 @@
   font-size: 15px;
 }
 .register-login-text {
-  color: #5B2954;
+  color: #5b2954;
   font-size: 15px;
 }
 .register-note {
-  color: #6E5384;
+  color: #6e5384;
 }
 .register-check-label {
   color: $inverspot-red;
