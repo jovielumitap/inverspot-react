@@ -11,6 +11,25 @@ class ProfileAPI extends ConfigurationAPI {
     }).catch((error) => {
       reject(error);
     }));
+
+  getProfileScheme = () => new Promise((resolve, reject) => axios.get(`${this.url}/profile/scheme`, this.headers)
+    .then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    }));
+
+  setProfileParams = params => new Promise((resolve, reject) => {
+    const data = { ...params };
+    const formData = new FormData();
+    Object.entries(data).forEach((field) => {
+      formData.append(field[0], field[1]);
+    });
+    axios.post(`${this.url}/profile`, formData, this.headers)
+      .then((response) => {
+        resolve(response);
+      }).catch(err => reject(err));
+  })
 }
 
 export default ProfileAPI;

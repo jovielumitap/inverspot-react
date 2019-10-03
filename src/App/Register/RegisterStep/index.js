@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 /* Component */
 import RegisterStep from './RegisterStep';
 /* Actions */
-import { fetchProfileDetail } from '../../../redux/actions';
+import {
+  postProfileDetail,
+  fetchProfileDetail,
+  fetchProfileScheme,
+} from '../../../redux/actions';
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -13,6 +17,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchFetchProfileDetail: () => dispatch(fetchProfileDetail()),
+  dispatchFetchProfileScheme: () => dispatch(fetchProfileScheme()),
+  dispatchPostProfileDetail: params => dispatch(postProfileDetail(params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterStep);

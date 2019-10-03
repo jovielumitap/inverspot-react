@@ -236,15 +236,19 @@
 }
 
 .account_panel_step {
-  display: grid !important;
-  grid-template-rows: 88% 12%;
   width: 100% !important;
   height: 100vh !important;
+  position: absolute !important;
+  z-index: 99 !important;
   & > div {
     width: 100%;
-    height: 100%;
     overflow-y: hidden;
     overflow: auto;
+  }
+  &_steeper{
+    bottom: 0 !important;
+    height: 10% !important;
+    position: fixed !important;
   }
   &_title {
     padding: 1em;
@@ -256,6 +260,9 @@
     line-height: 1.2em;
     align-items: center;
     justify-content: center;
+  }
+  &_form {
+    padding: 0 12vw;
   }
   &_submit {
     display: flex;

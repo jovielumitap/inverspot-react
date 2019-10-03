@@ -12,7 +12,7 @@ const SelectUserType = ({
     <div className="w-100 select_user_type_list">
       <button
         onClick={() => {
-          onClick(0);
+          onClick('Nacional Física');
         }}
         type="button"
       >
@@ -20,7 +20,7 @@ const SelectUserType = ({
       </button>
       <button
         onClick={() => {
-          onClick(1);
+          onClick('Extranjera Física');
         }}
         type="button"
       >
@@ -28,7 +28,7 @@ const SelectUserType = ({
       </button>
       <button
         onClick={() => {
-          onClick(2);
+          onClick('Nacional Moral');
         }}
         type="button"
       >
@@ -36,7 +36,7 @@ const SelectUserType = ({
       </button>
       <button
         onClick={() => {
-          onClick(3);
+          onClick('Extranjera Moral');
         }}
         type="button"
       >

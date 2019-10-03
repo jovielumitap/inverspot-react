@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Stepper from '@material-ui/core/Stepper';
@@ -40,168 +41,221 @@ class RegisterStep extends Component {
   static propTypes = {
     loads: PropTypes.object.isRequired,
     profileReducer: PropTypes.object.isRequired,
+    dispatchPostProfileDetail: PropTypes.func.isRequired,
     dispatchFetchProfileDetail: PropTypes.func.isRequired,
+    dispatchFetchProfileScheme: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    const { dispatchFetchProfileDetail } = this.props;
+    const {
+      dispatchFetchProfileDetail,
+      dispatchFetchProfileScheme,
+    } = this.props;
     dispatchFetchProfileDetail();
+    dispatchFetchProfileScheme();
   }
 
   renderStepContent = () => {
-    const { userType, activeStep } = this.state;
-    if (activeStep === 1) {
+    const {
+      userType,
+      activeStep,
+    } = this.state;
+    const {
+      loads,
+      profileReducer,
+    } = this.props;
+    const isLoading = Boolean(loads.loading);
+    const { profile, scheme } = profileReducer;
+    if (profile.tipo_de_persona === '') {
       return (
         <SelectUserType
           title="Tipo de persona *"
           onClick={this.onClickUserType}
         />
       );
-    } else if (activeStep === 2) {
-      if (userType === 0) {
+    }
+    const { tipo_de_persona } = profile;
+    switch (tipo_de_persona) {
+      case 'Nacional Física':
         return (
           <NationalPhysic1
-            title={"Datos personales"}
+            title="Datos personales"
             skipStep={this.skipStep}
+            scheme={scheme['Nacional Física'] || scheme}
+            isLoading={isLoading}
           />
         );
-      }
-      if (userType === 1) {
+      case 'Extranjera Física':
         return (
           <PhysicalForeigner1
             title={"Datos personales"}
             skipStep={this.skipStep}
           />
         );
-      }
-      if (userType === 2) {
-        return (
-          <NationalMoral1 title={"Datos personales"} skipStep={this.skipStep} />
-        );
-      }
-      if (userType === 3) {
+      case 'Nacional Moral':
+        return <NationalMoral1 title={"Datos personales"} skipStep={this.skipStep} />;
+      case 'Extranjera Moral':
         return (
           <MoralForeigner1
             title={"Datos personales"}
             skipStep={this.skipStep}
           />
         );
-      }
-    } else if (activeStep === 3) {
-      if (userType === 0) {
-        return (
-          <NationalPhysic2
-            title={"Documentos y datos"}
-            skipStep={this.skipStep}
-          />
-        );
-      }
-      if (userType === 1) {
-        return (
-          <PhysicalForeigner2
-            title={"Documentos y datos"}
-            skipStep={this.skipStep}
-          />
-        );
-      }
-      if (userType === 2) {
-        return (
-          <NationalMoral2
-            title={"Documentos y datos"}
-            skipStep={this.skipStep}
-          />
-        );
-      }
-      if (userType === 3) {
-        return (
-          <MoralForeigner2
-            title={"Documentos y datos"}
-            skipStep={this.skipStep}
-          />
-        );
-      }
-    } else if (activeStep === 4) {
-      if (userType === 0) {
-        return <NationalPhysic3 title={"Dirección"} skipStep={this.skipStep} />;
-      }
-      if (userType === 1) {
-        return (
-          <PhysicalForeigner3 title={"Dirección"} skipStep={this.skipStep} />
-        );
-      }
-      if (userType === 2) {
-        return <NationalMoral3 title={"Dirección"} skipStep={this.skipStep} />;
-      }
-      if (userType === 3) {
-        return <MoralForeigner3 title={"Dirección"} skipStep={this.skipStep} />;
-      }
-    } else if (activeStep === 5) {
-      if (userType === 0) {
-        return (
-          <NationalPhysic4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
-        );
-      }
-      if (userType === 1) {
-        return (
-          <PhysicalForeigner4
-            title={"Cuenta bancaria"}
-            skipStep={this.skipStep}
-          />
-        );
-      }
-      if (userType === 2) {
-        return (
-          <NationalMoral4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
-        );
-      }
-      if (userType === 3) {
-        return (
-          <MoralForeigner4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
-        );
-      }
-    } else if (activeStep === 6) {
-      if (userType === 0) {
-        return (
-          <NationalPhysic5
-            title={"Beneficiarios"}
-            finishStep={this.finishStep}
-          />
-        );
-      }
-      if (userType === 1) {
-        return (
-          <PhysicalForeigner5
-            title={"Beneficiarios"}
-            finishStep={this.finishStep}
-          />
-        );
-      }
-      if (userType === 2) {
-        return (
-          <NationalMoral5
-            title={"Beneficiarios"}
-            finishStep={this.finishStep}
-          />
-        );
-      }
-      if (userType === 3) {
-        return (
-          <MoralForeigner5
-            title={"Beneficiarios"}
-            finishStep={this.finishStep}
-          />
-        );
-      }
-    } else {
-      return null;
+      default:
+        break;
+    }
+    // if (activeStep === 2) {
+    //   if (userType === 0) {
+    //     return (
+    //       <NationalPhysic1
+    //         title={"Datos personales"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 1) {
+    //     return (
+    //       <PhysicalForeigner1
+    //         title={"Datos personales"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 2) {
+    //     return (
+    //       <NationalMoral1 title={"Datos personales"} skipStep={this.skipStep} />
+    //     );
+    //   }
+    //   if (userType === 3) {
+    //     return (
+    //       <MoralForeigner1
+    //         title={"Datos personales"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    // } else if (activeStep === 3) {
+    //   if (userType === 0) {
+    //     return (
+    //       <NationalPhysic2
+    //         title={"Documentos y datos"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 1) {
+    //     return (
+    //       <PhysicalForeigner2
+    //         title={"Documentos y datos"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 2) {
+    //     return (
+    //       <NationalMoral2
+    //         title={"Documentos y datos"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 3) {
+    //     return (
+    //       <MoralForeigner2
+    //         title={"Documentos y datos"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    // } else if (activeStep === 4) {
+    //   if (userType === 0) {
+    //     return <NationalPhysic3 title={"Dirección"} skipStep={this.skipStep} />;
+    //   }
+    //   if (userType === 1) {
+    //     return (
+    //       <PhysicalForeigner3 title={"Dirección"} skipStep={this.skipStep} />
+    //     );
+    //   }
+    //   if (userType === 2) {
+    //     return <NationalMoral3 title={"Dirección"} skipStep={this.skipStep} />;
+    //   }
+    //   if (userType === 3) {
+    //     return <MoralForeigner3 title={"Dirección"} skipStep={this.skipStep} />;
+    //   }
+    // } else if (activeStep === 5) {
+    //   if (userType === 0) {
+    //     return (
+    //       <NationalPhysic4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
+    //     );
+    //   }
+    //   if (userType === 1) {
+    //     return (
+    //       <PhysicalForeigner4
+    //         title={"Cuenta bancaria"}
+    //         skipStep={this.skipStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 2) {
+    //     return (
+    //       <NationalMoral4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
+    //     );
+    //   }
+    //   if (userType === 3) {
+    //     return (
+    //       <MoralForeigner4 title={"Cuenta bancaria"} skipStep={this.skipStep} />
+    //     );
+    //   }
+    // } else if (activeStep === 6) {
+    //   if (userType === 0) {
+    //     return (
+    //       <NationalPhysic5
+    //         title={"Beneficiarios"}
+    //         finishStep={this.finishStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 1) {
+    //     return (
+    //       <PhysicalForeigner5
+    //         title={"Beneficiarios"}
+    //         finishStep={this.finishStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 2) {
+    //     return (
+    //       <NationalMoral5
+    //         title={"Beneficiarios"}
+    //         finishStep={this.finishStep}
+    //       />
+    //     );
+    //   }
+    //   if (userType === 3) {
+    //     return (
+    //       <MoralForeigner5
+    //         title={"Beneficiarios"}
+    //         finishStep={this.finishStep}
+    //       />
+    //     );
+    //   }
+    // } else {
+    //   return null;
+    // }
+  };
+
+  onClickUserType = (type) => {
+    if (type) {
+      const {
+        profileReducer,
+        dispatchPostProfileDetail,
+      } = this.props;
+      const { profile } = profileReducer;
+      const params = { ...profile, tipo_de_persona: type };
+      dispatchPostProfileDetail(params);
     }
   };
-  onClickUserType = type => {
-    this.setState({
-      userType: type,
-      activeStep: 2
-    });
-  };
+
   skipStep = () => {
     const { activeStep } = this.state;
     if (activeStep === 6) return;
@@ -233,7 +287,7 @@ class RegisterStep extends Component {
           <div className="account_panel_step_children">
             {!isLoading && (this.renderStepContent())}
           </div>
-          {!isLoading && (
+          {/* {!isLoading && (
             <div className="account_panel_step_submit">
               <button
                 id="account_panel_step_submit_late"
@@ -251,7 +305,7 @@ class RegisterStep extends Component {
                 </span>
               </button>
             </div>
-          )}
+          )} */}
         </div>
         <div className="account_panel_step_steeper">
           <Stepper
