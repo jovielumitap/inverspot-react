@@ -232,6 +232,12 @@
   }
 }
 
+.account_panel_step {
+  width: 95% !important;
+  display: grid !important;
+  grid-template-rows: 30% 60% 10%;
+}
+
 @media screen and (max-width: 520px) {
 
   .account__card {
@@ -280,6 +286,7 @@
   width: 100vw;
   height: 100vh;
   overflow: auto;
+
 }
 .login-panel-background {
   background: #5C2E88 !important;

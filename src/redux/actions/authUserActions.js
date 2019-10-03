@@ -105,18 +105,18 @@ export function registerWithEmailPassAction(body) {
             token: access_token,
             token_type,
             isAuth: true,
-            profile_status
+            profile_status,
           },
         });
       }
       else {
-        toast.error(message.error);
+        toast.error(message.error || message.warning);
       }
     }
 
     catch (e) {
       console.log({ LoginError: e });
-      toast.error('Error en la API');
+      toast.error(`Ups...${e}`);
     }
 
     finally {

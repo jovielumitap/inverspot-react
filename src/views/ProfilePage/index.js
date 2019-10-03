@@ -13,7 +13,7 @@ import {fetchProfileDetail} from "../../redux/actions";
 import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 
-const titles = ["Datos Generales", "Documentos y datos", "Direcció", "Cuenta bancaria", "Beneficiarios"];
+const titles = ["Datos Generales", "Documentos y datos", "Dirección", "Cuenta bancaria", "Beneficiarios"];
 class ProfilePage extends Component {
     onSwipeAction = (e) => {
         const deltaX = Math.abs(e.deltaX);
