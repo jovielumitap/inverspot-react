@@ -61,7 +61,7 @@ class LogIn extends Component {
                             <input
                                 className='form-control form-control-lg'
                                 value={username}
-                                type={"text"}
+                                type={"email"}
                                 placeholder={"Usuario"}
                                 onChange={this.handleChange('username')}
                             />

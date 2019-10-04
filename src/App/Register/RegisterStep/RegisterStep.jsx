@@ -256,10 +256,18 @@ class RegisterStep extends Component {
     }
   };
 
-  skipStep = () => {
-    const { activeStep } = this.state;
-    if (activeStep === 6) return;
-    this.setState({ activeStep: activeStep + 1 });
+  skipStep = (form) => {
+    const { profileReducer } = this.props;
+    const { profile } = profileReducer;
+    const state = { ...form };
+    let formObject = {};
+    Object.entries(state).forEach((field) => {
+      const element = field[1].value;
+      formObject = { ...formObject, [field[0]]: (element || '') };
+    });
+    console.log('formObject: ', formObject);
+    const fetchObjects = { ...profile, ...formObject };
+    console.log('fetchObjects: ', fetchObjects);
   };
   finishStep = () => {
     this.props.history.push("sign-in");

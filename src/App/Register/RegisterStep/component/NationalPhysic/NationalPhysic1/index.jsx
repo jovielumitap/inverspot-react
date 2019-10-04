@@ -1,14 +1,20 @@
+/* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Select,
   MenuItem,
+  Collapse,
   FormControl,
   CircularProgress,
 } from '@material-ui/core';
-import MaskedInput from 'react-text-mask'
+import {Form } from 'reactstrap';
+import MaskedInput from 'react-text-mask';
 import { KeyboardArrowRight } from '@material-ui/icons';
 import BootstrapInput from '../../../../../../components/BootstrapInput';
+import GoogleMapsPlacesSearch from '../../../../../../components/GoogleMapsPlacesSearch';
 
 const NationalPhysic1 = ({
   title,
@@ -24,17 +30,70 @@ const NationalPhysic1 = ({
     }
   }, [scheme]);
 
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    const newStep = { ...form[name], value };
+    setForm({ ...form, [name]: { ...newStep } });
+  };
+
+  const onChangeSearch = (places) => {
+    const initForm = { ...form };
+    const pais = { ...initForm.pais_nacimiento };
+    const entidad = { ...initForm.entidad_nacimiento };
+    if (places.length > 0) {
+      const { address_components } = places[0];
+      address_components.forEach((add) => {
+        if (add.types.includes('country')) {
+          pais.value = add.long_name;
+        }
+        if (add.types.includes('administrative_area_level_1')) {
+          entidad.value = add.long_name;
+        }
+      });
+      setForm(old => ({
+        ...old,
+        pais_nacimiento: { ...pais },
+        entidad_nacimiento: { ...entidad },
+      }));
+    } else {
+      pais.value = '';
+      entidad.value = '';
+    }
+    setForm(old => ({
+      ...old,
+      pais_nacimiento: { ...pais },
+      entidad_nacimiento: { ...entidad },
+    }));
+    console.log('value: ', places);
+  };
+
+  const onKeyPress = (event) => {
+    if (event.which === 13 /* Enter */) {
+      event.preventDefault();
+    }
+  };
+
+  const onSubmit = () => {
+    
+  };
+
   const renderForm = () => {
-    console.log('form: ', form);
     if (Object.keys(form).length > 0) {
       return (
-        <div className="w-100">
+        <Form
+          className="w-100"
+          onKeyPress={onKeyPress}
+          onSubmit={onSubmit}
+        >
           <div className="form-group w-100">
             <input
+              autoFocus
               id="input_name"
               name="ownership"
+              onChange={onChange}
+              value={form.ownership.value || ''}
               required={form.ownership.required}
-              readOnly={form.ownership.readOnly}
+              readOnly={form.ownership.readonly}
               placeholder={form.ownership.label}
               className="form-control form-control"
             />
@@ -43,8 +102,10 @@ const NationalPhysic1 = ({
             <input
               id="input_last1"
               name="cf_1130"
+              onChange={onChange}
+              value={form.cf_1130.value || ''}
               required={form.cf_1130.required}
-              readOnly={form.cf_1130.readOnly}
+              readOnly={form.cf_1130.readonly}
               placeholder={form.cf_1130.label}
               className="form-control form-control"
             />
@@ -53,8 +114,10 @@ const NationalPhysic1 = ({
             <input
               id="input_last2"
               name="cf_1132"
+              onChange={onChange}
+              value={form.cf_1132.value || ''}
               required={form.cf_1132.required}
-              readOnly={form.cf_1132.readOnly}
+              readOnly={form.cf_1132.readonly}
               placeholder={form.cf_1132.label}
               className="form-control form-control"
             />
@@ -65,9 +128,9 @@ const NationalPhysic1 = ({
               type="tel"
               guide={false}
               onBlur={() => {}}
-              onChange={() => {}}
+              onChange={onChange}
               required={form.phone.required}
-              readOnly={form.phone.readOnly}
+              readOnly={form.phone.readonly}
               placeholder={form.phone.label}
               className="form-control form-control"
               mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
@@ -77,8 +140,10 @@ const NationalPhysic1 = ({
             <input
               id="input_ocupation"
               name="profesion"
+              onChange={onChange}
+              value={form.profesion.value || ''}
               required={form.profesion.required}
-              readOnly={form.profesion.readOnly}
+              readOnly={form.profesion.readonly}
               placeholder={form.profesion.label}
               className="form-control form-control"
             />
@@ -88,128 +153,195 @@ const NationalPhysic1 = ({
               id="input_birthdate"
               type="text"
               name="fecha_nacimiento"
-              onFocus="(this.type='date')"
+              onFocus={(e) => {
+                e.target.type = 'date';
+                e.target.click();
+              }}
+              onBlur={(e) => {
+                e.target.type = 'text';
+              }}
+              onChange={onChange}
               required={form.fecha_nacimiento.required}
-              readOnly={form.fecha_nacimiento.readOnly}
               placeholder={form.fecha_nacimiento.label}
               className="form-control form-control"
             />
           </div>
           <div className="form-group w-100">
-            <input
-              className="form-control form-control"
-              placeholder={"Fecha de nacimiento*"}
+            <GoogleMapsPlacesSearch
+              id="input_country"
+              onPlacesChanged={onChangeSearch}
+              placeholder={form.cf_1368.label}
+              apiKey="AIzaSyCW6DrTYcN4QBoAbG8POPrN8vcKD_mVx3E"
             />
           </div>
           <div className="form-group w-100">
-            <FormControl className="w-100 mb-2">
-              <Select
-                value={""}
-                displayEmpty
-                placeholder="Select Options"
-                input={<BootstrapInput />}
-              >
-                <MenuItem value="" disabled>
-                  País de nacimiento*
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-    
-          <div className="form-group w-100">
-            <FormControl className="w-100 mb-2">
-              <Select
-                value={""}
-                displayEmpty
-                placeholder="Select Options"
-                input={<BootstrapInput />}
-              >
-                <MenuItem value="" disabled>
-                  Entidad federativa de nacimiento*
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-    
-          <div className="form-group w-100">
             <input
+              id="input_pais"
+              name="pais_nacimiento"
+              value={form.pais_nacimiento.value || ''}
+              required={form.pais_nacimiento.required}
+              readOnly={form.pais_nacimiento.readonly}
+              placeholder={form.pais_nacimiento.label}
               className="form-control form-control"
-              placeholder={"Lugar de nacimiento*"}
             />
           </div>
-    
           <div className="form-group w-100">
             <input
+              id="input_entidad"
+              name="entidad_nacimiento"
+              value={form.entidad_nacimiento.value || ''}
+              required={form.entidad_nacimiento.required}
+              readOnly={form.entidad_nacimiento.readonly}
+              placeholder={form.entidad_nacimiento.label}
               className="form-control form-control"
-              placeholder={"Nacionalidad*"}
             />
           </div>
-    
           <div className="form-group w-100">
-            <FormControl className="w-100 mb-2">
+            <FormControl
+              className="w-100 mb-2"
+              required={form.cf_1372.required}
+            >
               <Select
-                value={""}
+                id="input_nacionalidad"
                 displayEmpty
-                placeholder="Select Options"
+                name="cf_1372"
+                onChange={onChange}
+                required={form.cf_1372.required}
+                value={form.cf_1372.value || ''}
                 input={<BootstrapInput />}
               >
                 <MenuItem value="" disabled>
-                  Genero*
+                  {form.cf_1372.label}
+                </MenuItem>
+                {form.cf_1372.options.map((opt, i) => (
+                  <MenuItem
+                    key={`key_nacionalidad_opt_${opt}_${i}`}
+                    value={opt}
+                  >
+                    {opt}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <div className="form-group w-100">
+            <FormControl
+              className="w-100 mb-2"
+              required={form.cf_1370.required}
+            >
+              <Select
+                id="input_genero"
+                displayEmpty
+                name="cf_1370"
+                onChange={onChange}
+                input={<BootstrapInput />}
+                required={form.cf_1370.required}
+                value={form.cf_1370.value || ''}
+              >
+                <MenuItem value="" disabled>
+                  {form.cf_1370.label}
+                </MenuItem>
+                <MenuItem value="Masculino">
+                  {'Masculino'}
+                </MenuItem>
+                <MenuItem value="Femenino">
+                  {'Femenino'}
                 </MenuItem>
               </Select>
             </FormControl>
           </div>
-    
           <div className="form-group w-100">
-            <FormControl className="w-100 mb-2">
+            <FormControl
+              className="w-100 mb-2"
+              required={form.cf_1382.required}
+            >
               <Select
-                value={""}
+                id="input_estadoCivil"
+                name="cf_1382"
                 displayEmpty
-                placeholder="Select Options"
+                onChange={onChange}
                 input={<BootstrapInput />}
+                value={form.cf_1382.value || ''}
+                required={form.cf_1382.required}
               >
                 <MenuItem value="" disabled>
-                  Estado civil*
+                  {form.cf_1382.label}
                 </MenuItem>
+                {form.cf_1382.options.map((opt, i) => (
+                  <MenuItem
+                    key={`key_estadoCivil_opt_${opt}_${i}`}
+                    value={opt}
+                  >
+                    {opt}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
           </div>
-    
-          <div className="form-group w-100">
-            <FormControl className="w-100 mb-2">
-              <Select
-                value={""}
-                displayEmpty
-                placeholder="Select Options"
-                input={<BootstrapInput />}
-              >
-                <MenuItem value="" disabled>
-                  Régimen conyugal
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-    
-          <div className="form-group w-100">
-            <input
-              className="form-control form-control"
-              placeholder={"Conyuge"}
-            />
-          </div>
-    
+          <Collapse
+            mountOnEnter
+            in={Boolean(form.cf_1382.value === 'Casado')}
+          >
+            <div className="form-group w-100">
+              <FormControl className="w-100 mb-2">
+                <Select
+                  id="input_regimen"
+                  name="cf_1384"
+                  displayEmpty
+                  onChange={onChange}
+                  input={<BootstrapInput />}
+                  value={form.cf_1384.value || ''}
+                  required={form.cf_1384.required}
+                >
+                  <MenuItem value="" disabled>
+                    {form.cf_1384.label}
+                  </MenuItem>
+                  {form.cf_1384.options.map((opt, i) => (
+                    <MenuItem
+                      key={`key_regimen_opt_${opt}_${i}`}
+                      value={opt}
+                    >
+                      {opt}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+            <div className="form-group w-100">
+              <input
+                id="input_conyugeName"
+                name="cf_1386"
+                onChange={onChange}
+                value={form.cf_1386.value || ''}
+                required={form.cf_1386.required}
+                readOnly={form.cf_1386.readonly}
+                placeholder={form.cf_1386.label}
+                className="form-control form-control"
+              />
+            </div>
+          </Collapse>
           <div className="account_panel_step_submit">
             <button
               id="account_panel_step_submit_next"
-              type="button"
+              type="submit"
             >
-              Siguiente
+                Siguiente
               <span>
                 <KeyboardArrowRight />
               </span>
             </button>
+            <button
+              id="account_panel_step_submit_late"
+              type="button"
+              onClick={() => {
+                skipStep(form);
+              }}
+            >
+              Guardar para mas tarde
+            </button>
           </div>
-        </div>
-      )
+        </Form>
+      );
     }
   };
   return (
@@ -226,6 +358,7 @@ const NationalPhysic1 = ({
           </div>
         )}
       </div>
+
     </div>
   );
 };

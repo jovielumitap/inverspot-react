@@ -242,8 +242,9 @@
   z-index: 99 !important;
   & > div {
     width: 100%;
-    overflow-y: hidden;
     overflow: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth !important;
   }
   &_steeper{
     bottom: 0 !important;
@@ -260,6 +261,9 @@
     line-height: 1.2em;
     align-items: center;
     justify-content: center;
+  }
+  &_children {
+    margin-bottom: 10vh !important
   }
   &_form {
     padding: 0 12vw;
@@ -279,8 +283,9 @@
       align-items: center;
       border-radius: 2em;
       margin-bottom: 0.6em;
-      padding: 0.6em 0.9em;
+      padding: 0.6em 1.6em;
       justify-content: center;
+      min-height: 42px !important;
       background-color: #ff5600;
     }
   }
@@ -355,7 +360,7 @@
 .login-title {
 }
 .register-title {
-  color: #5b2954;
+  color: #60269E;
   font-size: 20px;
   font-weight: 600;
 }
