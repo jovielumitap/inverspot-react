@@ -1,12 +1,14 @@
 /* eslint-disable camelcase */
 import {
+  RESET_PROFILE,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_SCHEMA_SUCCESS,
 } from '../actionTypes';
 
 const defaultState = () => ({
-  profile: {},
   scheme: {},
+  profile: {},
+  redirect: false,
 });
 
 const initialState = { ...defaultState()};
@@ -17,13 +19,15 @@ export default function (state = initialState, action) {
     case GET_PROFILE_SUCCESS:
       return {
         ...state,
-        profile: action.payload,
+        ...action.payload,
       };
     case GET_PROFILE_SCHEMA_SUCCESS:
       return {
         ...state,
         scheme: action.payload,
       };
+    case RESET_PROFILE:
+      return defaultState();
     default:
       return state;
   }

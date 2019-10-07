@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { unauthenticate } from '../../redux/actions/authUserActions';
+import { restartProfile } from '../../redux/actions/profileActions';
 
 class LogOut extends PureComponent {
   static propTypes = {
@@ -11,6 +12,7 @@ class LogOut extends PureComponent {
   }
   constructor(props) {
     super(props);
+    this.props.dispatch(restartProfile());
     this.props.dispatch(unauthenticate());
   }
 

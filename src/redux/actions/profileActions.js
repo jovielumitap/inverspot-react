@@ -5,6 +5,7 @@ import { loading, loaded } from './loadActions';
 import { unauthenticate } from './authUserActions';
 import ProfileAPI from '../../api/ProfileAPI';
 import {
+  RESET_PROFILE,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_SCHEMA_SUCCESS,
 } from '../actionTypes';
@@ -21,7 +22,9 @@ export function fetchProfileDetail() {
         console.log('result: ', result);
         dispatch({
           type: GET_PROFILE_SUCCESS,
-          payload: result,
+          payload: {
+            profile: result,
+          },
         });
       } else {
         toast.error(message);
@@ -71,7 +74,7 @@ export function fetchProfileScheme() {
   };
 }
 
-export function postProfileDetail(params) {
+export function postProfileDetail(params, redirect = false, history = {}, redirectTo = '') {
   return async (dispatch) => {
     const profileAPI = new ProfileAPI();
     dispatch(loading(''));
@@ -81,9 +84,21 @@ export function postProfileDetail(params) {
         const { success, message, result } = res.data;
         if (success) {
           dispatch({
+            payload: {
+              profile: result,
+              redirect,
+            },
             type: GET_PROFILE_SUCCESS,
-            payload: result,
           });
+          console.log('redirect: ', redirect);
+          console.log('history: ', history);
+          console.log('redirectTo: ', redirectTo);
+          if (redirect && Object.keys(history).length > 0 && redirectTo !== '') {
+            toast.success('Guardado y enviando');
+            history.push(redirectTo);
+          } else {
+            toast.success('Guardado');
+          }
         } else {
           toast.error(message);
         }
@@ -100,5 +115,11 @@ export function postProfileDetail(params) {
     } finally {
       dispatch(loaded('authUser'));
     }
+  };
+}
+
+export function restartProfile() {
+  return {
+    type: RESET_PROFILE,
   };
 }

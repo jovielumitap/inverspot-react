@@ -40,6 +40,7 @@ class RegisterStep extends Component {
 
   static propTypes = {
     loads: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     profileReducer: PropTypes.object.isRequired,
     dispatchPostProfileDetail: PropTypes.func.isRequired,
     dispatchFetchProfileDetail: PropTypes.func.isRequired,
@@ -79,10 +80,11 @@ class RegisterStep extends Component {
       case 'Nacional Física':
         return (
           <NationalPhysic1
+            isLoading={isLoading}
             title="Datos personales"
             skipStep={this.skipStep}
+            redirect={this.saveToRedirect}
             scheme={scheme['Nacional Física'] || scheme}
-            isLoading={isLoading}
           />
         );
       case 'Extranjera Física':
@@ -256,7 +258,7 @@ class RegisterStep extends Component {
     }
   };
 
-  skipStep = (form) => {
+  getFormStateToSend = (form) => {
     const { profileReducer } = this.props;
     const { profile } = profileReducer;
     const state = { ...form };
@@ -267,8 +269,24 @@ class RegisterStep extends Component {
     });
     console.log('formObject: ', formObject);
     const fetchObjects = { ...profile, ...formObject };
-    console.log('fetchObjects: ', fetchObjects);
+    return fetchObjects;
+  }
+
+  skipStep = (form) => {
+    const actuaForm = this.getFormStateToSend(form);
+    console.log('actuaForm: ', actuaForm);
   };
+
+  saveToRedirect = (form) => {
+    const {
+      history,
+      dispatchPostProfileDetail,
+    } = this.props;
+    const actuaForm = this.getFormStateToSend(form);
+    console.log('actuaForm: ', actuaForm);
+    dispatchPostProfileDetail(actuaForm, true, history, '/app/opportunity-investment');
+  }
+
   finishStep = () => {
     this.props.history.push("sign-in");
   };

@@ -19,6 +19,7 @@ import GoogleMapsPlacesSearch from '../../../../../../components/GoogleMapsPlace
 const NationalPhysic1 = ({
   title,
   scheme,
+  redirect,
   skipStep,
   isLoading,
 }) => {
@@ -334,7 +335,7 @@ const NationalPhysic1 = ({
               id="account_panel_step_submit_late"
               type="button"
               onClick={() => {
-                skipStep(form);
+                redirect(form);
               }}
             >
               Guardar para mas tarde
@@ -366,12 +367,14 @@ const NationalPhysic1 = ({
 NationalPhysic1.propTypes = {
   title: PropTypes.string,
   skipStep: PropTypes.func,
+  redirect: PropTypes.func,
   scheme: PropTypes.object,
   isLoading: PropTypes.bool.isRequired,
 };
 NationalPhysic1.defaultProps = {
   title: 'Datos Personales',
   skipStep: () => {},
+  redirect: () => {},
   scheme: {},
 };
 

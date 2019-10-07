@@ -5,7 +5,7 @@ import {
   GET_PARTICIPATION_DETAIL_SUCCESS,
   GET_PARTICIPATION_SUCCESS,
 } from "../actionTypes";
-import {unauthenticate} from "./authUserActions";
+import { unauthenticate } from "./authUserActions";
 import ParticipationAPI from "../../api/ParticipationAPI";
 
 export function fetchParticipationList() {

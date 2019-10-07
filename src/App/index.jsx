@@ -23,37 +23,45 @@ import { setInitUrl } from '../redux/actions/authUserActions';
 library.add(fab, fas);
 
 const RestrictedRoute = ({
+  redirect,
   component: Component,
   authUser,
   ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props => (authUser.token ? (
-      authUser.profile_status !== 'must_fill_profile'
-        ? (
+}) => {
+  console.log('redirect: ', redirect);
+  return (
+    <Route
+      {...rest}
+      render={props => (authUser.token ? (
+        redirect ? (
           <Component {...props} />
         ) : (
-          <Redirect
-            to={{
-              pathname: '/sign-up-step',
-              state: { from: props.location },
-            }}
-          />
-        )
-    ) : (
-      <Redirect
-        to={{
-          pathname: '/sign-in',
-          state: { from: props.location },
-        }}
-      />
-    ))
-    }
-  />
-);
+          authUser.profile_status !== 'must_fill_profile'
+        ) ? (
+          <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/sign-up-step',
+                state: { from: props.location },
+              }}
+            />
+          )
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/sign-in',
+            state: { from: props.location },
+          }}
+        />
+      ))
+      }
+    />
+  );
+}
 
 RestrictedRoute.propTypes = {
+  redirect: PropTypes.bool.isRequired,
   authUser: PropTypes.object.isRequired,
   component: PropTypes.object.isRequired,
 };
@@ -116,7 +124,7 @@ class App extends Component {
 
   render() {
     const { loaded } = this.state;
-    const { match, location, user, initURL, loading } = this.props;
+    const { match, location, user, initURL, loading, redirect } = this.props;
     const { pathname } = location;
     if (pathname === '/') {
       if (!user.token) {
@@ -139,9 +147,10 @@ class App extends Component {
             {(loading || !loaded) && <LoadComponent />}
             <Switch>
               <RestrictedRoute
-                path={`${match.url}app`}
+                redirect={redirect}
                 authUser={user}
                 component={MainApp}
+                path={`${match.url}app`}
               />
               <Route path="/sign-in" component={LogIn} />
               <Route path="/sign-out" component={LogOut} />
@@ -166,10 +175,11 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = ({ auth, loads }) => {
+const mapStateToProps = ({ auth, loads, profileReducer }) => {
   const { user, initURL } = auth;
   const { loading } = loads;
-  return { user, initURL, loading };
+  const { redirect } = profileReducer;
+  return { user, initURL, loading, redirect };
 };
 export default connect(
   mapStateToProps,

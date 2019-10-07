@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   dispatchFetchProfileDetail: () => dispatch(fetchProfileDetail()),
   dispatchFetchProfileScheme: () => dispatch(fetchProfileScheme()),
-  dispatchPostProfileDetail: params => dispatch(postProfileDetail(params)),
+  dispatchPostProfileDetail: (params, redirect, history, redirectTo) => dispatch(postProfileDetail(params, redirect, history, redirectTo)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterStep);
