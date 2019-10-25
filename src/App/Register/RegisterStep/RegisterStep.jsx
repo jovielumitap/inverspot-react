@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   KeyboardArrowRight,
 } from '@material-ui/icons';
+import { profileHelper } from '../../../helpers';
 
 import StepLabel from '@material-ui/core/StepLabel';
 import SelectUserType from './component/SelectUserType';
@@ -39,6 +40,7 @@ const getSteps = () => {
 class RegisterStep extends Component {
 
   static propTypes = {
+    auth: PropTypes.object.isRequired,
     loads: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     profileReducer: PropTypes.object.isRequired,
@@ -49,11 +51,18 @@ class RegisterStep extends Component {
 
   componentDidMount() {
     const {
+      auth,
+      history,
       dispatchFetchProfileDetail,
       dispatchFetchProfileScheme,
     } = this.props;
-    dispatchFetchProfileDetail();
-    dispatchFetchProfileScheme();
+    const { user } = auth;
+    if (user && Object.keys(user).length > 0) {
+      dispatchFetchProfileDetail();
+      dispatchFetchProfileScheme();
+    } else {
+      history.push('sign-in');
+    }
   }
 
   renderStepContent = () => {
@@ -78,8 +87,13 @@ class RegisterStep extends Component {
     const { tipo_de_persona } = profile;
     switch (tipo_de_persona) {
       case 'Nacional Física':
+        const form = (scheme['Nacional Física']
+          ? ({ ...scheme['Nacional Física'], ...profile })
+          : ({ ...scheme, ...profile }));
+        console.log('form: ', form);
         return (
           <NationalPhysic1
+            step={profileHelper.getRegistrationStep(profile)}
             isLoading={isLoading}
             title="Datos personales"
             skipStep={this.skipStep}
@@ -283,7 +297,6 @@ class RegisterStep extends Component {
       dispatchPostProfileDetail,
     } = this.props;
     const actuaForm = this.getFormStateToSend(form);
-    console.log('actuaForm: ', actuaForm);
     dispatchPostProfileDetail(actuaForm, true, history, '/app/opportunity-investment');
   }
 
